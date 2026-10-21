@@ -36,6 +36,14 @@
 - Заголовки LDPK берутся из `ldpk-2.14.0/include` (прописано в [.vcxproj](ae_ldpk/ae/Win/LD3DE4_Lens_Distortion.vcxproj)).
 - Подробные команды сборки — в [`ae_ldpk/readme.md`](ae_ldpk/readme.md): утилита `nk_ld_dump`, MSBuild для `LD3DE4_Lens_Distortion.sln`, диагностическая сборка с журналом `%TEMP%\ld3de4_ae.log`.
 
+## Сборка AE-плагина (macOS)
+
+- Xcode command line tools; AE SDK 26.5 для macOS (та же загрузка с Adobe) — нужны только три папки SDK: `Examples/Headers`, `Examples/Resources`, `Examples/Util`.
+- Распакуйте SDK в `AfterEffectsSDK_26.5_mac/` рядом с `ae_ldpk/` (или укажите путь через `AE_SDK` / `AE_SDK_HEADERS`).
+- Сборка — [`ae_ldpk/ae/Mac/build_mac.sh`](ae_ldpk/ae/Mac/build_mac.sh): universal-бандл (Intel + Apple Silicon) `.bundle` с PiPL; варианты release и debug попадают в `releases/AE_LD3DE4/`.
+- На CI (без Mac): workflow [`build-mac`](.github/workflows/build-mac.yml) собирает обе конфигурации при каждом push в `ae_ldpk/`; workflow [`release-mac`](.github/workflows/release-mac.yml) (ручной запуск) прикрепляет macOS-архив к релизу. Оба скачивают SDK из приватного релиза `AE-SDK-26.5-mac` этого репозитория — перед открытием репозитория этот релиз нужно удалить.
+- Подробности — в [`ae_ldpk/readme.md`](ae_ldpk/readme.md), раздел «Сборка (macOS)».
+
 ## Использование (кратко)
 
 1. Эффект **Lens Distortion → 3DE4 Lens Distortion** на слое.

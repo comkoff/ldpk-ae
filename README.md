@@ -36,6 +36,14 @@ Ready-to-use plugin binaries are published as assets of **GitHub Releases**: <ht
 - LDPK headers are picked up from `ldpk-2.14.0/include` (configured in the [.vcxproj](ae_ldpk/ae/Win/LD3DE4_Lens_Distortion.vcxproj)).
 - Detailed build commands — in [`ae_ldpk/readme.md`](ae_ldpk/readme.md): the `nk_ld_dump` utility, MSBuild for `LD3DE4_Lens_Distortion.sln`, the diagnostic build with the `%TEMP%\ld3de4_ae.log` log.
 
+## Building the AE plugin (macOS)
+
+- Xcode command line tools; the AE SDK 26.5 for macOS (the same Adobe download) — only three SDK folders are needed: `Examples/Headers`, `Examples/Resources`, `Examples/Util`.
+- Unpack the SDK into `AfterEffectsSDK_26.5_mac/` next to `ae_ldpk/` (or point `AE_SDK` / `AE_SDK_HEADERS` to it).
+- Build with [`ae_ldpk/ae/Mac/build_mac.sh`](ae_ldpk/ae/Mac/build_mac.sh): a universal (Intel + Apple Silicon) `.bundle` with the PiPL; release and debug variants land in `releases/AE_LD3DE4/`.
+- On CI (no Mac needed): the [`build-mac`](.github/workflows/build-mac.yml) workflow builds both configurations on every push touching `ae_ldpk/`; the [`release-mac`](.github/workflows/release-mac.yml) workflow (manual run) attaches the macOS zip to a release. Both download the SDK from the private `AE-SDK-26.5-mac` release of this repository — delete that release before making the repository public.
+- Details — in [`ae_ldpk/readme.md`](ae_ldpk/readme.md), section "Building (macOS)".
+
 ## Usage (quick start)
 
 1. Apply the **Lens Distortion → 3DE4 Lens Distortion** effect to a layer.
