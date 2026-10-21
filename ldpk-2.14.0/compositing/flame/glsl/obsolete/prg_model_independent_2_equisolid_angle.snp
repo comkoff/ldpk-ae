@@ -1,0 +1,182 @@
+/***************************************************************
+* model-independent functions                                  *
+***************************************************************/
+vec2 distort(vec2 q_unit)
+	{
+	vec2 q_diag = fov2diag(unit2fov_out(q_unit));
+// initial value
+	vec2 p_init_unit;
+// In both cases we work on unit coordinates, not fov-coordinates.
+	if(initial_value_mode == 0)
+		{ p_init_unit = texture2D(tex_initial,q_unit).xy; }
+	else
+		{ p_init_unit = (clenshaw_n_eq_7(2.0 * q_unit - 1.0,chebyshev) + 1.0) * (1.0/2.0); }
+	vec2 p_iter_diag = fov2diag(unit2fov_out(p_init_unit));
+// iterate n times
+	for(int i = 0;i < 5;++i)
+		{
+		vec2 f_diag = undistort_diag(p_iter_diag) - q_diag;
+		p_iter_diag -= invert(jacobian(p_iter_diag)) * f_diag;
+		}
+	vec2 p_unit = fov2unit_in(diag2fov(p_iter_diag));
+	return p_unit;
+	}
+// Jacobian by difference quotient, for testing
+mat2 jacobian_dq(vec2 p_diag)
+	{
+// We have float-precision, so we can't use a really tiny value.
+	float epsilon = 0.001;
+	mat2 j_trans;
+	j_trans[0] = (undistort_diag(p_diag + vec2(epsilon,0.0)) - undistort_diag(p_diag - vec2(epsilon,0.0))) / (2.0 * epsilon);
+	j_trans[1] = (undistort_diag(p_diag + vec2(0.0,epsilon)) - undistort_diag(p_diag - vec2(0.0,epsilon))) / (2.0 * epsilon);
+	return j_trans;
+	}
+// Twist vector by difference quotient, for testing
+vec2 twist_dq(vec2 p_diag)
+	{
+// Same here, even worse b/o 2nd derivative.
+	float epsilon = 0.01;
+	vec2 t;
+	vec2 t00 = undistort_diag(p_diag + vec2(-epsilon,-epsilon));
+	vec2 t10 = undistort_diag(p_diag + vec2( epsilon,-epsilon));
+	vec2 t01 = undistort_diag(p_diag + vec2(-epsilon, epsilon));
+	vec2 t11 = undistort_diag(p_diag + vec2( epsilon, epsilon));
+	t[0] = (t11[0] - t01[0] - t10[0] + t00[0]) / (4.0 * epsilon * epsilon);
+	t[1] = (t11[1] - t01[1] - t10[1] + t00[1]) / (4.0 * epsilon * epsilon);
+	return t;
+	}
+
+/***************************************************************
+* model-independent main entry point                           *
+***************************************************************/
+// With equisolid angle projection!
+void main()
+	{
+	vec2 uv;
+// unit coords in output image using predefined constants adsk_...
+	vec2 coord = gl_FragCoord.xy / vec2(adsk_result_w,adsk_result_h);
+// Generally, if-else is not good in shaders, but these are based
+// only on uniform variables, so no problem. We reduce the amount
+// of source code considerably.
+	if(render_mode >= 2)
+		{
+// In this branch we investigate Jacobian and Twist.
+		vec2 p_diag = fov2diag(unit2fov_out(coord));
+// We'd like to have (row 0,col 0),(row 0,col 1),(row 1,col 0),(row 1,col 1),
+// since it must be compatible to our CPU-version in the LDPK and to everything
+// else we are doing at SDV.
+		if(render_mode == 2)
+			{
+			mat2 j = jac_diag2fov * jacobian(p_diag) * jac_fov2diag;
+			gl_FragColor = vec4(j[0][0],j[1][0],j[0][1],j[1][1]);
+			}
+		else if(render_mode == 3)
+			{
+			mat2 j = jac_diag2fov * jacobian_dq(p_diag) * jac_fov2diag;
+			gl_FragColor = vec4(j[0][0],j[1][0],j[0][1],j[1][1]);
+			}
+		else if(render_mode == 4)
+			{
+// We don't have analytic expressions for all models, so we'll do this later.
+			}
+		else if(render_mode == 5)
+			{
+			vec2 t = vec2(fb_cm[1] / r_cm,fb_cm[0] / r_cm) * twist_dq(p_diag);
+			gl_FragColor = vec4(t[0],t[1],0.0,1.0);
+			}
+		else if(render_mode == 6)
+			{
+// Render mode 6: constant output for testing and debugging.
+			uv = coord;
+			if((uv[0] >= a_fov_in_unit[0]) && (uv[0] < b_fov_in_unit[0]) && (uv[1] >= a_fov_in_unit[1]) && (uv[1] < b_fov_in_unit[1]))
+				{ gl_FragColor = vec4(1.0,0.0,0.0,1.0); }
+			else
+				{ gl_FragColor = vec4(0.0,0.5,0.0,0.5); }
+			}
+		}
+	else
+		{
+		if(direction == 0)
+			{
+// First we remove equisolid angle mapping.
+			vec2 p_plain_diag;
+			vec2 p_esa_diag = fov2diag(unit2fov_out(coord));
+			float r_esa_diag = norm2(p_esa_diag);
+			if(r_esa_diag == 0.0)
+				{ p_plain_diag = p_esa_diag; }
+			else
+				{
+				float arg = r_esa_diag / (2.0 * fl_diag);
+				if(arg >= 1.0)
+					{
+// black outside valid disc.
+					gl_FragColor = vec4(0.0,0.0,0.0,0.0);
+					return;
+					}
+				float phi = 2.0 * asin(arg);
+				if(phi >= pi / 2.0 - 1e-5)
+					{
+// black outside valid disc.
+					gl_FragColor = vec4(0.0,0.0,0.0,0.0);
+					return;
+					}
+				float r_plain_diag = fl_diag * tan(phi);
+				p_plain_diag = r_plain_diag * unit(p_esa_diag);
+				}
+// distort invokes undistort-function in image-processing
+			uv = fov2unit_in(diag2fov(undistort_diag(p_plain_diag)));
+			}
+		else if(direction == 1)
+			{
+// undistort invokes distort-function in image-processing
+// This requires the jacobian of the plain distortion without
+// equisolid angle mapping. Also by doing so, we can still use
+// the Chebyshev method for initial values.
+// The result of distort() is in unit-coordinates.
+// We transform into diag, because
+// our equisolid angle mapping is formulated in diag. 
+			vec2 p_plain_diag = fov2diag(unit2fov_out(distort(coord)));
+// Apply fisheye projection
+			float r_plain_diag = norm2(p_plain_diag);
+			float phi = atan(r_plain_diag / fl_diag);
+			float r_esa_diag = 2.0 * fl_diag * sin(phi / 2.0);
+			vec2 p_esa_diag = r_esa_diag * unit(p_plain_diag);
+			uv = fov2unit_in(diag2fov(p_esa_diag));
+			}
+		else if(direction == 2)
+			{
+// Visualizing the chebyshev polynomial for testing.
+			uv = (clenshaw_n_eq_7(2.0 * coord - 1.0,chebyshev) + 1.0) * (1.0/2.0);
+			}
+		else
+			{
+// identity for testing
+			uv = coord;
+			}
+		if(reconstruction_filter == 1)
+			{
+// bilinear
+			if(render_mode == 0)
+				{
+// Flame: Matte is the blue channel in sampler object matte.
+				gl_FragColor = vec4(texture2D(tex0,uv).rgb,texture2D(matte,uv).b);
+				}
+			else if(render_mode == 1)
+				{
+				gl_FragColor = vec4(uv[0],uv[1],0.0,1.0);
+				}
+			}
+		else if(reconstruction_filter == 2)
+			{
+// bicubic
+			if(render_mode == 0)
+				{
+				gl_FragColor = texture2d_bicubic_catmull_rom(tex0,matte,uv,w_in_px,h_in_px);
+				}
+			else if(render_mode == 1)
+				{
+				gl_FragColor = vec4(uv[0],uv[1],0.0,1.0);
+				}
+			}
+		}
+	}

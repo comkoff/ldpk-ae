@@ -1,0 +1,5 @@
+#include <snp/num/prg_clenshaw_1_rollout.snp> --- prg_clenshaw_1_rollout.snp
+#include <snp/ldpk/prg_model_independent_1.snp> --- prg_model_independent_1.snp
+#include <snp/basics/prg_texture2d_bicubic_catmull_rom.snp> --- prg_texture2d_bicubic_catmull_rom_flame.snp
+#include <snp/ldpk/prg_model_independent_2.snp> --- prg_model_independent_2.snp
+#include <snp/ldpk/prg_model_independent_2_equisolid_angle.snp> --- prg_model_independent_2_equisolid_angle.snp

@@ -1,0 +1,5 @@
+This directory contains python scripts related to the LDPK
+to be executed from within 3DE4. Scripts herein should be
+the same as in ${TDE4}/sys_data/py_scripts.
+
+.wtree-files are project files from 3DE4's GUI-Editor.

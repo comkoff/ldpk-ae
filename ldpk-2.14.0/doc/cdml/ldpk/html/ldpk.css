@@ -1,0 +1,8 @@
+/* styles for cdml project "ldpk" */
+
+a.quoted::before {
+    content: "\201C"
+}
+a.quoted::after {
+    content: "\201D";
+}

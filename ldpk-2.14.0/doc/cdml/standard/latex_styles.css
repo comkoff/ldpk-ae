@@ -1,0 +1,28 @@
+/* LaTeX-Sachen, eventuell in ein eigenes css-File tun und importieren. */
+table.latex
+	{
+	background-color:inherit;
+	width:100%;
+	}
+/* Durch diese Inheritance muessen wir sehr explizit spezifizieren. */
+table.latex > tbody.latex > tr.latex
+	{
+	background-color:inherit;
+	}
+/* Hier auch. */
+table.latex > tbody.latex > tr.latex > td.latex
+	{
+	background-color:inherit;
+	vertical-align:top;
+	text-align:left;
+	}
+/* Der mathematische Ausdruck steht in der linken Spalte. */
+table.latex > tbody.latex > tr.latex > td.latex:nth-child(1)
+	{
+	text-align:left;
+	}
+/* Die Nummer des Ausdrucks steht in der rechten Spalte. */
+table.latex > tbody.latex > tr.latex > td.latex:nth-child(2)
+	{
+	text-align:right;
+	}

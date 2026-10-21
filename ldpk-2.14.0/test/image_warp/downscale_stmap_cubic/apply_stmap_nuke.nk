@@ -1,0 +1,136 @@
+#! /server/software/linux64/nuke/Nuke12.0v1/libnuke-12.0.1.so -nx
+version 12.0 v1
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="0" y="0" w="1918" h="1147" screen="0">
+        <splitter orientation="1">
+            <split size="40"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="1255" stretch="1"/>
+            <splitter orientation="2">
+                <split size="645"/>
+                <dock id="" activePageId="Viewer.1">
+                    <page id="Viewer.1"/>
+                </dock>
+                <split size="454"/>
+                <dock id="" activePageId="DAG.1" focus="true">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                </dock>
+            </splitter>
+            <split size="615"/>
+            <dock id="" activePageId="Properties.1">
+                <page id="Properties.1"/>
+                <page id="uk.co.thefoundry.backgroundrenderview.1"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name /server/devel/sdv/privat/uwe/source/ldpk/test/image_warp/downscale_stmap_cubic/apply_stmap_nuke.nk
+ format "2048 1556 0 0 2048 1556 1 2K_Super_35(full-ap)"
+ proxy_type scale
+ proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+ colorManagement Nuke
+ workingSpaceLUT linear
+ monitorLut sRGB
+ int8Lut sRGB
+ int16Lut sRGB
+ logLut Cineon
+ floatLut linear
+}
+Read {
+ inputs 0
+ file_type exr
+ file /server/devel/sdv/privat/uwe/source/ldpk/test/image_warp/downscale_stmap_cubic/out_downscale_4.exr
+ format "512 256 0 0 512 256 1 "
+ origset true
+ name Read4
+ xpos 102
+ ypos -203
+}
+Read {
+ inputs 0
+ file_type png
+ file /server/devel/sdv/privat/uwe/source/ldpk/test/image_warp/downscale_stmap_cubic/grid_with_marks.png
+ format "2048 1024 0 0 2048 1024 1 2K_LatLong"
+ origset true
+ name Read1
+ xpos -338
+ ypos -205
+}
+set N786ad50 [stack 0]
+STMap {
+ inputs 2
+ uv rgb
+ name STMap3
+ xpos 102
+ ypos -13
+}
+Read {
+ inputs 0
+ file_type exr
+ file /server/devel/sdv/privat/uwe/source/ldpk/test/image_warp/downscale_stmap_cubic/out_downscale_2.exr
+ format "1024 512 0 0 1024 512 1 "
+ origset true
+ name Read3
+ xpos -61
+ ypos -211
+}
+push $N786ad50
+STMap {
+ inputs 2
+ uv rgb
+ name STMap2
+ xpos -55
+ ypos -10
+}
+Read {
+ inputs 0
+ file_type exr
+ file /server/devel/sdv/privat/uwe/source/ldpk/test/image_warp/downscale_stmap_cubic/out_downscale_1.exr
+ format "2048 1024 0 0 2048 1024 1 2K_LatLong"
+ origset true
+ name Read2
+ xpos -183
+ ypos -210
+}
+push $N786ad50
+STMap {
+ inputs 2
+ uv rgb
+ name STMap1
+ xpos -185
+ ypos -5
+}
+Read {
+ inputs 0
+ file_type exr
+ file /server/devel/sdv/privat/uwe/source/ldpk/test/image_warp/downscale_stmap_cubic/out_downscale_8.exr
+ format "256 128 0 0 256 128 1 "
+ origset true
+ name Read5
+ xpos 265
+ ypos -202
+}
+push $N786ad50
+STMap {
+ inputs 2
+ uv rgb
+ name STMap4
+ selected true
+ xpos 265
+ ypos -14
+}
+Viewer {
+ frame 1
+ frame_range 1-100
+ name Viewer1
+ xpos 265
+ ypos 60
+}

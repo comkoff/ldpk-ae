@@ -1,0 +1,187 @@
+#! /server/software/linux64/nuke/Nuke10.0v1/libnuke-10.0.1.so -nx
+version 10.0 v1
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="-9" y="-8" w="1938" h="1190" screen="0">
+        <splitter orientation="1">
+            <split size="40"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="1255" stretch="1"/>
+            <splitter orientation="2">
+                <split size="658"/>
+                <dock id="" activePageId="Viewer.1">
+                    <page id="Viewer.1"/>
+                </dock>
+                <split size="462"/>
+                <dock id="" activePageId="DAG.1" focus="true">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                </dock>
+            </splitter>
+            <split size="615"/>
+            <dock id="" activePageId="Properties.1">
+                <page id="Properties.1"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name /server/devel/sdv/privat/uwe/source/tde4_doc/tde4_ldm_standard/projects/nuke/reference_project_bbox_mode.nk
+ format "2048 1556 0 0 2048 1556 1 2K_Super_35(full-ap)"
+ proxy_type scale
+ proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode1
+ tile_color 0x99c6a9ff
+ label "A. Input-BBox-Tests\nBbox margin: -400,400\ndirection: distort"
+ note_font_size 18
+ xpos -519
+ ypos -73
+ bdwidth 501
+ bdheight 138
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode2
+ tile_color 0x99c6a9ff
+ label "B. Input-BBox-Tests\nBbox margin: -400,400\ndirection: undistort"
+ note_font_size 18
+ xpos -3
+ ypos -74
+ bdwidth 493
+ bdheight 139
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode5
+ tile_color 0x8e8e3800
+ label "1.\n"
+ note_font_size 18
+ xpos -211
+ ypos -186
+ bdwidth 290
+ bdheight 87
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode6
+ tile_color 0xaaaaaa00
+ label 0.
+ note_font_size 18
+ xpos -210
+ ypos -299
+ bdwidth 287
+ bdheight 107
+}
+CheckerBoard2 {
+ inputs 0
+ format "2000 1500 0 0 2000 1500 1 2000x1500"
+ boxsize 50
+ color0 {0 0 0.2 1}
+ color1 {0 0 0.7 1}
+ color2 {0 0 0.2 1}
+ color3 {0 0 0.7 1}
+ name CheckerBoard1
+ xpos -109
+ ypos -269
+}
+AdjBBox {
+ numpixels {200 -200}
+ name AdjBBox1
+ xpos -109
+ ypos -146
+}
+set N58e34a0 [stack 0]
+LD_3DE4_Radial_Standard_Degree_4 {
+ bbox_mode "intersect bbox plus margin with \[un]distorted bbox"
+ "bounding box margin \[px]" {-400 400}
+ Distortion_Degree_2 0.5
+ name LD_3DE4_Radial_Standard_Degree_4_22
+ selected true
+ xpos 333
+ ypos 10
+}
+push $N58e34a0
+LD_3DE4_Radial_Standard_Degree_4 {
+ bbox_mode "merge bbox plus margin with \[un]distorted bbox"
+ "bounding box margin \[px]" {-400 400}
+ Distortion_Degree_2 0.5
+ name LD_3DE4_Radial_Standard_Degree_4_18
+ xpos 242
+ ypos 9
+}
+push $N58e34a0
+LD_3DE4_Radial_Standard_Degree_4 {
+ bbox_mode "intersect bbox plus margin with \[un]distorted format"
+ "bounding box margin \[px]" {-400 400}
+ Distortion_Degree_2 0.5
+ name LD_3DE4_Radial_Standard_Degree_4_6
+ xpos 152
+ ypos 9
+}
+push $N58e34a0
+LD_3DE4_Radial_Standard_Degree_4 {
+ "bounding box margin \[px]" {-400 400}
+ Distortion_Degree_2 0.5
+ name LD_3DE4_Radial_Standard_Degree_4_2
+ xpos 61
+ ypos 10
+}
+push $N58e34a0
+LD_3DE4_Radial_Standard_Degree_4 {
+ direction distort
+ bbox_mode "intersect bbox plus margin with \[un]distorted bbox"
+ "bounding box margin \[px]" {-400 400}
+ Distortion_Degree_2 0.5
+ name LD_3DE4_Radial_Standard_Degree_4_24
+ xpos -178
+ ypos 9
+}
+push $N58e34a0
+LD_3DE4_Radial_Standard_Degree_4 {
+ direction distort
+ bbox_mode "merge bbox plus margin with \[un]distorted bbox"
+ "bounding box margin \[px]" {-400 400}
+ Distortion_Degree_2 0.5
+ name LD_3DE4_Radial_Standard_Degree_4_20
+ xpos -271
+ ypos 9
+}
+push $N58e34a0
+LD_3DE4_Radial_Standard_Degree_4 {
+ direction distort
+ bbox_mode "intersect bbox plus margin with \[un]distorted format"
+ "bounding box margin \[px]" {-400 400}
+ Distortion_Degree_2 0.5
+ name LD_3DE4_Radial_Standard_Degree_4_8
+ xpos -363
+ ypos 9
+}
+push $N58e34a0
+LD_3DE4_Radial_Standard_Degree_4 {
+ direction distort
+ "bounding box margin \[px]" {-400 400}
+ Distortion_Degree_2 0.5
+ name LD_3DE4_Radial_Standard_Degree_4_7
+ xpos -455
+ ypos 10
+}
+Switch {
+ inputs 8
+ name AB
+ xpos -114
+ ypos 229
+}
+Viewer {
+ frame_range 1-100
+ name Viewer1
+ xpos -114
+ ypos 288
+}

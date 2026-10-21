@@ -1,0 +1,39 @@
+vec4 texture2d_bicubic_catmull_rom(sampler2D tex,vec2 uv,	int w_in_px,
+								int h_in_px)
+	{
+	float w_in_px_inv = 1.0 / float(w_in_px);
+	float h_in_px_inv = 1.0 / float(h_in_px);
+// This is a 9-tap bicubic filter with catmull-rom weights.
+	vec2 t = fract(vec2(w_in_px,h_in_px) * uv - (1.0/2.0));
+	vec2 tt = t * t;
+	vec2 ttt = tt * t;
+// Das Zentrum des linken der beiden zentralen Pixel.
+	vec2 base = (floor(vec2(w_in_px,h_in_px) * uv - (1.0/2.0)) + (1.0/2.0)) * vec2(w_in_px_inv,h_in_px_inv);
+// Aus den Catmull-Rom-Gewichten kommt das hier.
+// Der mittlere Gewichtsfaktor ist die Summe der beiden zentralen
+// Catmull-Rom-Gewichte. Die aeusseren Gewichte entsprechen denen
+// von Catmull-Rom.
+	vec2 w0 = (1.0/2.0) * (-t + 2.0 * tt - ttt);
+	vec2 w1 = (1.0/2.0) * (2.0 + t - tt);
+	vec2 w2 = (1.0/2.0) * (-tt + ttt);
+// Beim mittleren Tap wird linear interpoliert. Der Offset ist:
+	vec2 o = (1.0/2.0) * (t + 4.0 * tt - 3.0 * ttt) / w1;
+// Die neun Positionen, an denen wir die Textur auswerten, setzen sich
+// aus der Basisposition und diesen Offsetkomponenten zusammen.
+	vec3 x = vec3(-w_in_px_inv,o[0] * w_in_px_inv,2.0 * w_in_px_inv);
+	vec3 y = vec3(-h_in_px_inv,o[1] * h_in_px_inv,2.0 * h_in_px_inv);
+
+	vec4 t00 = texture2D(tex,base + vec2(x[0],y[0]));
+	vec4 t10 = texture2D(tex,base + vec2(x[1],y[0]));
+	vec4 t20 = texture2D(tex,base + vec2(x[2],y[0]));
+	vec4 t01 = texture2D(tex,base + vec2(x[0],y[1]));
+	vec4 t11 = texture2D(tex,base + vec2(x[1],y[1]));
+	vec4 t21 = texture2D(tex,base + vec2(x[2],y[1]));
+	vec4 t02 = texture2D(tex,base + vec2(x[0],y[2]));
+	vec4 t12 = texture2D(tex,base + vec2(x[1],y[2]));
+	vec4 t22 = texture2D(tex,base + vec2(x[2],y[2]));
+
+	return	  (t00 * w0[0] + t10 * w1[0] + t20 * w2[0]) * w0[1]
+		+ (t01 * w0[0] + t11 * w1[0] + t21 * w2[0]) * w1[1]
+		+ (t02 * w0[0] + t12 * w1[0] + t22 * w2[0]) * w2[1];
+	}

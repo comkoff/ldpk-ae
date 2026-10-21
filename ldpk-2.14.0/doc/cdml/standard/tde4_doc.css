@@ -1,0 +1,277 @@
+tde4_person
+	{
+	font-style:normal;
+	font-variant:small-caps;
+	font-size:100%;
+	}
+tde4_company
+	{
+	font-family:helvetica;
+	}
+tde4_product
+	{
+	font-style:normal;
+	font-family:monospace;
+	font-size:100%;
+	}
+tde4_gui
+	{
+	font-family:sans-serif;
+	font-style:italic;
+	font-size:95%;
+	}
+tde4_fkey
+	{
+	font-family:sans-serif;
+	border:1px solid #777;
+	border-radius:3px;
+	font-size:90%;
+	padding-left:0.2em;
+	padding-right:0.2em;
+	}
+tde4_unit
+	{
+	font-family:times;
+	font-style:normal;
+	}
+tde4_tag
+	{
+	font-family:"Courier New",courier,monospace;
+	font-weight:bold;
+	font-size:95%;
+	color:#700;
+	}
+/* In den meisten Dokumenten hab ich das nicht beruecksichtigt,
+   die muessen also aktualisiert werden. Bisher nur in tde4_xml. */
+tde4_tag:before
+	{
+	content:"<";
+	}
+tde4_tag:after
+	{
+	content:">";
+	}
+/* Fuer Entitaeten */
+tde4_ent
+	{
+	font-family:"Courier New",courier,monospace;
+	font-weight:bold;
+	font-size:95%;
+	color:#400;
+	}
+tde4_ent:before
+	{
+	content:"&";
+	}
+tde4_ent:after
+	{
+	content:";";
+	}
+/* Fuer Files, URIs, URLs */
+tde4_file
+	{
+	font-family:monospace,"Courier New",courier;
+	font-size:95%;
+	font-weight:bold;
+/*	margin-left:0.3em;*/
+/*	margin-right:0.3em;*/
+	}
+/* Fuer Umgebungsvariablen */
+tde4_env
+	{
+	font-family:monospace;
+	font-weight:bold;
+	}
+tde4_type
+	{
+	font-family:"Courier New",courier,monospace;
+	font-size:95%;
+	color:#500;
+	}
+/* Fuer Funktionen und Methoden */
+tde4_func
+	{
+	font-family:monospace;
+	font-size:95%;
+	color:#500;
+	}
+/* Fuer Variablen */
+tde4_var
+	{
+	font-family:"Courier New",courier,monospace;
+	font-weight:bold;
+	font-size:95%;
+	color:#a00;
+	}
+tde4_lit
+	{
+	font-family:"Courier New",courier,monospace;
+	font-size:95%;
+	}
+
+/* Darstellung von Verzeichnisbaeumen */
+tde4_filetree
+	{
+	display:block;
+	font-family:"Courier New",courier,monospace;
+	font-size:100%;
+	line-height:100%;
+	margin-top:1em;
+	margin-bottom:1em;
+	}
+span.tde4_dir
+	{
+	color:#68825b;
+	font-weight:bold;
+	font-size:90%;
+	}
+span.tde4_file
+	{
+	color:#000;
+	font-size:90%;
+	}
+span.tde4_link
+	{
+	color:#028;
+	font-size:90%;
+	}
+/* Ende */
+
+p.tde4_warning
+	{
+	background-color:#fee;
+	color:#400;
+	border:1px red solid;
+	padding-left:15px;
+	padding-right:15px;
+	padding-bottom:5px;
+	padding-top:5px;
+	}
+
+/* Fuer die Logos am Anfang und am Ende */
+img.logo
+	{
+	margin-top:0em;
+	margin-bottom:0em;
+	}
+/* Fuer Screenshots des Browsers, wird in tde4mhp benoetigt.
+Die print-Variante legt auch die Breite fest. */
+img.browser
+	{
+	border:solid 1px #ddd;
+	}
+div.cdml_credit
+	{
+	margin-top:2em;
+	font-size:50%;
+	text-align:center;
+	}
+
+/* cdml generiert sowas um Python-Code. Leider kann ich mich nicht einigen,
+wo das hin soll. Ich versuch mal, das zumindest fuer 3DE4-Docs einheitlich zu halten.
+Erfahrungsgemaess reicht der Platz fuer Code-Segmente kaum aus, also mach ich das
+so breit wie moeglich. Die Ecken sind eckig, nicht rund, damit es besser zu
+anderen Abbildungen wie etwa Screenshots passt.*/
+
+pre.pycode
+	{
+	border: 1px solid #aaa;
+	padding-top:5px;
+	padding-bottom:5px;
+	padding-left:5px;
+	padding-right:5px;
+	margin-left:0px;
+	margin-right:0px;
+	background-color:#eeeeee;
+	font-size:80%;
+	}
+pre.jscode
+	{
+	border: 1px solid #aaa;
+	padding-top:5px;
+	padding-bottom:5px;
+	padding-left:5px;
+	padding-right:5px;
+	margin-left:0px;
+	margin-right:0px;
+	background-color:#eeeeee;
+	font-size:80%;
+	}
+
+/* Hier steht ganz allgemein der Aufbau von Tabellen,
+und das ist nicht gut, denn es kann Tabellen fuer verschiedene
+Zwecke geben. Diese Styles bekommen also noch Klassenselektoren,
+etwa striped. Wir probieren das trotzdem mal. */
+
+/* Das ist dann also die Default-Tabelle. */
+table
+	{
+/* Tabellen sind per-default zentriert. */
+	margin-left:auto;
+	margin-right:auto;
+
+	margin-top:0.8em;
+	margin-bottom:1em;
+	padding:0px;
+	border-spacing:2px;
+	width:90%;
+	}
+table > tbody > tr:nth-child(even)
+	{
+	padding-left:10px;
+	padding-right:10px;
+	background-color:#ddd;
+	}
+table > tbody > tr:nth-child(odd)
+	{
+	background-color:#eee;
+	}
+table > thead > tr > td
+	{
+	font-weight:bold;
+	background-color:#dea;
+	padding-left:10px;
+	padding-right:10px;
+	}
+table > tbody > tr > td
+	{
+	padding-left:10px;
+	padding-right:10px;
+	vertical-align:top;
+	}
+
+table.striped
+	{
+	padding:0px;
+	margin-left:0px;
+	margin-right:0px;
+	margin-top:1em;
+	margin-bottom:1em;
+	border-spacing:2px;
+	width:90%;
+	}
+table.striped > tbody > tr:nth-child(even)
+	{
+	background-color:#ddd;
+	}
+table.striped > tbody > tr:nth-child(odd)
+	{
+	background-color:#eee;
+	}
+table.striped > tbody > tr > td
+	{
+	padding-left:10px;
+	padding-right:10px;
+	}
+table.striped > thead > tr > td
+	{
+	background-color:#dea;
+	padding-left:10px;
+	padding-right:10px;
+	}
+/* Diese Art der Versionierung haben wir in tde4mhp eingefuehrt.
+Irgendwas in der Art ist sicher in jedem Dokument sinnvoll */
+table.versions > tbody > tr > td
+	{
+	vertical-align:top;
+	}

@@ -1,0 +1,77 @@
+This directory contains all Flame-, Nuke- and 3DE4-projects.
+for testing the lens distortion export for Autodesk(R) Flame.
+
+The procedure is the following:
+Starting in Foundry(R) Nuke we create a sequence of distorted
+images. We import these images in 3DE4 and set up the camera and lens
+the same way, including camera and distortion parameters and dynamic
+focal lens or dynamic focus distance. We then export a batch to Flame,
+import it in Flame and examine the results.
+
+
+test_1
+--------------------
+- The test is about checking export data for a single frame.
+- Radial - Standard, Degree 4
+- We create an image with
+  + non-standard fov
+  + non-standard lco
+  + non-default c2
+  + everything else is default, pixel aspect is 1.
+- Distort with Nuke
+- Undistort with Flame and compare.
+
+test_2
+------
+- Radial - Standard, Degree 4
+- Imagesize 2048x1024 + 512x256 Overscan.
+- Field-of-View: .125,.125,.875,.875
+- w_fb_cm = 2.048
+- h_fb_cm = 1.024
+- r_pa = 1.0
+- Sequenz, Frames 1-11
+- Frame 1:
+  + c2 = 0.05
+  + u2 = 0.05
+  + v2 = 0.07
+  + c4 = -0.05
+  + u4 = -0.03
+  + v4 = -0.065
+  + phi_bs = 45
+  + b_bs = 0.02
+- Frame 11:
+  + c2 = -0.05
+  + u2 = -0.05
+  + v2 = -0.07
+  + c4 = 0.05
+  + u4 = 0.03
+  + v4 = 0.065
+  + phi_bs = -45
+  + b_bs = -0.02
+
+test_3
+------
+- Anamorphic - Standard, Degree 4
+- Dynamic focus distance
+- non-standard fov
+- standard lco
+
+test_4
+------
+- Anamorphic - Rescaled, Degree 4
+- Dynamic focus distance
+- non-standard fov
+- standard lco
+
+test_5
+------
+- Radial - Fisheye, Degree 8
+
+test_6
+------
+- Anamorphic Degree 6
+
+test_7
+------
+- Brown-Conrady, Degree 6/2
+

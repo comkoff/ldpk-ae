@@ -1,0 +1,84 @@
+objcode
+	{
+	font-family:monospace;
+	}
+
+obj
+	{
+	font-family:monospace;
+	}
+
+pre.objcode
+	{
+	border: 1px solid #aaa;
+	padding-top:5px;
+	padding-bottom:5px;
+	padding-left:5px;
+	padding-right:5px;
+	margin-left:1cm;
+	margin-right:1cm;
+	background-color:#eee;
+	color:inherit;
+	font-size:smaller;
+	}
+
+glsl_plain
+	{
+	color:inherit;
+	font-weight:inherit;
+	font-style:inherit;
+	}
+glsl_comment
+	{
+	color:var(--sdv-comment-color);
+	font-weight:var(--sdv-comment-font-weight);
+	font-style:var(--sdv-comment-font-style);
+	}
+glsl_number
+	{
+	color:var(--sdv-number-color);
+	font-weight:var(--sdv-number-font-weight);
+	font-style:var(--sdv-number-font-style);
+	}
+glsl_preprocessor
+	{
+	color:var(--sdv-preprocessor-color);
+	font-weight:var(--sdv-preprocessor-font-weight);
+	font-style:var(--sdv-preprocessor-font-style);
+	}
+glsl_keyword
+	{
+	color:var(--sdv-keyword-color);
+	font-weight:var(--sdv-keyword-font-weight);
+	font-style:var--sdv-keyword-font-style();
+	}
+glsl_storage
+	{
+	color:var(--sdv-storage-color);
+	font-weight:var(--sdv-storage-font-weight);
+	font-style:var(--sdv-storage-font-style);
+	}
+glsl_type
+	{
+	color:var(--sdv-type-color);
+	font-weight:var(--sdv-type-font-weight);
+	font-style:var(--sdv-type-font-style);
+	}
+glsl_func_call
+	{
+	color:var(--sdv-func_call-color);
+	font-weight:var(--sdv-func_call-font-weight);
+	font-style:var(--sdv-func_call-font-style);
+	}
+glsl_reserved
+	{
+	color:var(--sdv-reserved-color);
+	font-weight:var(--sdv-reserved-font-weight);
+	font-style:var(--sdv-reserved-font-style);
+	}
+glsl_placeholder
+	{
+	color:var(--sdv-placeholder-color);
+	font-weight:var(--sdv-placeholder-font-weight);
+	font-style:var(--sdv-placeholder-font-style);
+	}

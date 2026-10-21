@@ -1,0 +1,8 @@
+Hello and welcome to the LDPK!
+
+Documentation sources live in doc/sphinx (build with script/make_sphinx.csh);
+model descriptions are in doc/tex.
+
+Please send questions and comments to uwe@sci-d-vis.com
+
+Thanks and good luck!

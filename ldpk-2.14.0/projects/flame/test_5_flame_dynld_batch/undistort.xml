@@ -1,0 +1,290 @@
+<ShaderNodePreset	SupportsAdaptiveDegradation="False" SupportsAction="False" SupportsTransition="False" SupportsTimeline="False" TimelineUseBack="False" MatteProvider="True" CommercialUsePermitted="True" ShaderType="Matchbox" SoftwareVersion="2017.0.0" LimitInputsToTexture="True" Version="2"
+			Description="LD 3DE4 Radial Standard, Degree 4" Name="Preset Name">
+	<Shader Clear="0" GridSubdivision="1" OutputBitDepth="Output" Index="1">
+<!-- Front -->
+		<Uniform Index="0" NoInput="Error" Tooltip="" DisplayName="Front"    InputColor="100,90,40" Mipmaps="False" GL_TEXTURE_WRAP_T="GL_CLAMP_TO_EDGE" GL_TEXTURE_WRAP_S="GL_CLAMP_TO_EDGE" GL_TEXTURE_MAG_FILTER="GL_LINEAR" GL_TEXTURE_MIN_FILTER="GL_LINEAR" Type="sampler2D" Name="tex0">
+		</Uniform>
+<!-- Unused -->
+		<Uniform Index="1" NoInput="Black" Tooltip="" DisplayName="Not Used" InputColor="86, 86, 86" Mipmaps="False" GL_TEXTURE_WRAP_T="GL_CLAMP_TO_EDGE" GL_TEXTURE_WRAP_S="GL_CLAMP_TO_EDGE" GL_TEXTURE_MAG_FILTER="GL_LINEAR" GL_TEXTURE_MIN_FILTER="GL_LINEAR" Type="sampler2D" Name="unused">
+		</Uniform>
+<!-- Matte -->
+		<Uniform Index="2" NoInput="White" Tooltip="" DisplayName="Matte"                            Mipmaps="False" GL_TEXTURE_WRAP_T="GL_CLAMP_TO_EDGE" GL_TEXTURE_WRAP_S="GL_CLAMP_TO_EDGE" GL_TEXTURE_MAG_FILTER="GL_LINEAR" GL_TEXTURE_MIN_FILTER="GL_LINEAR" Type="sampler2D" Name="matte" InputType="Matte">
+		</Uniform>
+<!-- Page 0, Column 0: built-in -->
+		<Uniform ResDependent="None" Max="1000000.0" Min="0.0" Default="1.6" Inc="0.01" Tooltip="" Row="0" Col="0" Page="0" Type="float" ChannelName="tde4_filmback_width_cm" DisplayName="tde4_filmback_width_cm" Name="tde4_filmback_width_cm"></Uniform>
+		<Uniform ResDependent="None" Max="1000000.0" Min="0.0" Default="0.9" Inc="0.01" Tooltip="" Row="1" Col="0" Page="0" Type="float" ChannelName="tde4_filmback_height_cm" DisplayName="tde4_filmback_height_cm" Name="tde4_filmback_height_cm"></Uniform>
+		<Uniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0" Inc="0.01" Tooltip="" Row="2" Col="0" Page="0" Type="float" ChannelName="tde4_lens_center_offset_x_cm" DisplayName="tde4_lens_center_offset_x_cm" Name="tde4_lens_center_offset_x_cm"></Uniform>
+		<Uniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0" Inc="0.01" Tooltip="" Row="3" Col="0" Page="0" Type="float" ChannelName="tde4_lens_center_offset_y_cm" DisplayName="tde4_lens_center_offset_y_cm" Name="tde4_lens_center_offset_y_cm"></Uniform>
+		<Uniform ResDependent="None" Max="1000000.0" Min="0.0" Default="1.0" Inc="0.01" Tooltip="" Row="4" Col="0" Page="0" Type="float" ChannelName="tde4_pixel_aspect" DisplayName="tde4_pixel_aspect" Name="tde4_pixel_aspect"></Uniform>
+<!-- Page 0, Column 1: built-in -->
+		<Uniform ResDependent="None" Max="1000000.0" Min="0.0" Default="3.0" Inc="0.01" Tooltip="" Row="0" Col="1" Page="0" Type="float" ChannelName="tde4_focal_length_cm" DisplayName="tde4_focal_length_cm" Name="tde4_focal_length_cm"></Uniform>
+		<Uniform ResDependent="None" Max="1000000.0" Min="0.0" Default="100.0" Inc="0.01" Tooltip="" Row="1" Col="1" Page="0" Type="float" ChannelName="tde4_focus_distance_cm" DisplayName="tde4_focus_distance_cm" Name="tde4_focus_distance_cm"></Uniform>
+<!-- Page 1, Column 0,1: field-of-view -->
+		<Uniform Inc="0.01" Tooltip="" Row="0" Col="0" Page="1" Action3DWidget="False" IconType="None" Type="vec2" ChannelName="a_fov_in_unit" DisplayName="a_fov_in_unit" Name="a_fov_in_unit">
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+		</Uniform>
+		<Uniform Inc="0.01" Tooltip="" Row="2" Col="0" Page="1" Action3DWidget="False" IconType="None" Type="vec2" ChannelName="b_fov_in_unit" DisplayName="b_fov_in_unit" Name="b_fov_in_unit">
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="1.0"></SubUniform>
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="1.0"></SubUniform>
+		</Uniform>
+		<Uniform Inc="0.01" Tooltip="" Row="0" Col="1" Page="1" Action3DWidget="False" IconType="None" Type="vec2" ChannelName="a_fov_out_unit" DisplayName="a_fov_out_unit" Name="a_fov_out_unit">
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+		</Uniform>
+		<Uniform Inc="0.01" Tooltip="" Row="2" Col="1" Page="1" Action3DWidget="False" IconType="None" Type="vec2" ChannelName="b_fov_out_unit" DisplayName="b_fov_out_unit" Name="b_fov_out_unit">
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="1.0"></SubUniform>
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="1.0"></SubUniform>
+		</Uniform>
+<!-- Page 2, Column 0: flow control -->
+<!-- direction: distort, undistort, identity -->
+		<Uniform Max="2" Min="0" Default="1" Inc="1" Tooltip="" Row="0" Col="0" Page="2" Type="int" ValueType="Popup" ChannelName="direction" DisplayName="Direction" Name="direction">
+			<PopupEntry Title="distort"	Value="0"></PopupEntry>
+			<PopupEntry Title="undistort"	Value="1"></PopupEntry>
+			<PopupEntry Title="chebyshev"	Value="2"></PopupEntry>
+			<PopupEntry Title="identity"	Value="3"></PopupEntry>
+		</Uniform>
+<!-- render_mode: image, stmap, jacobian, jacobian dq, twist vector, twist vector dq, constant color -->
+		<Uniform Max="7" Min="0" Default="0" Inc="1" Tooltip="" Row="1" Col="0" Page="2" Type="int" ValueType="Popup" ChannelName="render_mode" DisplayName="Render mode" Name="render_mode">
+			<PopupEntry Title="image"			Value="0"></PopupEntry>
+			<PopupEntry Title="stmap"			Value="1"></PopupEntry>
+			<PopupEntry Title="jacobian"			Value="2"></PopupEntry>
+			<PopupEntry Title="jacobian diff-quot"		Value="3"></PopupEntry>
+			<PopupEntry Title="twist vector"		Value="4"></PopupEntry>
+			<PopupEntry Title="twist vector diff-quot"	Value="5"></PopupEntry>
+			<PopupEntry Title="red"				Value="6"></PopupEntry>
+		</Uniform>
+		<Uniform Max="1" Min="0" Default="1" Inc="1" Tooltip="" Row="2" Col="0" Page="2" Type="int" ValueType="Popup" ChannelName="reconstruction_filter" DisplayName="Recon filter" Name="reconstruction_filter">
+			<PopupEntry Title="bi-nearest (nyi)" Value="1"></PopupEntry>
+			<PopupEntry Title="bi-linear" Value="1"></PopupEntry>
+			<PopupEntry Title="bi-cubic" Value="2"></PopupEntry>
+		</Uniform>
+<!-- kommt weg, wir wollen immer ein Polynom als Startwertgenerator verwenden. -->
+		<Uniform Max="1" Min="0" Default="1" Inc="1" Tooltip="" Row="3" Col="0" Page="2" Type="int" ValueType="Popup" ChannelName="initial_value_mode" DisplayName="initial_value_mode" Name="initial_value_mode">
+			<PopupEntry Title="texture" Value="0"></PopupEntry>
+			<PopupEntry Title="polynomial" Value="1"></PopupEntry>
+		</Uniform>
+<!-- Page 2, Column 1: to be removed -->
+		<Uniform Max="1000000" Min="-1000000" Default="768" Inc="1" Tooltip="" Row="0" Col="1" Page="2" Type="int" ChannelName="w_in_px" DisplayName="w_in_px" Name="w_in_px"></Uniform>
+		<Uniform Max="1000000" Min="-1000000" Default="576" Inc="1" Tooltip="" Row="1" Col="1" Page="2" Type="int" ChannelName="h_in_px" DisplayName="h_in_px" Name="h_in_px"></Uniform>
+
+<!-- Page 3: Model parameters -->
+		<Uniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0" Inc="0.01" Tooltip="" Row="0" Col="0" Page="3" Type="float" ChannelName="c2" DisplayName="Distortion, Degree 2" Name="c2">
+		</Uniform>
+		<Uniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0" Inc="0.01" Tooltip="" Row="1" Col="0" Page="3" Type="float" ChannelName="c4" DisplayName="Quartic Distortion, Degree 4" Name="c4">
+		</Uniform>
+		<Uniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0" Inc="0.01" Tooltip="" Row="2" Col="0" Page="3" Type="float" ChannelName="c6" DisplayName="Degree 6" Name="c6">
+		</Uniform>
+		<Uniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0" Inc="0.01" Tooltip="" Row="3" Col="0" Page="3" Type="float" ChannelName="c8" DisplayName="Degree 8" Name="c8">
+		</Uniform>
+<!-- Page 4: Extenders -->
+<!-- Page 5: Chebyshev -->
+		<Uniform Inc="0.01" Tooltip="" Action3DWidget="False" IconType="None" Row="0" Col="0" Page="5" Type="vec2" ChannelName="chebyshev[0]" DisplayName="chebyshev[0]" Name="chebyshev[0]" UIConditionSource="esoterics" UIConditionValue="1" UIConditionInvert="False" UIConditionType="Hide">
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+		</Uniform>
+		<Uniform Inc="0.01" Tooltip="" Action3DWidget="False" IconType="None" Row="2" Col="0" Page="5" Type="vec2" ChannelName="chebyshev[1]" DisplayName="chebyshev[1]" Name="chebyshev[1]" UIConditionSource="esoterics" UIConditionValue="1" UIConditionInvert="False" UIConditionType="Hide">
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="1.0"></SubUniform>
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+		</Uniform>
+		<Uniform Inc="0.01" Tooltip="" Action3DWidget="False" IconType="None" Row="0" Col="1" Page="5" Type="vec2" ChannelName="chebyshev[2]" DisplayName="chebyshev[2]" Name="chebyshev[2]" UIConditionSource="esoterics" UIConditionValue="1" UIConditionInvert="False" UIConditionType="Hide">
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="1.0"></SubUniform>
+		</Uniform>
+		<Uniform Inc="0.01" Tooltip="" Action3DWidget="False" IconType="None" Row="2" Col="1" Page="5" Type="vec2" ChannelName="chebyshev[3]" DisplayName="chebyshev[3]" Name="chebyshev[3]" UIConditionSource="esoterics" UIConditionValue="1" UIConditionInvert="False" UIConditionType="Hide">
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+		</Uniform>
+		<Uniform Inc="0.01" Tooltip="" Action3DWidget="False" IconType="None" Row="0" Col="2" Page="5" Type="vec2" ChannelName="chebyshev[4]" DisplayName="chebyshev[4]" Name="chebyshev[4]" UIConditionSource="esoterics" UIConditionValue="1" UIConditionInvert="False" UIConditionType="Hide">
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+		</Uniform>
+		<Uniform Inc="0.01" Tooltip="" Action3DWidget="False" IconType="None" Row="2" Col="2" Page="5" Type="vec2" ChannelName="chebyshev[5]" DisplayName="chebyshev[5]" Name="chebyshev[5]" UIConditionSource="esoterics" UIConditionValue="1" UIConditionInvert="False" UIConditionType="Hide">
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+		</Uniform>
+		<Uniform Inc="0.01" Tooltip="" Action3DWidget="False" IconType="None" Row="0" Col="3" Page="5" Type="vec2" ChannelName="chebyshev[6]" DisplayName="chebyshev[6]" Name="chebyshev[6]" UIConditionSource="esoterics" UIConditionValue="1" UIConditionInvert="False" UIConditionType="Hide">
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+		</Uniform>
+		<Uniform Inc="0.01" Tooltip="" Action3DWidget="False" IconType="None" Row="2" Col="3" Page="5" Type="vec2" ChannelName="chebyshev[7]" DisplayName="chebyshev[7]" Name="chebyshev[7]" UIConditionSource="esoterics" UIConditionValue="1" UIConditionInvert="False" UIConditionType="Hide">
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+		</Uniform>
+		<Uniform Inc="0.01" Tooltip="" Action3DWidget="False" IconType="None" Row="0" Col="0" Page="6" Type="vec2" ChannelName="chebyshev[8]" DisplayName="chebyshev[8]" Name="chebyshev[8]" UIConditionSource="esoterics" UIConditionValue="1" UIConditionInvert="False" UIConditionType="Hide">
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+		</Uniform>
+		<Uniform Inc="0.01" Tooltip="" Action3DWidget="False" IconType="None" Row="2" Col="0" Page="6" Type="vec2" ChannelName="chebyshev[9]" DisplayName="chebyshev[9]" Name="chebyshev[9]" UIConditionSource="esoterics" UIConditionValue="1" UIConditionInvert="False" UIConditionType="Hide">
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+		</Uniform>
+		<Uniform Inc="0.01" Tooltip="" Action3DWidget="False" IconType="None" Row="0" Col="1" Page="6" Type="vec2" ChannelName="chebyshev[10]" DisplayName="chebyshev[10]" Name="chebyshev[10]" UIConditionSource="esoterics" UIConditionValue="1" UIConditionInvert="False" UIConditionType="Hide">
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+		</Uniform>
+		<Uniform Inc="0.01" Tooltip="" Action3DWidget="False" IconType="None" Row="2" Col="1" Page="6" Type="vec2" ChannelName="chebyshev[11]" DisplayName="chebyshev[11]" Name="chebyshev[11]" UIConditionSource="esoterics" UIConditionValue="1" UIConditionInvert="False" UIConditionType="Hide">
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+		</Uniform>
+		<Uniform Inc="0.01" Tooltip="" Action3DWidget="False" IconType="None" Row="0" Col="2" Page="6" Type="vec2" ChannelName="chebyshev[12]" DisplayName="chebyshev[12]" Name="chebyshev[12]" UIConditionSource="esoterics" UIConditionValue="1" UIConditionInvert="False" UIConditionType="Hide">
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+		</Uniform>
+		<Uniform Inc="0.01" Tooltip="" Action3DWidget="False" IconType="None" Row="2" Col="2" Page="6" Type="vec2" ChannelName="chebyshev[13]" DisplayName="chebyshev[13]" Name="chebyshev[13]" UIConditionSource="esoterics" UIConditionValue="1" UIConditionInvert="False" UIConditionType="Hide">
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+		</Uniform>
+		<Uniform Inc="0.01" Tooltip="" Action3DWidget="False" IconType="None" Row="0" Col="3" Page="6" Type="vec2" ChannelName="chebyshev[14]" DisplayName="chebyshev[14]" Name="chebyshev[14]" UIConditionSource="esoterics" UIConditionValue="1" UIConditionInvert="False" UIConditionType="Hide">
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+		</Uniform>
+		<Uniform Inc="0.01" Tooltip="" Action3DWidget="False" IconType="None" Row="2" Col="3" Page="6" Type="vec2" ChannelName="chebyshev[15]" DisplayName="chebyshev[15]" Name="chebyshev[15]" UIConditionSource="esoterics" UIConditionValue="1" UIConditionInvert="False" UIConditionType="Hide">
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+		</Uniform>
+		<Uniform Inc="0.01" Tooltip="" Action3DWidget="False" IconType="None" Row="0" Col="0" Page="7" Type="vec2" ChannelName="chebyshev[16]" DisplayName="chebyshev[16]" Name="chebyshev[16]" UIConditionSource="esoterics" UIConditionValue="1" UIConditionInvert="False" UIConditionType="Hide">
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+		</Uniform>
+		<Uniform Inc="0.01" Tooltip="" Action3DWidget="False" IconType="None" Row="2" Col="0" Page="7" Type="vec2" ChannelName="chebyshev[17]" DisplayName="chebyshev[17]" Name="chebyshev[17]" UIConditionSource="esoterics" UIConditionValue="1" UIConditionInvert="False" UIConditionType="Hide">
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+		</Uniform>
+		<Uniform Inc="0.01" Tooltip="" Action3DWidget="False" IconType="None" Row="0" Col="1" Page="7" Type="vec2" ChannelName="chebyshev[18]" DisplayName="chebyshev[18]" Name="chebyshev[18]" UIConditionSource="esoterics" UIConditionValue="1" UIConditionInvert="False" UIConditionType="Hide">
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+		</Uniform>
+		<Uniform Inc="0.01" Tooltip="" Action3DWidget="False" IconType="None" Row="2" Col="1" Page="7" Type="vec2" ChannelName="chebyshev[19]" DisplayName="chebyshev[19]" Name="chebyshev[19]" UIConditionSource="esoterics" UIConditionValue="1" UIConditionInvert="False" UIConditionType="Hide">
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+		</Uniform>
+		<Uniform Inc="0.01" Tooltip="" Action3DWidget="False" IconType="None" Row="0" Col="2" Page="7" Type="vec2" ChannelName="chebyshev[20]" DisplayName="chebyshev[20]" Name="chebyshev[20]" UIConditionSource="esoterics" UIConditionValue="1" UIConditionInvert="False" UIConditionType="Hide">
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+		</Uniform>
+		<Uniform Inc="0.01" Tooltip="" Action3DWidget="False" IconType="None" Row="2" Col="2" Page="7" Type="vec2" ChannelName="chebyshev[21]" DisplayName="chebyshev[21]" Name="chebyshev[21]" UIConditionSource="esoterics" UIConditionValue="1" UIConditionInvert="False" UIConditionType="Hide">
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+		</Uniform>
+		<Uniform Inc="0.01" Tooltip="" Action3DWidget="False" IconType="None" Row="0" Col="3" Page="7" Type="vec2" ChannelName="chebyshev[22]" DisplayName="chebyshev[22]" Name="chebyshev[22]" UIConditionSource="esoterics" UIConditionValue="1" UIConditionInvert="False" UIConditionType="Hide">
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+		</Uniform>
+		<Uniform Inc="0.01" Tooltip="" Action3DWidget="False" IconType="None" Row="2" Col="3" Page="7" Type="vec2" ChannelName="chebyshev[23]" DisplayName="chebyshev[23]" Name="chebyshev[23]" UIConditionSource="esoterics" UIConditionValue="1" UIConditionInvert="False" UIConditionType="Hide">
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+		</Uniform>
+		<Uniform Inc="0.01" Tooltip="" Action3DWidget="False" IconType="None" Row="0" Col="0" Page="8" Type="vec2" ChannelName="chebyshev[24]" DisplayName="chebyshev[24]" Name="chebyshev[24]" UIConditionSource="esoterics" UIConditionValue="1" UIConditionInvert="False" UIConditionType="Hide">
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+		</Uniform>
+		<Uniform Inc="0.01" Tooltip="" Action3DWidget="False" IconType="None" Row="2" Col="0" Page="8" Type="vec2" ChannelName="chebyshev[25]" DisplayName="chebyshev[25]" Name="chebyshev[25]" UIConditionSource="esoterics" UIConditionValue="1" UIConditionInvert="False" UIConditionType="Hide">
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+		</Uniform>
+		<Uniform Inc="0.01" Tooltip="" Action3DWidget="False" IconType="None" Row="0" Col="1" Page="8" Type="vec2" ChannelName="chebyshev[26]" DisplayName="chebyshev[26]" Name="chebyshev[26]" UIConditionSource="esoterics" UIConditionValue="1" UIConditionInvert="False" UIConditionType="Hide">
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+		</Uniform>
+		<Uniform Inc="0.01" Tooltip="" Action3DWidget="False" IconType="None" Row="2" Col="1" Page="8" Type="vec2" ChannelName="chebyshev[27]" DisplayName="chebyshev[27]" Name="chebyshev[27]" UIConditionSource="esoterics" UIConditionValue="1" UIConditionInvert="False" UIConditionType="Hide">
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+			<SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0"></SubUniform>
+		</Uniform>
+<!-- Pseudo-variable for hiding debug-stuff -->
+		<Uniform Max="1" Min="0" Default="0" Inc="1" Tooltip="" Row="3" Col="3" Page="8" Type="int" ValueType="Popup" ChannelName="esoterics" DisplayName="Esoteric Ctrls" Name="esoterics">
+			<PopupEntry Title="hide"	Value="0"></PopupEntry>
+			<PopupEntry Title="show"	Value="1"></PopupEntry>
+		</Uniform>
+	</Shader>
+	<Page Name="Pg0 - Camera" Page="0">
+		<Col Name="Column 0" Col="0" Page="0">
+		</Col>
+		<Col Name="Column 1" Col="1" Page="0">
+		</Col>
+		<Col Name="Column 2" Col="2" Page="0">
+		</Col>
+		<Col Name="Column 3" Col="3" Page="0">
+		</Col>
+	</Page>
+	<Page Name="Pg1 - FOV" Page="1">
+		<Col Name="Column 0" Col="0" Page="1">
+		</Col>
+		<Col Name="Column 1" Col="1" Page="1">
+		</Col>
+		<Col Name="Column 2" Col="2" Page="1">
+		</Col>
+		<Col Name="Column 3" Col="3" Page="1">
+		</Col>
+	</Page>
+	<Page Name="Pg2 - Modes" Page="2">
+		<Col Name="Column 0" Col="0" Page="2">
+		</Col>
+		<Col Name="Column 1" Col="1" Page="2">
+		</Col>
+		<Col Name="Column 2" Col="2" Page="2">
+		</Col>
+		<Col Name="Column 3" Col="3" Page="2">
+		</Col>
+	</Page>
+	<Page Name="Pg3 - Model param" Page="3">
+		<Col Name="Col0 - Degree 2" Col="0" Page="3">
+		</Col>
+		<Col Name="Col1 - Degree 4" Col="1" Page="3">
+		</Col>
+		<Col Name="Column 2" Col="2" Page="3">
+		</Col>
+		<Col Name="Column 3" Col="3" Page="3">
+		</Col>
+	</Page>
+	<Page Name="Pg4 - Model param" Page="4">
+		<Col Name="Col0 - Extenders" Col="0" Page="4">
+		</Col>
+		<Col Name="Column 1" Col="1" Page="4">
+		</Col>
+		<Col Name="Column 2" Col="2" Page="4">
+		</Col>
+		<Col Name="Column 3" Col="3" Page="4">
+		</Col>
+	</Page>
+	<Page Name="Pg5 - Chebyshev 0-7" Page="5">
+		<Col Name="Column 0" Col="0" Page="5">
+		</Col>
+		<Col Name="Column 1" Col="1" Page="5">
+		</Col>
+		<Col Name="Column 2" Col="2" Page="5">
+		</Col>
+		<Col Name="Column 3" Col="3" Page="5">
+		</Col>
+	</Page>
+	<Page Name="Pg6 - Chebyshev 8-15" Page="6">
+		<Col Name="Column 0" Col="0" Page="6">
+		</Col>
+		<Col Name="Column 1" Col="1" Page="6">
+		</Col>
+		<Col Name="Column 2" Col="2" Page="6">
+		</Col>
+		<Col Name="Column 3" Col="3" Page="6">
+		</Col>
+	</Page>
+	<Page Name="Pg7 - Chebyshev 16-23" Page="7">
+		<Col Name="Column 0" Col="0" Page="7">
+		</Col>
+		<Col Name="Column 1" Col="1" Page="7">
+		</Col>
+		<Col Name="Column 2" Col="2" Page="7">
+		</Col>
+		<Col Name="Column 3" Col="3" Page="7">
+		</Col>
+	</Page>
+	<Page Name="Pg8 - Chebyshev 24-27" Page="8">
+		<Col Name="Column 0" Col="0" Page="8">
+		</Col>
+		<Col Name="Column 1" Col="1" Page="8">
+		</Col>
+		<Col Name="Column 2" Col="2" Page="8">
+		</Col>
+		<Col Name="Column 3" Col="3" Page="8">
+		</Col>
+	</Page>
+</ShaderNodePreset>

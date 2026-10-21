@@ -1,0 +1,28 @@
+/*
+Weitere Standardisierungsversuche. Das folgende hab ich beim
+cdml-Projekt sel.cdml ausprobiert. Es ist wichtig, den Rand schmal zu halten.
+Das soll schliesslich nicht im Museum haengen sondern von Nutzen sein.
+Wird inkludiert mit <link rel="stylesheet" href="tde4_doc.print.css" type="text/css" media="print"/>
+*/
+
+@page
+	{
+	size: auto;
+	margin-left: 1cm;
+	margin-right: 1cm;
+	}
+body
+	{
+	font-family:"Times New Roman",times,serif;
+	font-size:12pt;
+	}
+tde4_fkey
+	{
+	font-family:sans-serif;
+	}
+img.browser
+	{
+/* In der print-Version muessen wir die Breite festlegen. */
+	width:90%;
+	border:solid 1px #ddd;
+	}

@@ -1,0 +1,17 @@
+This directory is meant for compiling the lens distortion plugins
+for Nuke under Windows, for Nuke Version >= 11.0.
+You will find the plugins compiled by us under $LDPK/compiled/nuke/windows/...
+yet, in case you want to compile them yourself, please have a look at
+directory LD_3DE4_NukeMultiRelease. It contains a solution file for
+Visual Studio 2015, the one recommended by The Foundry for compiling
+plugins as of Nuke11.0.
+
+Nuke versions are realized as "configurations" in Visual Studio,
+so if you wish to add a new version of Nuke, please open Visual Studio's
+Configuration Editor for the Solution and add a new configuration.
+
+Once you have added a new configuration, update the "additional include paths"
+and library paths for the current version of Nuke.
+
+Remember to set the configuration in Visual Studios tool bar
+to "ReleaseNukeX.Y" and "x64" before building the solution.

@@ -1,0 +1,420 @@
+@import url(hl_styles.css);
+@import url(cpp_styles.css);
+@import url(obj_styles.css);
+@import url(xml_styles.css);
+@import url(php_styles.css);
+@import url(tty_styles.css);
+@import url(js_styles.css);
+@import url(sql_styles.css);
+@import url(latex_styles.css);
+
+a:link
+	{
+	text-decoration:none;
+	color:#336;
+	}
+a:visited
+	{
+	text-decoration:none;
+	color:#336;
+	}
+
+body
+	{
+	font-family:helvetica;
+/* Vorsicht! Bei manchen Groessen sieht alles uebel aus! */
+	font-size:12pt;
+	margin-left:1cm;
+	margin-right:1cm;
+	line-height:150%;
+	}
+
+pre
+	{
+	line-height:140%;
+	}
+
+cdml_linenumber
+	{
+	color:#888;
+	}
+
+p.p_beispiel
+	{
+	background-color:#eee;
+	color:inherit;
+	}
+
+table.table_index
+	{
+	width: 100%;
+	}
+td.td_keyword
+	{
+	text-align:left;
+	padding-left:0.5cm;
+	}
+td.td_signature
+	{
+	text-align:right;
+	padding-right:0.5cm;
+	}
+
+span.toc_title
+	{
+	color:#336;
+	font-size: 21pt;
+	font-weight:bold;
+	font-style:italic;
+	display:block;
+	text-align:left;
+	margin-top:1cm;
+	}
+
+span.index_title
+	{
+	color:#336;
+	font-size: 21pt;
+	font-weight:bold;
+	font-style:italic;
+	display:block;
+	text-align:left;
+	margin-top:1cm;
+	}
+
+/* Das hier dient dazu, ein einheitliches Aussehen
+der Numerierung vor den Abschnittsüberschriften zu erreichen */
+cdml_numeratur
+	{
+	color:black;
+	font-style:normal;
+	}
+
+cdml_abstract
+	{
+	display:block;
+	width:50%;
+	margin-left:auto;
+	margin-right:auto;
+	font-size:smaller;
+	margin-top:2em;
+	}
+cdml_abstract > cdml_title
+	{
+	font-weight:bold;
+	}
+
+cdml_article > cdml_title
+	{
+	color:#336;
+	font-size: 20pt;
+	font-weight:bold;
+	font-family:sans-serif;
+	display:block;
+	text-align:center;
+	margin-bottom:0.75em;
+	margin-top:2em;
+	}
+
+cdml_article > cdml_subtitle
+	{
+	color:#336;
+	font-size: 15pt;
+	display:block;
+	text-align:center;
+	margin-top:0.35em;
+	}
+
+/* hir_number wird immer innerhalb von hir_#_text angewandt
+   und modifiziert lediglich einige Attribute.
+*/
+span.hir_number
+	{
+	color:#336;
+	font-style:normal;
+	margin-right:16pt;
+	}
+
+cdml_toc > cdml_title,
+cdml_chapter > cdml_title,
+cdml_preface > cdml_title,
+cdml_index > cdml_title,
+cdml_glossary > cdml_title,
+cdml_todolist > cdml_title,
+cdml_annotations > cdml_title
+	{
+	color:#336;
+	font-family:helvetica;
+	font-size: 16pt;
+	font-weight:bold;
+	font-style:italic;
+	display:block;
+	text-align:left;
+	margin-top:1cm;
+	margin-bottom:0.3cm;
+	}
+
+span.index_initial
+	{
+	color:#336;
+	font-size: 15pt;
+	font-family:helvetica;
+	font-weight:bold;
+	font-style:normal;
+	display:block;
+	text-align:left;
+	margin-top:1cm;
+	margin-bottom:0.3cm;
+	}
+
+cdml_section > cdml_title,
+cdml_subsection > cdml_title,
+cdml_subsubsection > cdml_title,
+cdml_paragraph > cdml_title,
+cdml_subparagraph > cdml_title
+	{
+	color:#336;
+	font-family:helvetica;
+	font-weight:bold;
+	text-align:left;
+	}
+cdml_section > cdml_title
+	{
+	font-size: 15pt;
+	font-style:normal;
+	display:block;
+	margin-top:1cm;
+	margin-bottom:0.3cm;
+	}
+cdml_subsection > cdml_title
+	{
+	font-size: 14pt;
+	font-style:italic;
+	display:block;
+	margin-top:0.7cm;
+	margin-bottom:0.2cm;
+	}
+cdml_subsubsection > cdml_title
+	{
+	font-size: 13pt;
+	font-style:normal;
+	display:block;
+	margin-top:0.5cm;
+	}
+cdml_paragraph > cdml_title
+	{
+	font-style:italic;
+	display:block;
+	margin-top:0.3cm;
+	padding-right:1cm;
+	}
+cdml_subparagraph > cdml_title
+	{
+	font-weight:bold;
+	display:inline;
+	margin-top:0.5cm;
+	padding-right:1cm;
+	}
+cdml_subparagraph
+	{
+	display:block;
+	}
+
+cdml_glositem
+	{
+	display:block;
+	}
+
+table.table_glossary
+	{
+	width:100%;
+	}
+td.td_gloskeyword
+	{
+	font-weight:bold;
+	vertical-align:top;
+	padding-right:20px;
+	}
+td.td_glosdescription
+	{
+	vertical-align:top;
+	}
+cdml_glositem > cdml_keyword, cdml_glositem > cdml_description
+	{
+	display:none;
+	}
+
+span.toc_index_text
+	{
+	margin-left:0pt;
+	font-weight:bold;
+	font-style:italic;
+	font-size:12pt;
+	}
+span.toc_1
+	{
+	color:#336;
+	margin-left:0cm;
+	font-weight:bold;
+	font-style:normal;
+	font-family:helvetica;
+	font-size:12pt;
+	}
+span.toc_1_text
+	{
+	font-family:helvetica;
+	margin-left:10pt;
+	font-weight:bold;
+	font-style:italic;
+	font-size:12pt;
+	}
+span.toc_2
+	{
+	color:#336;
+	margin-left:0.5cm;
+	font-weight:bold;
+	font-style:normal;
+	font-family:helvetica;
+	font-size:12pt;
+	}
+span.toc_2_text
+	{
+	font-family:helvetica;
+	margin-left:10pt;
+	font-weight:bold;
+	font-size:12pt;
+	}
+span.toc_3
+	{
+	color:#336;
+	margin-left:1.0cm;
+	font-style:normal;
+	font-family:helvetica;
+	font-size:12pt;
+	}
+span.toc_3_text
+	{
+	font-family:helvetica;
+	margin-left:10pt;
+	font-style:italic;
+	font-size:12pt;
+	}
+span.toc_4
+	{
+	color:#336;
+	margin-left:1.5cm;
+	font-style:normal;
+	font-family:helvetica;
+	font-size:12pt;
+	}
+span.toc_4_text
+	{
+	font-family:helvetica;
+	margin-left:10pt;
+	font-size:12pt;
+	}
+span.toc_5
+	{
+	color:#336;
+	margin-left:2.0cm;
+	font-style:normal;
+	font-family:helvetica;
+	font-size:12pt;
+	}
+span.toc_5_text
+	{
+	font-family:helvetica;
+	margin-left:10pt;
+	font-style:italic;
+	font-size:12pt;
+	}
+span.toc_6
+	{
+	color:#336;
+	margin-left:2.5cm;
+	font-style:normal;
+	font-family:helvetica;
+	font-size:12pt;
+	}
+span.toc_6_text
+	{
+	font-family:helvetica;
+	margin-left:10pt;
+	font-size:12pt;
+	}
+
+cdml_caption
+	{
+	display:block;
+	text-align:center;
+	font-size:small;
+	font-style:italic;
+	margin-top:0.8em;
+	margin-bottom:1em;
+	}
+cdml_caption[type=table]
+	{
+	display:block;
+	text-align:center;
+	font-size:small;
+	font-style:italic;
+/* Wir ueberlassen das der Tabelle. */
+	margin-bottom:0.0em;
+	}
+span.span_caption_number
+	{
+	font-style:normal;
+	font-weight:bold;
+	}
+cdml_memo
+	{
+	display:none;
+	}
+cdml_todo
+	{
+	display:block;
+	background-color:#efe;
+	color:#040;
+	border:1px #7c7 solid;
+	margin-bottom:.5em;
+	padding-left:15px;
+	padding-right:15px;
+	padding-bottom:5px;
+	padding-top:5px;
+	}
+cdml_warning
+	{
+	display:block;
+	background-color:#fec;
+	color:#432;
+	border:1px #db8 solid;
+	margin-bottom:.5em;
+	padding-left:15px;
+	padding-right:15px;
+	padding-bottom:5px;
+	padding-top:5px;
+	}
+/* Warning und Todo */
+img.icon
+	{
+	height:1.8em;
+	margin-bottom:-0.5em;
+	}
+img.screenshot
+	{
+/* centering */
+	margin-left:auto;
+	margin-right:auto;
+	display:block;
+	margin-top:1em;
+	width:90%;
+	}
+img.diagram
+	{
+/* centering */
+	margin-left:auto;
+	margin-right:auto;
+	display:block;
+	margin-top:1em;
+	width:80%;
+	}

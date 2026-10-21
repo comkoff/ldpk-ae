@@ -1,0 +1,144 @@
+#! /server/software/linux64/nuke/Nuke10.0v1/libnuke-10.0.1.so -nx
+#write_info Write1 file:"../../../ldpk/projects/flame/img/test_2_flame_dynld.%02d.png" format:"2560 1280 1" chans:":rgba.red:rgba.green:rgba.blue:" framerange:"1 100" fps:"0" colorspace:"default (sRGB)" datatype:"8 bit" transfer:"unknown" views:"main" colorManagement:"Nuke"
+version 10.0 v1
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="-9" y="-8" w="1938" h="1190" screen="0">
+        <splitter orientation="1">
+            <split size="40"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="1255" stretch="1"/>
+            <splitter orientation="2">
+                <split size="779"/>
+                <dock id="" activePageId="Viewer.1">
+                    <page id="Viewer.1"/>
+                </dock>
+                <split size="341"/>
+                <dock id="" activePageId="DAG.1" focus="true">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                </dock>
+            </splitter>
+            <split size="615"/>
+            <dock id="" activePageId="Properties.1">
+                <page id="Properties.1"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name /server/devel/sdv/privat/uwe/source/ldpk/projects/flame/test_2_flame_dynld.nk
+ frame 9
+ format "2048 1556 0 0 2048 1556 1 2K_Super_35(full-ap)"
+ proxy_type scale
+ proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+}
+Read {
+ inputs 0
+ file ../../../ldpk/img/grid_with_marks.png
+ format "2048 1024 0 0 2048 1024 1 "
+ origset true
+ name Read1
+ xpos -326
+ ypos -219
+}
+Reformat {
+ format "2560 1280 0 0 2560 1280 1 2048x1024+512x256 overscan"
+ resize none
+ black_outside true
+ name Reformat1
+ xpos -133
+ ypos -196
+}
+LD_3DE4_Radial_Standard_Degree_4 {
+ direction distort
+ bbox_mode "intersect bbox plus margin with \[un]distorted format"
+ "bounding box margin \[px]" {512 256}
+ field_of_view_xa_unit 0.1
+ field_of_view_ya_unit 0.1
+ field_of_view_xb_unit 0.9
+ field_of_view_yb_unit 0.9
+ tde4_focal_length_cm {{curve x1 4 x11 6}}
+ tde4_filmback_width_cm 2.56
+ tde4_filmback_height_cm 1.28
+ Distortion_Degree_2 {{curve x1 0.05 x11 -0.05}}
+ U_Degree_2 {{curve x1 0.05 x11 -0.05}}
+ V_Degree_2 {{curve x1 0.07 x11 -0.07}}
+ Quartic_Distortion_Degree_4 {{curve x1 -0.05 x11 0.05}}
+ U_Degree_4 {{curve x1 -0.03 x11 0.03}}
+ V_Degree_4 {{curve x1 -0.065 x11 0.065}}
+ Phi_Cylindric_Direction {{curve x1 45 x11 -45}}
+ B_Cylindric_Bending {{curve x1 0.02 x11 -0.02}}
+ name LD_3DE4_Radial_Standard_Degree_4_1
+ xpos 2
+ ypos -148
+}
+set N8fd1ea0 [stack 0]
+Write {
+ file ../../../ldpk/projects/flame/img/test_2_flame_dynld.##.png
+ file_type png
+ checkHashOnRead false
+ version 5
+ name Write1
+ xpos 2
+ ypos -34
+}
+push $N8fd1ea0
+LD_3DE4_Radial_Standard_Degree_4 {
+ bbox_mode "intersect bbox plus margin with \[un]distorted format"
+ "bounding box margin \[px]" {512 256}
+ field_of_view_xa_unit 0.1
+ field_of_view_ya_unit 0.1
+ field_of_view_xb_unit 0.9
+ field_of_view_yb_unit 0.9
+ tde4_focal_length_cm {{curve x1 4 x11 6}}
+ tde4_filmback_width_cm 2.56
+ tde4_filmback_height_cm 1.28
+ Distortion_Degree_2 {{curve x1 0.05 x11 -0.05}}
+ U_Degree_2 {{curve x1 0.05 x11 -0.05}}
+ V_Degree_2 {{curve x1 0.07 x11 -0.07}}
+ Quartic_Distortion_Degree_4 {{curve x1 -0.05 x11 0.05}}
+ U_Degree_4 {{curve x1 -0.03 x11 0.03}}
+ V_Degree_4 {{curve x1 -0.065 x11 0.065}}
+ Phi_Cylindric_Direction {{curve x1 45 x11 -45}}
+ B_Cylindric_Bending {{curve x1 0.02 x11 -0.02}}
+ name LD_3DE4_Radial_Standard_Degree_4_2
+ xpos 253
+ ypos -169
+}
+push $N8fd1ea0
+LD_3DE4_Radial_Standard_Degree_4 {
+ field_of_view_xa_unit 0.1
+ field_of_view_ya_unit 0.1
+ field_of_view_xb_unit 0.9
+ field_of_view_yb_unit 0.9
+ tde4_focal_length_cm {{curve x1 4 4.2 4.4 4.6 4.8 5 5.2 5.4 5.6 5.8 6}}
+ tde4_custom_focus_distance_cm 91.44
+ tde4_filmback_width_cm 2.56
+ tde4_filmback_height_cm 1.28
+ Distortion_Degree_2 {{curve x1 0.05 0.04 0.03 0.02 0.01 0 -0.01 -0.02 -0.03 -0.04 -0.05}}
+ U_Degree_2 {{curve x1 0.05 0.04 0.03 0.02 0.01 0 -0.01 -0.02 -0.03 -0.04 -0.05}}
+ V_Degree_2 {{curve x1 0.07 0.056 0.042 0.028 0.014 0 -0.014 -0.028 -0.042 -0.056 -0.07}}
+ Quartic_Distortion_Degree_4 {{curve x1 -0.05 -0.04 -0.03 -0.02 -0.01 0 0.01 0.02 0.03 0.04 0.05}}
+ U_Degree_4 {{curve x1 -0.03 -0.024 -0.018 -0.012 -0.006 0 0.006 0.012 0.018 0.024 0.03}}
+ V_Degree_4 {{curve x1 -0.065 -0.052 -0.039 -0.026 -0.013 0 0.013 0.026 0.039 0.052 0.065}}
+ Phi_Cylindric_Direction {{curve x1 45 36 27 18 9 0 -9 -18 -27 -36 -45}}
+ B_Cylindric_Bending {{curve x1 0.02 0.016 0.012 0.008 0.004 0 -0.004 -0.008 -0.012 -0.016 -0.02}}
+ name LD_3DE4_test_2_flame_dynld
+ selected true
+ xpos 262
+ ypos -91
+}
+Viewer {
+ frame 9
+ frame_range 1-11
+ frame_range_lock true
+ name Viewer1
+ xpos 262
+ ypos 56
+}

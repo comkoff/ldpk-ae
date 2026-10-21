@@ -1,0 +1,311 @@
+#! /server/software/linux64/nuke/Nuke11.1v1/libnuke-11.1.1.so -nx
+version 11.1 v1
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="0" y="0" w="1918" h="1147" screen="0">
+        <splitter orientation="1">
+            <split size="40"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="1255" stretch="1"/>
+            <splitter orientation="2">
+                <split size="645"/>
+                <dock id="" activePageId="Viewer.1">
+                    <page id="Viewer.1"/>
+                </dock>
+                <split size="454"/>
+                <dock id="" activePageId="DAG.1" focus="true">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                </dock>
+            </splitter>
+            <split size="615"/>
+            <dock id="" activePageId="Properties.1">
+                <page id="Properties.1"/>
+                <page id="uk.co.thefoundry.backgroundrenderview.1"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name /server/devel/sdv/privat/uwe/source/ldpk/projects/warp4/test_nuke_vs_warp4_stmap.nk
+ last_frame 126
+ lock_range true
+ format "2048 1556 0 0 2048 1556 1 2K_Super_35(full-ap)"
+ proxy_type scale
+ proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+ colorManagement Nuke
+ workingSpaceLUT linear
+ monitorLut sRGB
+ int8Lut sRGB
+ int16Lut sRGB
+ logLut Cineon
+ floatLut linear
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode1
+ tile_color 0x71c67100
+ label "Overscan 1000x800\nProof:\tfootage\n\t->warp4/stmap/undistort\n\t->warp4/stmap/redistort\n\t= footage"
+ note_font_size 18
+ xpos -659
+ ypos -276
+ bdwidth 343
+ bdheight 406
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode2
+ tile_color 0x388e8e00
+ label "No Overscan"
+ note_font_size 18
+ xpos 328
+ ypos -44
+ bdwidth 195
+ bdheight 274
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode3
+ tile_color 0x388e8e00
+ label "Proof:\tfootage\n\t->stmap/undistort\n\t->stmap/redistort\n\t= footage"
+ note_font_size 18
+ xpos 192
+ ypos -392
+ bdwidth 328
+ bdheight 316
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode4
+ tile_color 0x8e388e00
+ label "Distorted\nfootage\n768x576"
+ note_font_size 18
+ xpos -772
+ ypos -278
+ bdheight 204
+}
+Read {
+ inputs 0
+ file /tmp/stmaps/nooscan_#####.exr
+ format "720 576 0 0 720 576 1 "
+ last 126
+ origlast 126
+ origset true
+ name Read3
+ xpos 386
+ ypos 7
+}
+push 0
+STMap {
+ inputs 2
+ uv rgb
+ name STMap3
+ xpos 386
+ ypos 113
+}
+CheckerBoard2 {
+ inputs 0
+ format "720 576 0 0 720 576 1 "
+ boxsize 24
+ name CheckerBoard2
+ xpos -762
+ ypos -198
+}
+LD_3DE_Classic_LD_Model {
+ direction distort
+ field_of_view_xa_unit 0.002578
+ field_of_view_ya_unit 0.0020382
+ field_of_view_xb_unit 0.9792296
+ field_of_view_yb_unit 0.9967775
+ tde4_focal_length_cm 0.960742
+ tde4_custom_focus_distance_cm 91.44
+ tde4_filmback_width_cm 0.9847507
+ tde4_filmback_height_cm 0.7385648
+ tde4_pixel_aspect 1.0864188
+ Distortion 0.0522367
+ name "LD_3DE4_&lt;unnamed&gt;2"
+ xpos -762
+ ypos -126
+}
+Read {
+ inputs 0
+ file /server/video/entwicklung/seat/Seat.####.sgi
+ format "720 576 0 0 720 576 1.09 PAL"
+ first 0
+ last 125
+ origfirst 0
+ origlast 125
+ origset true
+ name Read2
+ xpos -181
+ ypos -329
+}
+set N43ce090 [stack 0]
+Dot {
+ name Dot2
+ xpos 329
+ ypos -297
+}
+set N39e9b50 [stack 0]
+push $N39e9b50
+LD_3DE_Classic_LD_Model {
+ direction distort
+ mode STMap
+ field_of_view_xa_unit 0.002578
+ field_of_view_ya_unit 0.0020382
+ field_of_view_xb_unit 0.9792296
+ field_of_view_yb_unit 0.9967775
+ tde4_focal_length_cm 0.960742
+ tde4_custom_focus_distance_cm 91.44
+ tde4_filmback_width_cm 0.9847507
+ tde4_filmback_height_cm 0.7385648
+ tde4_pixel_aspect 1.0864188
+ Distortion 0.0522367
+ name "LD_3DE4_&lt;unnamed&gt;1"
+ xpos 413
+ ypos -248
+}
+push $N39e9b50
+LD_3DE_Classic_LD_Model {
+ mode STMap
+ field_of_view_xa_unit 0.002578
+ field_of_view_ya_unit 0.0020382
+ field_of_view_xb_unit 0.9792296
+ field_of_view_yb_unit 0.9967775
+ tde4_focal_length_cm 0.960742
+ tde4_custom_focus_distance_cm 91.44
+ tde4_filmback_width_cm 0.9847507
+ tde4_filmback_height_cm 0.7385648
+ tde4_pixel_aspect 1.0864188
+ Distortion 0.0522367
+ name "LD_3DE4_&lt;unnamed&gt;"
+ xpos 201
+ ypos -270
+}
+push $N39e9b50
+STMap {
+ inputs 2
+ uv rgb
+ name STMap2
+ xpos 201
+ ypos -191
+}
+set N3ac2930 [stack 0]
+STMap {
+ inputs 2
+ uv rgb
+ name STMap5
+ xpos 413
+ ypos -191
+}
+Merge2 {
+ inputs 2
+ operation difference
+ name Difference1
+ xpos 295
+ ypos -131
+}
+Read {
+ inputs 0
+ file /tmp/stmaps/reapply_#####.exr
+ format "1000 800 0 0 1000 800 1 "
+ last 5
+ origlast 5
+ origset true
+ name Read4
+ xpos -941
+ ypos -301
+}
+Reformat {
+ format "720 576 0 0 720 576 1 "
+ resize none
+ pbb true
+ name Reformat5
+ xpos -941
+ ypos -208
+}
+Read {
+ inputs 0
+ file /tmp/stmaps/_#####.exr
+ format "1000 800 0 0 1000 800 1 "
+ last 126
+ origlast 126
+ origset true
+ name Read1
+ xpos -939
+ ypos -152
+}
+Read {
+ inputs 0
+ file /tmp/stmaps/_#####.exr
+ format "720 576 0 0 720 576 1 "
+ last 126
+ origlast 126
+ origset true
+ name Read6
+ selected true
+ xpos -635
+ ypos -164
+}
+push $N43ce090
+Dot {
+ name Dot1
+ xpos -500
+ ypos -132
+}
+set N4086ce0 [stack 0]
+STMap {
+ inputs 2
+ uv rgb
+ name STMap1
+ xpos -635
+ ypos 7
+}
+set N4400830 [stack 0]
+push $N3ac2930
+Merge2 {
+ inputs 2
+ operation difference
+ name Difference
+ xpos -158
+ ypos -88
+}
+push $N4086ce0
+Read {
+ inputs 0
+ file /tmp/stmaps/reapply_#####.exr
+ format "720 576 0 0 720 576 1 "
+ last 5
+ origlast 5
+ origset true
+ name Read5
+ xpos -419
+ ypos -154
+}
+push $N4400830
+STMap {
+ inputs 2
+ uv rgb
+ name STMap4
+ xpos -419
+ ypos 7
+}
+Merge2 {
+ inputs 2
+ operation difference
+ name Difference2
+ xpos -534
+ ypos 81
+}
+Viewer {
+ frame 1
+ frame_range 1-126
+ name Viewer1
+ xpos -158
+ ypos 132
+}

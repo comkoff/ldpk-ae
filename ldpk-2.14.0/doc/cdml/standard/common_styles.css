@@ -1,0 +1,59 @@
+/*
+We define common styles across languages. Ideally these coincide
+more or less with those used in markup2. This is possible because
+we are moving away from highlight and implement our own stuff.
+Although highlight is brilliant, we prefer the inhouse solution
+becaues it allows more control and has a well-known C++ API.
+
+Current state [2023-08-08]
+- glsl
+- cpp
+- minil
+*/
+
+:root
+	{
+	--sdv-comment-color:#777;
+	--sdv-comment-font-weight:normal;
+	--sdv-comment-font-style:italic;
+
+	--sdv-number-color:#708238;
+	--sdv-number-font-weight:normal;
+	--sdv-number-font-style:normal;
+
+	--sdv-preprocessor-color:#000055;
+	--sdv-preprocessor-font-weight:normal;
+	--sdv-preprocessor-font-style:normal;
+
+	--sdv-string-color:#708238;
+	--sdv-string-font-weight:normal;
+	--sdv-string-font-style:normal;
+
+	--sdv-keyword-color:#000000;
+	--sdv-keyword-font-weight:bold;
+	--sdv-keyword-font-style:normal;
+
+	--sdv-storage-color:#aa0000;
+	--sdv-storage-font-weight:normal;
+	--sdv-storage-font-style:normal;
+
+	--sdv-type-color:#770000;
+	--sdv-type-font-weight:normal;
+	--sdv-type-font-style:normal;
+
+	--sdv-func_call-color:#00d;
+	--sdv-func_call-font-weight:normal;
+	--sdv-func_call-font-style:normal;
+
+	--sdv-typedesc-color:#00f;
+	--sdv-typedesc-font-weight:bold;
+	--sdv-typedesc-font-style:normal;
+
+	--sdv-reserved-color:#aa5500;
+	--sdv-reserved-font-weight:normal;
+	--sdv-reserved-font-style:normal;
+
+	--sdv-placeholder-color:#005500;
+	--sdv-placeholder-font-weight:normal;
+	--sdv-placeholder-font-style:normal;
+	}

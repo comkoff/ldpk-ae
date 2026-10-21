@@ -1,0 +1,4 @@
+<map id="ldpk::mapping_function_orthographic&lt; VEC2, MAT2 &gt;" name="ldpk::mapping_function_orthographic&lt; VEC2, MAT2 &gt;">
+<area shape="rect" id="node1" title="The mapping function for orthographic fisheye lenses. Essentially theta &#45;&gt; f sin(theta)." alt="" coords="5,95,224,136"/>
+<area shape="rect" id="node2" href="$classldpk_1_1mapping__function__base.html" title="Base class for all fisheye mapping functions." alt="" coords="27,5,202,47"/>
+</map>

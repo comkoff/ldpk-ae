@@ -1,0 +1,210 @@
+uniform sampler2D tex0,matte;
+uniform int w_in_px;
+uniform int h_in_px;
+uniform int w_out_px;
+uniform int h_out_px;
+
+/***************************************************************
+* flow control parameters                                      *
+***************************************************************/
+// 0: image, 1: st-map, 2: jacobian, 3: jacobian diff-quot (Future 4: twist-vector), 5: twist-vector diff-quot, 6: red (testing
+// render_mode 2 is mainly for testing and verifying
+// the implementation of the jacobian.
+uniform int render_mode;
+// 0: distort, 1: undistort, 2: chebyshev, 3: identity
+uniform int direction;
+// 1: bilinear, 2: bicubic-catmull-rom, 3: bicubi-mitchell-netravali
+uniform int reconstruction_filter;
+// How initial values are provided.
+// 0: by texture, 1: by polynomial
+// Experimental!
+uniform int initial_value_mode;
+// input texture semantics, 0: rgba, 1: velocity
+// uniform int semantics;
+
+// initial values for direction "undistort". Small textures will
+// do generally, e.g. 64x64, since lens distortion varies "slowly".
+// for direction "distort" there is no need to specify tex_initial.
+// The texture is interpreted in field-of-view coordinates.
+// initial_value_mode "texture"
+uniform sampler2D tex_initial;
+
+// alternative method for providing initial values:
+// This is an array of coefficients for a bi-variate
+// Chebyshev polynomial. initial_value_mode "polynomial".
+
+// This is our original code. Unfortunately it does not work on
+// macOS, most likely due to an incomplete implementation of their
+// glsl-120-compiler. We have to write these as distinct variables.
+// uniform vec2 chebyshev[28];
+uniform vec2 chebyshev0;
+uniform vec2 chebyshev1;
+uniform vec2 chebyshev2;
+uniform vec2 chebyshev3;
+uniform vec2 chebyshev4;
+uniform vec2 chebyshev5;
+uniform vec2 chebyshev6;
+uniform vec2 chebyshev7;
+uniform vec2 chebyshev8;
+uniform vec2 chebyshev9;
+uniform vec2 chebyshev10;
+uniform vec2 chebyshev11;
+uniform vec2 chebyshev12;
+uniform vec2 chebyshev13;
+uniform vec2 chebyshev14;
+uniform vec2 chebyshev15;
+uniform vec2 chebyshev16;
+uniform vec2 chebyshev17;
+uniform vec2 chebyshev18;
+uniform vec2 chebyshev19;
+uniform vec2 chebyshev20;
+uniform vec2 chebyshev21;
+uniform vec2 chebyshev22;
+uniform vec2 chebyshev23;
+uniform vec2 chebyshev24;
+uniform vec2 chebyshev25;
+uniform vec2 chebyshev26;
+uniform vec2 chebyshev27;
+
+/***************************************************************
+* model-independent parameters                                 *
+***************************************************************/
+uniform float tde4_focal_length_cm;
+uniform float tde4_filmback_width_cm;
+uniform float tde4_filmback_height_cm;
+uniform float tde4_lens_center_offset_x_cm;
+uniform float tde4_lens_center_offset_y_cm;
+uniform float tde4_pixel_aspect;
+uniform float tde4_custom_focus_distance_cm;
+// Field of View in unit-coordinates for input and output texture.
+uniform vec2 a_fov_in_unit,b_fov_in_unit;
+uniform vec2 a_fov_out_unit,b_fov_out_unit;
+
+/***************************************************************
+* model-independent uniform expressions                        *
+***************************************************************/
+// field of view
+vec2 d_fov_in_unit = b_fov_in_unit - a_fov_in_unit;
+vec2 d_fov_in_unit_inv = 1.0 / d_fov_in_unit;
+vec2 d_fov_out_unit = b_fov_out_unit - a_fov_out_unit;
+vec2 d_fov_out_unit_inv = 1.0 / d_fov_out_unit;
+
+// filmback
+vec2 lco_cm = vec2(tde4_lens_center_offset_x_cm,tde4_lens_center_offset_y_cm);
+vec2 fb_cm = vec2(tde4_filmback_width_cm,tde4_filmback_height_cm);
+float r_cm = length(fb_cm) / 2.0;
+// filmback in diag-coordinates
+vec2 fb_diag = fb_cm / (2.0 * r_cm);
+// focal length in diag-coordinates (need for equisolid angle)
+float fl_diag = tde4_focal_length_cm / r_cm;
+
+// output buffer: Jacobian for mapping window coordinates to diag-coordinates.
+// Size of filmback in pixel (filmback corresponds to field-of-view):
+vec2 fb_out_px = d_fov_out_unit * vec2(float(w_out_px),float(h_out_px));
+
+// Jacobian of pixel-coordinates to diag-coordinates
+//vec2 d_px2diag = fb_out_px / fb_diag;
+//vec2 d_px2diag = vec2(w_out_px,h_out_px);
+// Jacobian for diag to fov
+// THIS NEEDS TO BE TESTED FOR FOV_IN != FOU_OUT!
+mat2 jac_diag2fov = mat2(2.0 * r_cm / fb_cm[0],0.0,0.0,2.0 * r_cm / fb_cm[1]);
+mat2 jac_fov2diag = mat2(fb_cm[0] / (2.0 * r_cm),0.0,0.0,fb_cm[1] / (2.0 * r_cm));
+
+/***************************************************************
+* uniform expressions predefined by flame                      *
+***************************************************************/
+uniform float adsk_result_w, adsk_result_h;
+
+/***************************************************************
+* model-independent constants                                  *
+***************************************************************/
+const float pi = 3.1415926535;
+
+/***************************************************************
+* model-independent functions                                  *
+***************************************************************/
+vec2 unit2fov_out(vec2 p_unit)
+	{ return (p_unit - a_fov_out_unit) * d_fov_out_unit_inv; }
+vec2 fov2unit_in(vec2 p_fov)
+	{ return p_fov * d_fov_in_unit + a_fov_in_unit; }
+vec2 fov2diag(vec2 p_fov)
+	{
+// map fov-coordinates to diag-coordinates
+	vec2 p_cm = (p_fov - 1.0/2.0) * fb_cm - lco_cm;
+	vec2 p_diag = p_cm / r_cm;
+	return p_diag;
+	}
+vec2 diag2fov(vec2 p_diag)
+	{
+// map diag-coordinates to fov-coordinates
+	vec2 p_cm = p_diag * r_cm;
+	vec2 p_fov = (p_cm + lco_cm) / fb_cm + 1.0/2.0;
+	return p_fov;
+	}
+// With stabilizer
+vec2 fov2diag_stb(vec2 p_fov,vec2 stb)
+	{
+// map fov-coordinates to diag-coordinates
+	vec2 p_cm = (p_fov - 1.0/2.0 - stb) * fb_cm - lco_cm;
+	vec2 p_diag = p_cm / r_cm;
+	return p_diag;
+	}
+// With stabilizer
+vec2 diag2fov_stb(vec2 p_diag,vec2 stb)
+	{
+// map diag-coordinates to fov-coordinates
+	vec2 p_cm = p_diag * r_cm;
+	vec2 p_fov = (p_cm + lco_cm) / fb_cm + stb + 1.0/2.0;
+	return p_fov;
+	}
+// With stabilizer including homography
+vec2 fov2diag_stb(vec2 p_fov,vec2 stb,mat3 H)
+	{
+	mat2 h;
+	h[0][0] = H[0][0];
+	h[0][1] = H[0][1];
+	h[1][0] = H[1][0];
+	h[1][1] = H[1][1];
+	vec2 v;
+	v[0] = H[0][2];
+	v[1] = H[1][2];
+	vec2 q;
+	q[0] = H[2][0];
+	q[1] = H[2][1];
+// map fov-coordinates to diag-coordinates
+	vec2 p_cm = (p_fov - 1.0/2.0 - stb) * fb_cm - lco_cm;
+	vec2 p_diag = p_cm / r_cm;
+	return (h * p_diag + v) / (dot(q,p_diag) + 1.0);
+	}
+// With stabilizer including inverse homography
+vec2 diag2fov_stb(vec2 p_diag,vec2 stb,mat3 H_inv)
+	{
+	mat2 h;
+	h[0][0] = H_inv[0][0];
+	h[0][1] = H_inv[0][1];
+	h[1][0] = H_inv[1][0];
+	h[1][1] = H_inv[1][1];
+	vec2 v;
+	v[0] = H_inv[0][2];
+	v[1] = H_inv[1][2];
+	vec2 q;
+	q[0] = H_inv[2][0];
+	q[1] = H_inv[2][1];
+	vec2 p_diag_h = (h * p_diag + v) / (dot(q,p_diag) + 1.0);
+// map diag-coordinates to fov-coordinates
+	vec2 p_cm = p_diag_h * r_cm;
+	vec2 p_fov = (p_cm + lco_cm) / fb_cm + stb + 1.0/2.0;
+	return p_fov;
+	}
+
+
+float norm2(vec2 v)
+	{ return length(v); }
+vec2 unit(vec2 v)
+	{ return normalize(v); }
+mat2 tensq(vec2 v)
+	{ return mat2(v[0] * v[0],v[0] * v[1],v[0] * v[1],v[1] * v[1]); }
+mat2 trans(mat2 m)
+	{ return mat2(m[0][0],m[1][0],m[0][1],m[1][1]); }
+mat2 invert(mat2 m)
+	{ return mat2(m[1][1],-m[0][1],-m[1][0],m[0][0]) / (m[0][0] * m[1][1] - m[0][1] * m[1][0]); }

@@ -1,0 +1,36 @@
+# Артефакты сборки
+*.o
+*.obj
+*.exe
+*.pdb
+*.ilk
+*.dll
+*.lib
+*.exp
+*.res
+*.recipe
+*.tlog
+*.lastbuildstate
+*.pipl*
+*.rr
+*.rrc
+*.pyc
+*.pyd
+*.aex
+*.zip
+__pycache__/
+compiled/
+bin/
+lib/
+x64/
+
+# SDK Adobe (не распространяется, скачивается отдельно)
+AdobeAfterEffectsSDK_26.5_MacOS/
+AfterEffectsSDK_26.5_win/
+
+# Локальные утилиты (не публикуются)
+releases/AE_LD3DE4/diag_ae_crash.bat
+
+# Служебные файлы
+Thumbs.db
+.DS_Store

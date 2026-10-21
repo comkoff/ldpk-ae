@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<Setup>
+	<Header>
+		<Module>BATCH</Module>
+		<Program>Flame</Program>
+		<Version>2019.1</Version>
+		<FileVersion>13</FileVersion>
+		<CreationDate>Fri Sep 07 10:25:51 2018</CreationDate>
+		<ProcessingMode>1</ProcessingMode>
+	</Header>
+	<Root>
+		<BatchLength>11</BatchLength>
+		<BatchCurrent>1</BatchCurrent>
+		<BatchSnapshotLibrary>&lt;batch name&gt;_&lt;iteration###&gt;</BatchSnapshotLibrary>
+		<BatchName>my_new_batch</BatchName>
+		<BatchIteration>3</BatchIteration>
+		<BatchWorkstation>pro</BatchWorkstation>
+		<BatchProject>sdv_1</BatchProject>
+		<BatchProjectNickname/>
+		<BatchUser>uwe</BatchUser>
+		<BatchUserNickname>uwe</BatchUserNickname>
+		<BatchDate>1536308751</BatchDate>
+		<BatchIsLustreBFX>False</BatchIsLustreBFX>
+		<TextLog>False</TextLog>
+		<HtmlLog>False</HtmlLog>
+		<BatchHardwareAntialiasing>0</BatchHardwareAntialiasing>
+		<Batch32BitsGraphics>0</Batch32BitsGraphics>
+		<ChEditorParams>
+	  	<Version>2</Version>
+	  	<UserList>False</UserList>
+	  	<UserListCurrent>0</UserListCurrent>
+	  	<UserListName/>
+	  	<AutoSelection>False</AutoSelection>
+	  	<TrackSnap>False</TrackSnap>
+	  	<FrameChannelMode>0</FrameChannelMode>
+	  	<OnSelectedChannel>False</OnSelectedChannel>
+	  	<OnSelectedChannelHide>0</OnSelectedChannelHide>
+	  	<OnSelectedChannelExpand>0</OnSelectedChannelExpand>
+	  	<ChannelAnimated>False</ChannelAnimated>
+	  	<ChannelAnimatedHide>0</ChannelAnimatedHide>
+	  	<ChannelAnimatedExpand>0</ChannelAnimatedExpand>
+	  	<HideUnselectedKeyframes>False</HideUnselectedKeyframes>
+	  	<Regen>False</Regen>
+		</ChEditorParams>
+		<AdaptiveDegradation>0</AdaptiveDegradation>
+		<NodeBinStereoMode>False</NodeBinStereoMode>
+	</Root>
+	<Node>
+		<Res W="2560" H="1280" PxR="1.0" SF="2" PxF="124"/>
+		<Type>Group</Type>
+		<Name>root</Name>
+		<SchemName>root</SchemName>
+		<Number>1</Number>
+		<PosX>0</PosX>
+		<PosY>0</PosY>
+		<Flags>0</Flags>
+		<Collapsed>True</Collapsed>
+		<IconWidth>140</IconWidth>
+	</Node>
+	<Node>
+		<Res W="2560" H="1280" PxR="1.0" SF="2" PxF="124"/>
+		<Type>Resize</Type>
+		<Name>add_margin</Name>
+		<SchemName>add_margin</SchemName>
+		<Number>4</Number>
+		<PosX>-500</PosX>
+		<PosY>0</PosY>
+		<CCacheState>0</CCacheState>
+		<Flags>0</Flags>
+		<Collapsed>True</Collapsed>
+		<IconWidth>140</IconWidth>
+	</Node>
+	<Node>
+		<Res W="2760" H="1480" PxR="1.0" SF="2" PxF="124"/>
+		<Type>Resize</Type>
+		<Name>remove_margin</Name>
+		<SchemName>remove_margin</SchemName>
+		<Number>5</Number>
+		<PosX>250</PosX>
+		<PosY>0</PosY>
+		<CCacheState>0</CCacheState>
+		<Flags>0</Flags>
+		<Collapsed>True</Collapsed>
+		<IconWidth>140</IconWidth>
+	</Node>
+	<Node>
+		<Res W="2760" H="1480" PxR="1.0" SF="2" PxF="124"/>
+		<Type>Matchbox</Type>
+		<Name>undistort</Name>
+		<SchemName>undistort</SchemName>
+		<Number>6</Number>
+		<PosX>-250</PosX>
+		<PosY>0</PosY>
+		<CCacheState>0</CCacheState>
+		<Flags>0</Flags>
+		<Collapsed>True</Collapsed>
+		<IconWidth>140</IconWidth>
+	</Node>
+	<Node>
+		<Res W="2760" H="1480" PxR="1.0" SF="2" PxF="124"/>
+		<Type>Matchbox</Type>
+		<Name>redistort</Name>
+		<SchemName>redistort</SchemName>
+		<Number>7</Number>
+		<PosX>0</PosX>
+		<PosY>0</PosY>
+		<CCacheState>0</CCacheState>
+		<Flags>0</Flags>
+		<Collapsed>True</Collapsed>
+		<IconWidth>140</IconWidth>
+	</Node>
+	<Links>
+		<Link InSocket="Front" InNodeId="2" OutSocket="t0 1" OutNodeId="4"/>
+		<Link InSocket="Front" InNodeId="7" OutSocket="Result" OutNodeId="5"/>
+		<Link InSocket="Input 1" InNodeId="4" OutSocket="Result" OutNodeId="6"/>
+		<Link InSocket="Input 1" InNodeId="6" OutSocket="Result" OutNodeId="7"/>
+	</Links>
+	<CompassList/>
+	<BatchExtension/>
+</Setup>

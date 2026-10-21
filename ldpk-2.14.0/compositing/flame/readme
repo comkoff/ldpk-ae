@@ -1,0 +1,10 @@
+The directory ${TDE4}/sys_data/flame is a copy of
+$LDPK/compositing/flame.
+
+The script ${TDE4}/sys_data/py_scripts/export_flame_LD_3DE4_batch.py
+is the same as $LDPK/3de4/python/export_flame_LD_3DE4_batch.py.
+
+It exports lens distortion data to flame.
+It copies and modifies files from sys_data/flame/20nn.n
+to the target batch directory as specified by the user.
+

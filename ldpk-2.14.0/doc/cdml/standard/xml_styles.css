@@ -1,0 +1,86 @@
+pre.xmlcode
+	{
+	border: 1px solid #aaa;
+	padding-top:5px;
+	padding-bottom:5px;
+	padding-left:5px;
+	padding-right:5px;
+	background-color:#eee;
+	color:inherit;
+	font-size:smaller;
+	font-family: monospace;
+	}
+
+span.xml
+	{
+	font-family: monospace;
+	}
+
+span.XML_COMMENT
+	{
+	font-style: italic;
+	color: #444;
+	}
+span.XML_DTD
+	{
+	font-weight: bold;
+	color: #000;
+	}
+span.XML_KEYWORD
+	{
+	font-weight: bold;
+	color: #008;
+	}
+span.XML_DOCUMENT_TYPE
+	{
+	font-weight: bold;
+	color: #c22;
+	}
+span.XML_DTD_STRING
+	{
+	font-weight: normal;
+	color: #052;
+	}
+span.XML_DEC
+	{
+	font-weight: bold;
+	color: #000;
+	}
+span.XML_DEC_ATTR_NM
+	{
+	font-weight: normal;
+	color: #027;
+	}
+span.XML_DEC_ATTR_VL
+	{
+	font-weight: normal;
+	color: #052;
+	}
+span.XML_TAG
+	{
+	font-weight: bold;
+	color: #000;
+	}
+span.XML_TAG_NM
+	{
+	color: #c22;
+	}
+span.XML_TAG_ATTR_NM
+	{
+	color: #822;
+	}
+span.XML_TAG_ATTR_VL
+	{
+	font-weight: normal;
+	color: #052;
+	}
+span.XML_CDATA
+	{
+	color: #037;
+	}
+
+span.XML_ENT
+	{
+	font-weight: bold;
+	color: #333;
+	}

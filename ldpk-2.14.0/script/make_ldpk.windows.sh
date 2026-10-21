@@ -1,0 +1,123 @@
+#!/bin/bash
+# internal/sdv: execute on $BUILDER_LINUX_LDPK.
+
+################################################################
+# Run from anywhere. The script assumes that it is located     #
+# at its normal place inside the LDPK-directory so that        #
+# source and header directories can be reached via relative    #
+# paths.                                                       #
+################################################################
+basedir=`dirname $PWD/$0`
+
+# fancy colors
+     red="\033[1;31m"
+   green="\033[1;32m"
+  yellow="\033[1;33m"
+    blue="\033[1;34m"
+ magenta="\033[1;35m"
+    cyan="\033[1;36m"
+   white="\033[0;37m"
+    bold="\033[1m"
+    grey="\033[38;2;127;127;127m"
+  orange="\033[1;38;2;255;127;0m"
+     end="\033[0m"
+   reset="\033[0m"
+    lime="\033[1;38;2;127;255;0m"
+
+echo -e ${white}${bold}"#------------------ make_ldpk.windows.sh -----------------------#"${end}
+echo "basedir is '" $basedir "'."
+
+CC="x86_64-w64-mingw32-g++-posix"
+SUFFIX="so"
+SHARED="-shared"
+OPT="-O2 -fPIC"
+LIBTOOL="ar"
+LIBTOOL_OPTIONS="crv"
+
+export INCPATH_DL_SDV=/server/devel/extern/win64/libdl/include
+export LIBPATH_DL_SDV=/server/devel/extern/win64/libdl/lib
+
+echo -e ${red}"#------------------ this and that ------------------------------#"${end}
+# New in version 1.1: compile helper classes into a library.
+cd $LDPK/source/ldpk
+INCPATH="-I ../../include -I $INCPATH_DL_SDV"
+set -x
+
+$CC $OPT $INCPATH ldpk_model_parser.C		-c -o windows/ldpk_model_parser.o
+$CC $OPT $INCPATH ldpk_plugin_loader.C		-c -o windows/ldpk_plugin_loader.o
+$CC $OPT $INCPATH ldpk_table_generator.C	-c -o windows/ldpk_table_generator.o
+rm -f ../../lib/windows/libldpk.a
+$LIBTOOL $LIBTOOL_OPTIONS ../../lib/windows/libldpk.a windows/ldpk_model_parser.o windows/ldpk_plugin_loader.o windows/ldpk_table_generator.o
+
+set +x
+cd $basedir/../test
+INCPATH="-I ../include -I $INCPATH_DL_SDV"
+LIBPATH="-L $LIBPATH_DL_SDV"
+TARGET_DIR=$LDPK/bin/windows
+set -x
+
+$CC $OPT test_lookup_table_iter.C		$INCPATH						-o $TARGET_DIR/test_lookup_table_iter.exe
+$CC $OPT test_plugin_loader.C			$INCPATH ../lib/windows/libldpk.a $LIBPATH -ldl		-o $TARGET_DIR/test_plugin_loader.exe
+$CC $OPT tde4_plugin_info.C			$INCPATH -I ../.. -D_SCI_BUS_64BIT ../lib/windows/libldpk.a $LIBPATH -ldl		-o $TARGET_DIR/tde4_plugin_info.exe
+
+set +x
+cd $basedir/../source/ldpk
+INCPATH="-I ../../include"
+TARGET_DIR="../../compiled/ldpk/windows/lib"
+
+# Functions for compiling plugins. Both expect a single argument,
+# the source filename without suffix. We execute the compile command
+# in a subshell, for cosmetic reasons only. We don't want to see
+# "set +x" in the terminal.
+compile(){
+	( set -x;$CC $OPT $SHARED -DLDPK_COMPILE_AS_PLUGIN_SDV $INCPATH $1.C -o $TARGET_DIR/$1.$SUFFIX )
+}
+compile_exp(){
+	( set -x;$CC $OPT $SHARED -DLDPK_COMPILE_AS_PLUGIN_SDV $INCPATH $1.experimental.C -o $TARGET_DIR/$1.$SUFFIX )
+}
+
+echo -e ${cyan}"#------------------ standard -----------------------------------#"${end}
+# Model "3DE4 Radial - Standard, Degree 4"
+compile tde4_ldp_radial_standard_degree_4
+# Model "3DE4 Radial - Stabilizer, Degree 6"
+compile tde4_ldp_radial_stabilizer_degree_6
+# Model "3DE4 Anamorphic - Standard, Degree 4"
+compile tde4_ldp_anamorphic_standard_degree_4
+# Model "3DE4 Anamorphic - Rescaled, Degree 4"
+compile tde4_ldp_anamorphic_rescaled_degree_4
+# Model "3DE4 Anamorphic - Standard, Degree 6"
+compile tde4_ldp_anamorphic_standard_degree_6
+# Model "3DE4 Anamorphic - Rescaled, Degree 6"
+compile tde4_ldp_anamorphic_rescaled_degree_6
+# Model "3DE4 Anamorphic - Stabilizer, Degree 6"
+compile tde4_ldp_anamorphic_stabilizer_degree_6
+
+echo -e ${magenta}"#------------------ deprecated----------------------------------#"${end}
+# Model "3DE4 Radial - Fisheye, Degree 8"
+compile tde4_ldp_radial_fisheye_degree_8
+# Model "3DE Classic LD Model"
+compile tde4_ldp_classic_ld_model
+
+echo -e ${yellow}"#------------------ experimental--------------------------------#"${end}
+# Model "3DE4 Radial - Fisheye, Equidistant, Degree 8"
+compile_exp tde4_ldp_radial_fisheye_equidistant_degree_8
+# Model "3DE4 Radial - Fisheye, Equisolid, Degree 8"
+compile_exp tde4_ldp_radial_fisheye_equisolid_degree_8
+# Model "3DE4 Radial - Fisheye, Orthographic, Degree 8"
+compile_exp tde4_ldp_radial_fisheye_orthographic_degree_8
+# Model "3DE4 Radial - Fisheye, Stereographic, Degree 8"
+compile_exp tde4_ldp_radial_fisheye_stereographic_degree_8
+
+echo -e ${orange}"#------------------ toymodels ----------------------------------#"${end}
+#--------------------------------------------------------------#
+# Toymodels, mainly internal use, for doing experiments        #
+# and learning                                                 #
+#--------------------------------------------------------------#
+# Model "3DE4 Radial - Homomorphic, Degree 2"
+compile_exp tde4_ldp_radial_homomorphic_decentered_degree_2
+# Model "3DE4 Anamorphic - Homomorphic, Degree 2"
+compile_exp tde4_ldp_anamorphic_homomorphic_degree_2
+
+echo -e ${white}"#------------------ original -----------------------------------#"${end}
+# The original Brown-Conrady
+compile tde4_ldp_brown_conrady_degree_6_2

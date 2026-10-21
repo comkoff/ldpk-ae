@@ -1,0 +1,198 @@
+#! /server/software/linux64/nuke/Nuke13.0v3/libnuke-13.0.3.so -nx
+version 13.0 v3
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="0" y="0" w="1918" h="1147" screen="0">
+        <splitter orientation="1">
+            <split size="40"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="1255" stretch="1"/>
+            <splitter orientation="2">
+                <split size="649"/>
+                <splitter orientation="1">
+                    <split size="626"/>
+                    <dock id="" activePageId="Viewer.2">
+                        <page id="Viewer.2"/>
+                    </dock>
+                    <split size="625"/>
+                    <splitter orientation="2">
+                        <split size="649"/>
+                        <dock id="" activePageId="Viewer.1">
+                            <page id="Viewer.1"/>
+                        </dock>
+                    </splitter>
+                </splitter>
+                <split size="456"/>
+                <dock id="" activePageId="DAG.1">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                </dock>
+            </splitter>
+            <split size="615"/>
+            <dock id="" activePageId="Properties.1" focus="true">
+                <page id="Properties.1"/>
+                <page id="uk.co.thefoundry.backgroundrenderview.1"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name /server/devel/sdv/privat/uwe/source/ldpk/test/nuke/test_clone_1.nk
+ format "2048 1556 0 0 2048 1556 1 2K_Super_35(full-ap)"
+ proxy_type scale
+ proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+ colorManagement Nuke
+ workingSpaceLUT linear
+ monitorLut sRGB
+ monitorOutLUT rec709
+ int8Lut sRGB
+ int16Lut sRGB
+ logLut Cineon
+ floatLut linear
+}
+CheckerBoard2 {
+ inputs 0
+ name CheckerBoard1
+ xpos -327
+ ypos -389
+}
+set Naa823200 [stack 0]
+LD_3DE4_Anamorphic_Standard_Degree_6 {
+ Cx02_Degree_2 0.5
+ Cy02_Degree_2 -0.305
+ Cx22_Degree_2 0.22
+ Cy22_Degree_2 -0.15
+ Cx04_Degree_4 0.17
+ name LD_un6
+ xpos -145
+ ypos -371
+}
+LD_3DE4_Anamorphic_Standard_Degree_6 {
+ direction distort
+ tde4_filmback_width_cm {{LD_un6.tde4_filmback_width_cm}}
+ tde4_filmback_height_cm {{LD_un6.tde4_filmback_height_cm}}
+ tde4_lens_center_offset_x_cm {{LD_un6.tde4_lens_center_offset_x_cm}}
+ tde4_lens_center_offset_y_cm {{LD_un6.tde4_lens_center_offset_y_cm}}
+ tde4_pixel_aspect {{LD_un6.tde4_pixel_aspect}}
+ Cx02_Degree_2 {{LD_un6.Cx02_Degree_2}}
+ Cy02_Degree_2 {{LD_un6.Cy02_Degree_2}}
+ Cx22_Degree_2 {{LD_un6.Cx22_Degree_2}}
+ Cy22_Degree_2 {{LD_un6.Cy22_Degree_2}}
+ Cx04_Degree_4 {{LD_un6.Cx04_Degree_4}}
+ Cy04_Degree_4 {{LD_un6.Cy04_Degree_4}}
+ Cx24_Degree_4 {{LD_un6.Cx24_Degree_4}}
+ Cy24_Degree_4 {{LD_un6.Cy24_Degree_4}}
+ Cx44_Degree_4 {{LD_un6.Cx44_Degree_4}}
+ Cy44_Degree_4 {{LD_un6.Cy44_Degree_4}}
+ Cx06_Degree_6 {{LD_un6.Cx06_Degree_6}}
+ Cy06_Degree_6 {{LD_un6.Cy06_Degree_6}}
+ Cx26_Degree_6 {{LD_un6.Cx26_Degree_6}}
+ Cy26_Degree_6 {{LD_un6.Cy26_Degree_6}}
+ Cx46_Degree_6 {{LD_un6.Cx46_Degree_6}}
+ Cy46_Degree_6 {{LD_un6.Cy46_Degree_6}}
+ Cx66_Degree_6 {{LD_un6.Cx66_Degree_6}}
+ Cy66_Degree_6 {{LD_un6.Cy66_Degree_6}}
+ Lens_Rotation {{LD_un6.Lens_Rotation}}
+ Squeeze_X {{LD_un6.Squeeze_X}}
+ Squeeze_Y {{LD_un6.Squeeze_Y}}
+ name LD_dis6
+ note_font "Bitstream Vera Sans"
+ xpos 69
+ ypos -371
+}
+push $Naa823200
+LD_3DE4_Anamorphic_Standard_Degree_4 {
+ tde4_lens_center_offset_x_cm 0.2
+ tde4_lens_center_offset_y_cm -0.1
+ Cx02_Degree_2 0.305
+ Cy02_Degree_2 -0.265
+ Cx22_Degree_2 0.49
+ Cy22_Degree_2 -0.5
+ Cx04_Degree_4 -0.185
+ Cy04_Degree_4 0.045
+ name LD_un4
+ xpos -144
+ ypos -311
+}
+LD_3DE4_Anamorphic_Standard_Degree_4 {
+ direction distort
+ tde4_filmback_width_cm {{LD_un4.tde4_filmback_width_cm}}
+ tde4_filmback_height_cm {{LD_un4.tde4_filmback_height_cm}}
+ tde4_lens_center_offset_x_cm {{LD_un4.tde4_lens_center_offset_x_cm}}
+ tde4_lens_center_offset_y_cm {{LD_un4.tde4_lens_center_offset_y_cm}}
+ tde4_pixel_aspect {{LD_un4.tde4_pixel_aspect}}
+ Cx02_Degree_2 {{LD_un4.Cx02_Degree_2}}
+ Cy02_Degree_2 {{LD_un4.Cy02_Degree_2}}
+ Cx22_Degree_2 {{LD_un4.Cx22_Degree_2}}
+ Cy22_Degree_2 {{LD_un4.Cy22_Degree_2}}
+ Cx04_Degree_4 {{LD_un4.Cx04_Degree_4}}
+ Cy04_Degree_4 {{LD_un4.Cy04_Degree_4}}
+ Cx24_Degree_4 {{LD_un4.Cx24_Degree_4}}
+ Cy24_Degree_4 {{LD_un4.Cy24_Degree_4}}
+ Cx44_Degree_4 {{LD_un4.Cx44_Degree_4}}
+ Cy44_Degree_4 {{LD_un4.Cy44_Degree_4}}
+ Lens_Rotation {{LD_un4.Lens_Rotation}}
+ Squeeze_X {{LD_un4.Squeeze_X}}
+ Squeeze_Y {{LD_un4.Squeeze_Y}}
+ name LD_dis4
+ xpos 70
+ ypos -311
+}
+push $Naa823200
+LD_3DE4_Radial_Standard_Degree_4 {
+ Distortion_Degree_2 -0.5
+ U_Degree_2 0.29
+ V_Degree_2 -0.13
+ Quartic_Distortion_Degree_4 1
+ V_Degree_4 0.11
+ name LD_unr
+ selected true
+ xpos -143
+ ypos -247
+}
+set Naa8ce400 [stack 0]
+LD_3DE4_Radial_Standard_Degree_4 {
+ direction distort
+ tde4_filmback_width_cm {{LD_unr.tde4_filmback_width_cm}}
+ tde4_filmback_height_cm {{LD_unr.tde4_filmback_height_cm}}
+ tde4_lens_center_offset_x_cm {{LD_unr.tde4_lens_center_offset_x_cm}}
+ tde4_lens_center_offset_y_cm {{LD_unr.tde4_lens_center_offset_y_cm}}
+ tde4_pixel_aspect {{LD_unr.tde4_pixel_aspect}}
+ Distortion_Degree_2 {{LD_unr.Distortion_Degree_2}}
+ U_Degree_2 {{LD_unr.U_Degree_2}}
+ V_Degree_2 {{LD_unr.V_Degree_2}}
+ Quartic_Distortion_Degree_4 {{LD_unr.Quartic_Distortion_Degree_4}}
+ U_Degree_4 {{LD_unr.U_Degree_4}}
+ V_Degree_4 {{LD_unr.V_Degree_4}}
+ Phi_Cylindric_Direction {{LD_unr.Phi_Cylindric_Direction}}
+ B_Cylindric_Bending {{LD_unr.B_Cylindric_Bending}}
+ name LD_disr
+ xpos 72
+ ypos -247
+}
+Viewer {
+ frame_range 1-100
+ name Viewer2
+ xpos 233
+ ypos -69
+}
+push $Naa8ce400
+Reformat {
+ type scale
+ scale 2
+ resize none
+ name Reformat1
+ xpos -8
+ ypos -182
+}
+Viewer {
+ frame_range 1-100
+ name Viewer1
+ xpos 95
+ ypos -67
+}

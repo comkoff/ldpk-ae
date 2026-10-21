@@ -1,0 +1,1002 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd"[
+<!-- Hier ist der Plan: Wir bewahren das File in $priv/tde4_doc auf.
+     Alle CDML-Dokumentationsprojekte linken sich das in ihr Verzeichnis,
+     mit dem passenden Namen. Nach und nach landen dann alle speziellen
+     DTD-Deklarationen hier, zusammen mit denen, die allen Projekten gemeinsam
+     sind. Das klingt nach durcheinander, aber es wird schon gehen. -->
+
+<!-- Pfeil, um GUI-Entitaeten zu verbinden -->
+<!ENTITY guiarr				" &rightarrow; ">
+
+<!-- Englische Ordinalzahlen -->
+<!ENTITY first "1<sup>st</sup>">
+<!ENTITY second "2<sup>nd</sup>">
+<!ENTITY third "3<sup>rd</sup>">
+
+<!-- Masseinheiten -->
+<!ENTITY cm				"<tde4_unit>cm</tde4_unit>">
+<!ENTITY degree				"<tde4_unit>degree</tde4_unit>">
+<!ENTITY kg				"<tde4_unit>kg</tde4_unit>">
+<!ENTITY pixel				"<tde4_unit>px</tde4_unit>">
+<!ENTITY sec				"<tde4_unit>s</tde4_unit>">
+<!ENTITY unit				"<tde4_unit>unit</tde4_unit>">
+
+<!-- Datentypen -->
+<!ENTITY bool "<tde4_type>bool</tde4_type>">
+<!ENTITY char "<tde4_type>char</tde4_type>">
+<!ENTITY unsigned_char "<tde4_type>unsigned char</tde4_type>">
+<!ENTITY short "<tde4_type>short</tde4_type>">
+<!ENTITY unsigned_short "<tde4_type>unsigned short</tde4_type>">
+<!ENTITY int "<tde4_type>int</tde4_type>">
+<!ENTITY unsigned_int "<tde4_type>unsigned int</tde4_type>">
+<!ENTITY long "<tde4_type>long</tde4_type>">
+<!ENTITY unsigned_long "<tde4_type>unsigned long</tde4_type>">
+<!ENTITY long_long "<tde4_type>long long</tde4_type>">
+<!ENTITY unsigned_long_long "<tde4_type>unsigned long long</tde4_type>">
+<!ENTITY half "<tde4_type>half</tde4_type>">
+<!ENTITY float "<tde4_type>float</tde4_type>">
+<!ENTITY double "<tde4_type>double</tde4_type>">
+<!ENTITY long_double "<tde4_type>long double</tde4_type>">
+<!ENTITY vec "<tde4_type>vec</tde4_type>">
+<!ENTITY vec1 "<tde4_type>vec1</tde4_type>">
+<!ENTITY vec2 "<tde4_type>vec2</tde4_type>">
+<!ENTITY vec3 "<tde4_type>vec3</tde4_type>">
+<!ENTITY vec4 "<tde4_type>vec4</tde4_type>">
+<!ENTITY vec1ub "<tde4_type>vec1ub</tde4_type>">
+<!ENTITY vec2ub "<tde4_type>vec2ub</tde4_type>">
+<!ENTITY vec3ub "<tde4_type>vec3ub</tde4_type>">
+<!ENTITY vec4ub "<tde4_type>vec4ub</tde4_type>">
+<!ENTITY vec1i "<tde4_type>vec1i</tde4_type>">
+<!ENTITY vec2i "<tde4_type>vec2i</tde4_type>">
+<!ENTITY vec3i "<tde4_type>vec3i</tde4_type>">
+<!ENTITY vec4i "<tde4_type>vec4i</tde4_type>">
+<!ENTITY vec1f "<tde4_type>vec1f</tde4_type>">
+<!ENTITY vec2f "<tde4_type>vec2f</tde4_type>">
+<!ENTITY vec3f "<tde4_type>vec3f</tde4_type>">
+<!ENTITY vec4f "<tde4_type>vec4f</tde4_type>">
+<!ENTITY vec1d "<tde4_type>vec1d</tde4_type>">
+<!ENTITY vec2d "<tde4_type>vec2d</tde4_type>">
+<!ENTITY vec3d "<tde4_type>vec3d</tde4_type>">
+<!ENTITY vec4d "<tde4_type>vec4d</tde4_type>">
+<!ENTITY mat "<tde4_type>mat</tde4_type>">
+<!ENTITY mat1 "<tde4_type>mat1</tde4_type>">
+<!ENTITY mat2 "<tde4_type>mat2</tde4_type>">
+<!ENTITY mat3 "<tde4_type>mat3</tde4_type>">
+<!ENTITY mat4 "<tde4_type>mat4</tde4_type>">
+<!ENTITY mat1f "<tde4_type>mat1f</tde4_type>">
+<!ENTITY mat2f "<tde4_type>mat2f</tde4_type>">
+<!ENTITY mat3f "<tde4_type>mat3f</tde4_type>">
+<!ENTITY mat4f "<tde4_type>mat4f</tde4_type>">
+<!ENTITY mat1d "<tde4_type>mat1d</tde4_type>">
+<!ENTITY mat2d "<tde4_type>mat2d</tde4_type>">
+<!ENTITY mat3d "<tde4_type>mat3d</tde4_type>">
+<!ENTITY mat4d "<tde4_type>mat4d</tde4_type>">
+<!ENTITY igl "<tde4_type>igl</tde4_type>">
+<!ENTITY igl1 "<tde4_type>igl1</tde4_type>">
+<!ENTITY igl2 "<tde4_type>igl2</tde4_type>">
+<!ENTITY igl3 "<tde4_type>igl3</tde4_type>">
+<!ENTITY igl4 "<tde4_type>igl4</tde4_type>">
+<!ENTITY igl1f "<tde4_type>igl1f</tde4_type>">
+<!ENTITY igl2f "<tde4_type>igl2f</tde4_type>">
+<!ENTITY igl3f "<tde4_type>igl3f</tde4_type>">
+<!ENTITY igl4f "<tde4_type>igl4f</tde4_type>">
+<!ENTITY igl1d "<tde4_type>igl1d</tde4_type>">
+<!ENTITY igl2d "<tde4_type>igl2d</tde4_type>">
+<!ENTITY igl3d "<tde4_type>igl3d</tde4_type>">
+<!ENTITY igl4d "<tde4_type>igl4d</tde4_type>">
+<!ENTITY hom "<tde4_type>hom</tde4_type>">
+<!ENTITY hom1 "<tde4_type>hom1</tde4_type>">
+<!ENTITY hom2 "<tde4_type>hom2</tde4_type>">
+<!ENTITY hom3 "<tde4_type>hom3</tde4_type>">
+<!ENTITY hom4 "<tde4_type>hom4</tde4_type>">
+<!ENTITY hom1f "<tde4_type>hom1f</tde4_type>">
+<!ENTITY hom2f "<tde4_type>hom2f</tde4_type>">
+<!ENTITY hom3f "<tde4_type>hom3f</tde4_type>">
+<!ENTITY hom4f "<tde4_type>hom4f</tde4_type>">
+<!ENTITY hom1d "<tde4_type>hom1d</tde4_type>">
+<!ENTITY hom2d "<tde4_type>hom2d</tde4_type>">
+<!ENTITY hom3d "<tde4_type>hom3d</tde4_type>">
+<!ENTITY hom4d "<tde4_type>hom4d</tde4_type>">
+<!ENTITY quatf "<tde4_type>quatf</tde4_type>">
+<!ENTITY quatd "<tde4_type>quatd</tde4_type>">
+<!ENTITY rot2d "<tde4_type>rot2d</tde4_type>">
+<!ENTITY rot3d "<tde4_type>rot3d</tde4_type>">
+<!ENTITY rot4d "<tde4_type>rot4d</tde4_type>">
+
+<!-- Personen -->
+<!ENTITY catmull			"<tde4_person>Catmull</tde4_person>">
+<!ENTITY euler				"<tde4_person>Euler</tde4_person>">
+<!ENTITY gauss				"<tde4_person>Gau&szlig;</tde4_person>">
+<!ENTITY hadamard			"<tde4_person>Hadamard</tde4_person>">
+<!ENTITY hermite			"<tde4_person>Hermite</tde4_person>">
+<!ENTITY hesse				"<tde4_person>Hesse</tde4_person>">
+<!ENTITY jacobi				"<tde4_person>Jacobi</tde4_person>">
+<!ENTITY jacobian			"<tde4_person>Jacobian</tde4_person>">
+<!ENTITY newton				"<tde4_person>Newton</tde4_person>">
+<!ENTITY nyquist			"<tde4_person>Nyquist</tde4_person>">
+<!ENTITY rom				"<tde4_person>Rom</tde4_person>">
+
+<!-- Firmen -->
+<!-- Falls wir hier mal ein Handelsmarkensymbol einfuegen muessen -->
+<!ENTITY sdv				"<a href='http://sci-d-vis.com'><tde4_company>SDV</tde4_company></a>">
+<!ENTITY weta				"<a href='https://www.wetafx.co.nz/'><tde4_company>WETA</tde4_company></a>">
+<!ENTITY apple				"<a href='http://apple.com'><tde4_company>Apple</tde4_company></a>">
+<!ENTITY adobe				"<a href='http://adobe.com'><tde4_company>Adobe</tde4_company></a>">
+<!ENTITY autodesk			"<a href='http://autodesk.com'><tde4_company>Autodesk</tde4_company></a>">
+<!ENTITY duckduckgo			"<a href='http://duckduckgo.com'><tde4_company>DuckDuckGo</tde4_company></a>">
+<!ENTITY google				"<a href='http://google.com'><tde4_company>Google</tde4_company></a>">
+<!ENTITY microsoft			"<a href='http://microsoft.com'><tde4_company>Microsoft</tde4_company></a>">
+<!ENTITY sidefx				"<a href='http://sidefx.com'><tde4_company>SideFX</tde4_company></a>">
+<!ENTITY the_foundry			"<a href='http://thefoundry.co.uk'><tde4_company>The Foundry</tde4_company></a>">
+
+<!-- Betriebssysteme -->
+<!ENTITY osx				"OSX">
+<!ENTITY linux				"Linux">
+<!ENTITY windows			"Windows">
+<!ENTITY unix				"UNIX">
+
+<!-- Andere Produkte -->
+<!-- Wenn die Link klar ist, tragen wir sie ein. Notfalls verweisen wir nur auf den Hersteller -->
+<!ENTITY after_effects			"<a href='http://www.adobe.com/products/aftereffects.html'><tde4_product>After Effects</tde4_product></a>">
+<!ENTITY houdini			"<a href='http://sidefx.com'><tde4_product>Houdini</tde4_product></a>">
+<!ENTITY nuke				"<a href='http://www.thefoundry.co.uk/products/nuke/'><tde4_product>Nuke</tde4_product></a>">
+<!ENTITY maya				"<a href='http://autodesk.com'><tde4_product>Maya</tde4_product></a>">
+<!ENTITY cairo				"<a href='https://cairographics.org/documentation/'><tde4_product>cairo</tde4_product></a>">
+<!ENTITY doxygen			"<a href='http://doxygen.org'><tde4_product>Doxygen</tde4_product></a>">
+<!ENTITY sphinx				"<a href='http://sphinx-doc.org/'><tde4_product>Sphinx</tde4_product></a>">
+<!ENTITY graphviz			"<a href='http://www.graphviz.org'><tde4_product>Graphviz</tde4_product></a>">
+<!ENTITY highlight			"<a href='http://www.andre-simon.de/index.php'><tde4_product>Highlight</tde4_product></a>">
+<!ENTITY jquery				"<a href='http://jquery.com'><tde4_product>jQuery</tde4_product></a>">
+<!ENTITY jqueryui			"<tde4_product>jQueryUI</tde4_product>">
+<!ENTITY openoffice			"<tde4_product>OpenOffice</tde4_product>">
+<!ENTITY cdml				"<tde4_product>CDML</tde4_product>">
+<!ENTITY opengl				"<tde4_product>OpenGL</tde4_product>">
+<!ENTITY glut				"<tde4_product>GLUT</tde4_product>">
+<!ENTITY freeglut			"<tde4_product>freeglut</tde4_product>">
+<!ENTITY latex				"<tde4_product>LaTeX</tde4_product>">
+<!ENTITY subversion			"<tde4_product>subversion</tde4_product>">
+<!ENTITY mysql				"<tde4_product>MySQL</tde4_product>">
+<!ENTITY php				"<a href='http://php.net/downloads.php'><tde4_product>Php</tde4_product></a>">
+<!ENTITY valgrind			"<tde4_product>valgrind</tde4_product>">
+
+<!-- Das Produkt -->
+<!ENTITY tde4				"<tde4_product>3DE4</tde4_product>">
+<!ENTITY tde4r4b1			"<tde4_product>3DE4/r4b1</tde4_product>">
+<!ENTITY tde4r4b2			"<tde4_product>3DE4/r4b2</tde4_product>">
+<!ENTITY tde4r4b3			"<tde4_product>3DE4/r4b3</tde4_product>">
+<!ENTITY tde4r4b4			"<tde4_product>3DE4/r4b4</tde4_product>">
+<!ENTITY tde4r4				"<tde4_product>3DE4/r4</tde4_product>">
+<!ENTITY tde4mhpd			"<tde4_product>tde4mhpd</tde4_product>">
+<!ENTITY tde4mhp			"<tde4_product>3DE4/MHP</tde4_product>">
+<!ENTITY tde4wtk			"<tde4_product>tde4/widget-tk</tde4_product>">
+<!ENTITY flcd				"<tde4_product>flcd</tde4_product>">
+<!ENTITY flcd5				"<tde4_product>flcd5</tde4_product>">
+<!ENTITY mhp				"<tde4_product>MHP</tde4_product>">
+<!ENTITY vl				"<tde4_product>VL</tde4_product>">
+<!ENTITY flcd				"<tde4_product>flcd</tde4_product>">
+<!ENTITY flcd5				"<tde4_product>flcd5</tde4_product>">
+<!ENTITY cdb				"<tde4_product>CDB</tde4_product>">
+
+<!-- GUI -->
+<!ENTITY main_window			"<tde4_gui>Main Window</tde4_gui>">
+
+<!-- Controls -->
+<!ENTITY overview_controls		"<tde4_gui>Overview Controls</tde4_gui>">
+<!ENTITY manual_tracking_controls	"<tde4_gui>Manual Tracking Controls</tde4_gui>">
+<!ENTITY distortion_grid_controls	"<tde4_gui>Distortion Grid Controls</tde4_gui>">
+<!ENTITY autotracking_controls		"<tde4_gui>Autotracking Controls</tde4_gui>">
+<!ENTITY lineup_controls		"<tde4_gui>Lineup Controls</tde4_gui>">
+<!ENTITY orientation_controls		"<tde4_gui>3D Orientation Controls</tde4_gui>">
+
+<!-- Function keys -->
+<!ENTITY F1				"<tde4_fkey>F1</tde4_fkey>">
+<!ENTITY F2				"<tde4_fkey>F2</tde4_fkey>">
+<!ENTITY F3				"<tde4_fkey>F3</tde4_fkey>">
+<!ENTITY F4				"<tde4_fkey>F4</tde4_fkey>">
+<!ENTITY F5				"<tde4_fkey>F5</tde4_fkey>">
+<!ENTITY F6				"<tde4_fkey>F6</tde4_fkey>">
+<!ENTITY ctrl				"<tde4_fkey>Ctrl</tde4_fkey>">
+<!ENTITY shift				"<tde4_fkey>Shift</tde4_fkey>">
+<!ENTITY alt				"<tde4_fkey>Alt</tde4_fkey>">
+
+<!-- Menubar -->
+<!ENTITY windows			"<tde4_gui>Windows</tde4_gui>">
+<!ENTITY edit				"<tde4_gui>Edit</tde4_gui>">
+<!ENTITY calc				"<tde4_gui>Calc</tde4_gui>">
+<!ENTITY python				"<tde4_gui>Python</tde4_gui>">
+<!ENTITY adjustment			"<tde4_gui>Adjustment</tde4_gui>">
+
+<!-- Menu Windows und die Windows selbst -->
+<!ENTITY object_browser			"<tde4_gui>Object Browser</tde4_gui>">
+<!ENTITY deviation_browser		"<tde4_gui>Deviation Browser</tde4_gui>">
+<!ENTITY timeline_editor		"<tde4_gui>Timeline Editor</tde4_gui>">
+<!ENTITY curve_editor			"<tde4_gui>Curve Editor</tde4_gui>">
+<!ENTITY attribute_editor		"<tde4_gui>Attribute Editor</tde4_gui>">
+
+<!ENTITY parameter_adjustment_window				"<tde4_gui>Parameter Adjustment Window</tde4_gui>">
+<!-- Sections -->
+	<!ENTITY section_advanced_options			"<tde4_gui>Advanced Options</tde4_gui>">
+<!-- Entries -->
+		<!ENTITY entry_network_calc			"<tde4_gui>Network Calc</tde4_gui>">
+
+<!ENTITY image_controls_window		"<tde4_gui>Image Controls Window</tde4_gui>">
+<!ENTITY python_console_window		"<tde4_gui>Python Console Window</tde4_gui>">
+<!ENTITY online_help_window		"<tde4_gui>Online Help Window</tde4_gui>">
+
+<!ENTITY preferences_window		"<tde4_gui>Preferences</tde4_gui>">
+<!-- Sections -->
+	<!ENTITY section_network_calculation			"<tde4_gui>Network Calculation</tde4_gui>">
+<!-- Entries -->
+		<!ENTITY entry_network_calculation_mode		"<tde4_gui>Network Calculation Mode</tde4_gui>">
+<!-- Items -->
+			<!ENTITY item_enabled_static_master_node		"<tde4_gui>Enabled - Static Master Node</tde4_gui>">
+			<!ENTITY item_enabled_dynamic_self_organizing_network	"<tde4_gui>Enabled - Dynamic Self Organizing Network</tde4_gui>">
+			<!ENTITY item_off					"<tde4_gui>Off</tde4_gui>">
+
+		<!ENTITY entry_master_node_hostname		"<tde4_gui>Master Node Hostname</tde4_gui>">
+		<!ENTITY entry_allow_for_network_calculation	"<tde4_gui>Allow For Network Calculation</tde4_gui>">
+
+<!-- Menu Calc -->
+<!ENTITY frame_range_calculation	"<tde4_gui>Frame Range Calculation</tde4_gui>">
+
+<!-- Menu Python -->
+<!ENTITY run_python_script		"<tde4_gui>Run Python Script...</tde4_gui>">
+<!ENTITY rescan_python_directories	"<tde4_gui>Rescan Python Directories</tde4_gui>">
+<!ENTITY open_python_console		"<tde4_gui>Open Python Console...</tde4_gui>">
+
+<!-- Attribute Editor -->
+<!ENTITY tab_project						"<tde4_gui>Project</tde4_gui>">
+<!ENTITY tab_camera						"<tde4_gui>Camera</tde4_gui>">
+<!-- Sections -->
+	<!ENTITY section_camera					"<tde4_gui>Camera</tde4_gui>">
+<!-- Entries -->
+		<!ENTITY entry_weight				"<tde4_gui>Weight</tde4_gui>">
+<!-- Sections -->
+	<!ENTITY section_live_action_footage			"<tde4_gui>Live Action Footage</tde4_gui>">
+<!-- Entries -->
+		<!ENTITY entry_first_frame_is_frame		"<tde4_gui>First Frame is Frame</tde4_gui>">
+	<!ENTITY section_lens					"<tde4_gui>Lens</tde4_gui>">
+<!-- Entries -->
+		<!ENTITY entry_lens				"<tde4_gui>Lens...</tde4_gui>">
+		<!ENTITY entry_focal_length			"<tde4_gui>Focal Length</tde4_gui>">
+<!-- Items -->
+			<!ENTITY item_use_from_lens		"<tde4_gui>Use From Lens</tde4_gui>">
+			<!ENTITY item_static			"<tde4_gui>Static</tde4_gui>">
+			<!ENTITY item_dynamic			"<tde4_gui>Dynamic</tde4_gui>">
+		<!ENTITY entry_focus_distance			"<tde4_gui>Focus Distance</tde4_gui>">
+<!-- Items -->
+	<!ENTITY section_rolling_shutter_compensation		"<tde4_gui>Rolling Shutter Compensation</tde4_gui>">
+	<!ENTITY section_synchronization			"<tde4_gui>Synchronization</tde4_gui>">
+	<!ENTITY section_stereoscopic				"<tde4_gui>Stereoscopic</tde4_gui>">
+		<!ENTITY entry_orientation			"<tde4_gui>Orientation</tde4_gui>">
+			<!ENTITY item_lefthand_camera		"<tde4_gui>Lefthand Camera</tde4_gui>">
+			<!ENTITY item_righthand_camera		"<tde4_gui>Righthand Camera</tde4_gui>">
+<!-- Entries -->
+		<!ENTITY entry_timeshift			"<tde4_gui>Timeshift</tde4_gui>">
+<!ENTITY tab_point_group					"<tde4_gui>Point Group</tde4_gui>">
+<!ENTITY tab_point						"<tde4_gui>Point</tde4_gui>">
+<!-- Sections -->
+	<!ENTITY section_point					"<tde4_gui>Point</tde4_gui>">
+<!-- Entries -->
+		<!ENTITY entry_position_xyz			"<tde4_gui>Position XYZ</tde4_gui>">
+	<!ENTITY section_2d_tracking				"<tde4_gui>2D Tracking</tde4_gui>">
+	<!ENTITY section_3d_calculation				"<tde4_gui>3D Calculation</tde4_gui>">
+<!-- Entries -->
+		<!ENTITY entry_survey_type			"<tde4_gui>Survey Type</tde4_gui>">
+			<!ENTITY item_survey_free		"<tde4_gui>Survey Free</tde4_gui>">
+			<!ENTITY item_approximately_surveyed	"<tde4_gui>Approximately Surveyed</tde4_gui>">
+			<!ENTITY item_exactly_surveyed		"<tde4_gui>Exactly Surveyed</tde4_gui>">
+			<!ENTITY item_lineup_only_surveyed	"<tde4_gui>Lineup Only Surveyed</tde4_gui>">
+		<!ENTITY entry_approx_survey_radius		"<tde4_gui>Approx. Survey Radius</tde4_gui>">
+		<!ENTITY entry_point_weighting			"<tde4_gui>Point Weighting</tde4_gui>">
+			<!ENTITY item_calc_automatically	"<tde4_gui>Calc Automatically</tde4_gui>">
+<!ENTITY tab_3d_model						"<tde4_gui>3D Model</tde4_gui>">
+<!ENTITY tab_lens						"<tde4_gui>Lens</tde4_gui>">
+<!-- Sections -->
+	<!ENTITY section_lens_distortion			"<tde4_gui>Lens Distortion</tde4_gui>">
+<!-- Entries -->
+		<!ENTITY entry_dynamic_lens_distortion		"<tde4_gui>Dynamic Lens Distortion</tde4_gui>">
+
+
+<!-- Object Browser -->
+<!ENTITY expand_scene						"<tde4_gui>Scene</tde4_gui>">
+	<!ENTITY expand_cameras						"<tde4_gui>Cameras</tde4_gui>">
+	<!ENTITY expand_point_groups					"<tde4_gui>Point Groups</tde4_gui>">
+		<!ENTITY expand_constraints				"<tde4_gui>Constraints</tde4_gui>">
+<!ENTITY expand_lenses						"<tde4_gui>Lenses</tde4_gui>">
+
+
+<!-- Document: Selector syntax -->
+<!ENTITY dbid "&lt;id&gt;">
+<!ENTITY blob "<i>blob</i>">
+<!ENTITY core "<i>core</i>">
+<!ENTITY gui_script "<i>gui script</i>">
+<!ENTITY gui_scripts "<i>gui scripts</i>">
+<!ENTITY modifier_script "<i>modifier script</i>">
+<!ENTITY modifier_scripts "<i>modifier scripts</i>">
+
+<!-- Document: TDE4/MHP -->
+<!ENTITY devil "devil">
+<!ENTITY doom "doom">
+<!ENTITY nebukadnezar "nebukadnezar">
+<!ENTITY guul "guul">
+<!ENTITY octopus "octopus">
+<!ENTITY hydra "hydra">
+<!ENTITY hellboy "hellboy">
+
+<!ENTITY parent "<lit>parent</lit>">
+<!ENTITY responder "<lit>responder</lit>">
+<!ENTITY computational "<lit>computational</lit>">
+<!ENTITY news "<lit>news</lit>">
+<!ENTITY updater_udp "<lit>updater_udp</lit>">
+<!ENTITY scanner "<lit>scanner</lit>">
+<!ENTITY deputy "<lit>deputy</lit>">
+
+<!-- Document: VL -->
+<!ENTITY self "<tde4_lit>self</tde4_lit>">
+<!ENTITY complex "<tde4_lit>complex</tde4_lit>">
+<!ENTITY len "<tde4_func>len</tde4_func>">
+<!ENTITY __repr__ "<tde4_func>__repr__</tde4_func>">
+<!ENTITY __str__ "<tde4_func>__str__</tde4_func>">
+
+<!ENTITY op_plus "<tde4_func>&plus;</tde4_func>">
+<!ENTITY op_minus "<tde4_func>&minus;</tde4_func>">
+<!ENTITY op_mul "<tde4_func>*</tde4_func>">
+<!ENTITY op_div "<tde4_func>/</tde4_func>">
+<!ENTITY op_pluseq "<tde4_func>&plus;=</tde4_func>">
+<!ENTITY op_minuseq "<tde4_func>&minus;=</tde4_func>">
+<!ENTITY op_muleq "<tde4_func>*=</tde4_func>">
+<!ENTITY op_diveq "<tde4_func>/=</tde4_func>">
+
+<!ENTITY dotsq "<tde4_func>dotsq</tde4_func>">
+<!ENTITY dot "<tde4_func>dot</tde4_func>">
+<!ENTITY tensq "<tde4_func>tensq</tde4_func>">
+<!ENTITY ten "<tde4_func>ten</tde4_func>">
+<!ENTITY wdg "<tde4_func>wdg</tde4_func>">
+
+<!ENTITY norm1 "<tde4_func>norm1</tde4_func>">
+<!ENTITY norm2 "<tde4_func>norm2</tde4_func>">
+<!ENTITY norminf "<tde4_func>norminf</tde4_func>">
+<!ENTITY fn_unit "<tde4_func>unit</tde4_func>">
+<!ENTITY para "<tde4_func>para</tde4_func>">
+<!ENTITY ortho "<tde4_func>ortho</tde4_func>">
+<!ENTITY dual "<tde4_func>dual</tde4_func>">
+<!ENTITY invert "<tde4_func>invert</tde4_func>">
+<!ENTITY conjugate "<tde4_func>conjugate</tde4_func>">
+<!ENTITY quat "<tde4_func>quat</tde4_func>">
+<!ENTITY axis "<tde4_func>axis</tde4_func>">
+<!ENTITY angle "<tde4_func>angle</tde4_func>">
+<!ENTITY angles "<tde4_func>angles</tde4_func>">
+
+<!ENTITY trans "<tde4_func>trans</tde4_func>">
+<!ENTITY trace "<tde4_func>trace</tde4_func>">
+<!ENTITY sub "<tde4_func>sub</tde4_func>">
+<!ENTITY adj "<tde4_func>adj</tde4_func>">
+<!ENTITY det "<tde4_func>det</tde4_func>">
+<!ENTITY invert "<tde4_func>invert</tde4_func>">
+
+<!-- Document: Stereoscopic Matchmoving -->
+<!ENTITY tde "<span style='font-family:sans-serif'>3DE4</span>">
+<!ENTITY cpg "CamPG">
+<!ENTITY opg "ObjPG">
+<!ENTITY opgs "ObjPGs">
+<!ENTITY syncrel "SyncRel">
+<!ENTITY nm "<span style='font-size:large;'>||</span>">
+<!ENTITY a "<i>a</i>">
+<!ENTITY b "<i>b</i>">
+<!ENTITY p "<i>p</i>">
+<!ENTITY u "<i>u</i>">
+<!ENTITY p_l "<i>p</i><sub><span class='sc'>l</span></sub>">
+<!ENTITY u_l "<i>u</i><sub><span class='sc'>l</span></sub>">
+<!ENTITY m_l "<i>m</i><sub><span class='sc'>l</span></sub>">
+<!ENTITY p_r "<i>p</i><sub><span class='sc'>r</span></sub>">
+<!ENTITY u_r "<i>u</i><sub><span class='sc'>r</span></sub>">
+<!ENTITY m_r "<i>m</i><sub><span class='sc'>r</span></sub>">
+<!ENTITY p_proj_r "<i>p' </i><sub><span class='sc'>r</span></sub>">
+<!ENTITY c_l_x "<i>c</i><sub><span class='sc'>l</span>,<i>x</i></sub>">
+<!ENTITY c_l_y "<i>c</i><sub><span class='sc'>l</span>,<i>y</i></sub>">
+<!ENTITY c_l_z "<i>c</i><sub><span class='sc'>l</span>,<i>z</i></sub>">
+<!ENTITY c_r_x "<i>c</i><sub><span class='sc'>r</span>,<i>x</i></sub>">
+<!ENTITY c_r_y "<i>c</i><sub><span class='sc'>r</span>,<i>y</i></sub>">
+<!ENTITY c_r_z "<i>c</i><sub><span class='sc'>r</span>,<i>z</i></sub>">
+<!ENTITY c_proj_r_z "<i>c' </i><sub><span class='sc'>r</span>,<i>z</i></sub>">
+<!ENTITY c_center "<i>c</i><sub>center</sub>">
+<!ENTITY e_x "<i>e</i><sub><i>x</i></sub>">
+<!ENTITY e_y "<i>e</i><sub><i>y</i></sub>">
+<!ENTITY e_z "<i>e</i><sub><i>z</i></sub>">
+<!ENTITY d_depth "<i>d</i><sub>depth</sub>">
+<!ENTITY d_vert "<i>d</i><sub>vert</sub>">
+<!ENTITY d_ioc "<i>d</i><sub>ioc</sub>">
+<!ENTITY p_conv "<i>p</i><sub>conv</sub>">
+<!ENTITY one "<b>1</b>">
+<!ENTITY R3 "<b>R<sup>3</sup></b>">
+<!ENTITY ortho_u "&Pi;<sup>&perp;</sup><sub>&u;</sub>">
+<!ENTITY ortho_u_l "&Pi;<sup>&perp;</sup><sub>&u_l;</sub>">
+<!ENTITY ortho_u_r "&Pi;<sup>&perp;</sup><sub>&u_r;</sub>">
+<!ENTITY ortho_stereo "&Pi;<sup>&perp;</sup><sub>stereo</sub>">
+<!ENTITY ortho_center "&Pi;<sup>&perp;</sup><sub>center</sub>">
+<!ENTITY attributes "<span class='gui'>Attribute Editor</span>">
+<!ENTITY cameras "<span class='gui'>Cameras</span>">
+<!ENTITY stereo "<span class='gui'>Stereoscopic</span>">
+<!ENTITY rotpol_menu "<span class='gui'>Rotation Policy</span>">
+<!ENTITY rotpol "<i>rotation policy</i>">
+<!ENTITY rotpols "<i>rotation policies</i>">
+<!ENTITY rotpol_y "<span class='gui'>Allow y-Rotation Only</span>">
+<!ENTITY rotpol_xyz "<span class='gui'>Allow Rotation Around all Axes</span>">
+<!ENTITY parallaxe "<i>parallaxe</i>">
+<!ENTITY ioc "<i>interocular</i>">
+<!ENTITY interocular_menu "<span class='gui'>Interocular</span>">
+<!ENTITY curves "<span class='gui'>Curve Editor</span>">
+<!ENTITY vshift "<i>vertical shift</i>">
+<!ENTITY vshift_menu "<span class='gui'>Vertical Shift</span>">
+<!ENTITY dshift "<i>depth shift</i>">
+<!ENTITY calc "<span class='gui'>Calc</span>">
+<!ENTITY zoom_curve "<span class='gui'>Zoom Curve</span>">
+<!ENTITY calc_zoom_curve "<span class='gui'>Calc Zoom Curve From Scratch</span>">
+<!ENTITY finetune_zoom_curve "<span class='gui'>Finetune Zoom Curve From Scratch</span>">
+
+<!-- hier mal aufraeumen -->
+<!ENTITY w "<i>w</i>">
+<!ENTITY w_a "<i>w</i><sub>a</sub>">
+<!ENTITY w_b "<i>w</i><sub>b</sub>">
+<!ENTITY w_r "<i>w</i><sub>r</sub>">
+<!ENTITY h "<i>h</i>">
+<!ENTITY h_a "<i>h</i><sub>a</sub>">
+<!ENTITY h_b "<i>h</i><sub>b</sub>">
+<!ENTITY h_r "<i>h</i><sub>r</sub>">
+<!ENTITY gles_math "<lib>gles::math</lib>">
+<!ENTITY ldpk "<lib>ldpk</lib>">
+<!ENTITY transwarp "<lib>transwarp</lib>">
+<!ENTITY minifl "<lib>minifl</lib>">
+<!ENTITY img "<cd>img</cd>">
+<!ENTITY img_memptr "<cd>img_memptr</cd>">
+<!ENTITY int "<cd>int</cd>">
+<!ENTITY true "<cd>true</cd>">
+<!ENTITY false "<cd>false</cd>">
+<!ENTITY float "<cd>float</cd>">
+<!ENTITY n "<i>n</i>">
+
+
+<!ENTITY selector "<i>selector</i>">
+<!ENTITY segment "<i>segment</i>">
+
+<!ENTITY collect_apply "<i>collect/apply</i>">
+
+<!-- declarations for cdml project "tde4_ldm_standard" -->
+
+<!ENTITY merge_with_format "<tde4_gui>merge bbox plus margin with [un]distorted format</tde4_gui>">
+<!ENTITY isect_with_format "<tde4_gui>intersect bbox plus margin with [un]distorted format</tde4_gui>">
+<!ENTITY merge_with_bbox "<tde4_gui>merge bbox plus margin with [un]distorted bbox</tde4_gui>">
+<!ENTITY isect_with_bbox "<tde4_gui>intersect bbox plus margin with [un]distorted bbox</tde4_gui>">
+
+<!ENTITY output_mode "<tde4_gui>output mode</tde4_gui>">
+<!ENTITY om_image "<tde4_gui>image</tde4_gui>">
+<!ENTITY om_stmap "<tde4_gui>STMap</tde4_gui>">
+
+<!ENTITY direction "<tde4_gui>direction</tde4_gui>">
+<!ENTITY dir_distort "<tde4_gui>distort</tde4_gui>">
+<!ENTITY dir_undistort "<tde4_gui>undistort</tde4_gui>">
+
+<!ENTITY bounding_box_mode "<tde4_gui>bounding box mode</tde4_gui>">
+<!ENTITY bounding_box_margin "<tde4_gui>bounding box margin</tde4_gui>">
+<!ENTITY distortion_degree_2 "<tde4_gui>Distortion - Degree 2</tde4_gui>">
+
+<!ENTITY classic_ld_model "<tde4_gui>3DE Classic LD Model</tde4_gui>">
+<!ENTITY radial_standard_degree_4 "<tde4_gui>3DE4 Radial - Standard, Degree 4</tde4_gui>">
+<!ENTITY anamorphic_standard_degree_4 "<tde4_gui>3DE4 Anamorphic - Standard, Degree 4</tde4_gui>">
+<!ENTITY anamorphic_rescaled_degree_4 "<tde4_gui>3DE4 Anamorphic - Rescaled, Degree 4</tde4_gui>">
+<!ENTITY anamorphic_degree_6 "<tde4_gui>3DE4 Anamorphic - Degree 6</tde4_gui>">
+<!ENTITY radial_fisheye_degree_8 "<tde4_gui>3DE4 Radial - Fisheye, Degree 8</tde4_gui>">
+
+]>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+&minus;<meta http-equiv="content-type" content="text/html; charset=UTF8"></meta>
+
+<link rel="stylesheet" href="cdml_styles.css" type="text/css"></link>
+<link rel="stylesheet" href="tde4_doc.css" type="text/css"></link>
+<link rel="stylesheet" href="tde4_doc.print.css" type="text/css" media="print"></link>
+<link rel="stylesheet" href="tde4_ldm_standard.css" type="text/css"></link><title>tde4_ldm_standard</title>
+</head>
+<body>
+
+<div style="width:98%;margin:40px auto 20px auto;text-align:center;border-bottom:1px solid rgb(200,200,200);padding-bottom:20px;">
+<img class="logo" src="img/tde4_logo_black.svg" style="width:400px; height:auto; margin:0px auto;"></img>
+</div>
+<cdml_article>
+
+<cdml_option toc_depth="6" enum_depth="6"></cdml_option>
+<cdml_title>The standard models for Lens Distortion in &tde4;</cdml_title>
+<cdml_subtitle>Supplementary documentation: code and examples</cdml_subtitle>
+<cdml_subtitle>Science-D-Visions, <cdml_date format="Y-m-d">2018-08-15</cdml_date></cdml_subtitle>
+
+<cdml_toc>
+<cdml_title>Contents</cdml_title>
+<a name="hir_toc"/>
+<span class="toc_1">1</span><span class="toc_1_text"><a href="#hir_1">About this document</a></span><br/>
+<span class="toc_2">1.1</span><span class="toc_2_text"><a href="#hir_1_1">Document versions</a></span><br/>
+<span class="toc_1">2</span><span class="toc_1_text"><a href="#hir_2">Implementations of the lens distortion models</a></span><br/>
+<span class="toc_2">2.1</span><span class="toc_2_text"><a href="#hir_2_1">Python bindings and wrapper</a></span><br/>
+<span class="toc_3">2.1.1</span><span class="toc_3_text"><a href="#hir_2_1_1">Importing the module</a></span><br/>
+<span class="toc_3">2.1.2</span><span class="toc_3_text"><a href="#hir_2_1_2">Creating an instance of a distortion model</a></span><br/>
+<span class="toc_3">2.1.3</span><span class="toc_3_text"><a href="#hir_2_1_3">Specifying parameters</a></span><br/>
+<span class="toc_3">2.1.4</span><span class="toc_3_text"><a href="#hir_2_1_4">Evaluating</a></span><br/>
+<span class="toc_3">2.1.5</span><span class="toc_3_text"><a href="#hir_2_1_5">&jacobian; and twist vector</a></span><br/>
+<span class="toc_2">2.2</span><span class="toc_2_text"><a href="#hir_2_2">&nuke;</a></span><br/>
+<span class="toc_3">2.2.1</span><span class="toc_3_text"><a href="#hir_2_2_1">Bounding box</a></span><br/>
+<span class="toc_3">2.2.2</span><span class="toc_3_text"><a href="#hir_2_2_2">Testing bounding box</a></span><br/>
+<span class="toc_1">3</span><span class="toc_1_text"><a href="#hir_3">Tests</a></span><br/>
+<span class="toc_2">3.1</span><span class="toc_2_text"><a href="#hir_3_1">Reparametrization</a></span><br/>
+<span class="toc_3">3.1.1</span><span class="toc_3_text"><a href="#hir_3_1_1">Subimage</a></span><br/>
+<span class="toc_3">3.1.2</span><span class="toc_3_text"><a href="#hir_3_1_2">Flipping</a></span><br/>
+<span class="toc_index_text"><a href="#hir_todolist">Todo</a></span><br/>
+<span class="toc_index_text"><a href="#hir_annotations">Annotations</a></span><br/>
+<span class="toc_index_text"><a href="#hir_annotations">References</a></span><br/>
+</cdml_toc>
+
+<cdml_chapter>
+<cdml_title><span class="hir_number">1</span><a name="hir_1"/>About this document</cdml_title>
+<cdml_body>
+This document is part of the Lens Distortion Plugin Kit (LDPK), version 2.0 and higher.
+The purpose is to provide documentation on all aspects of the LDPK which are not part
+of the rather theoretical white paper &quot;The standard models for lens distortion in &tde4;&quot; <cdml_xbibref sref="stdmod"><a href="#cap_bibitem_1">[1]</a></cdml_xbibref>, particularly code snippets, numeric examples, visualization
+and tests.
+<cdml_section>
+<cdml_title><span class="hir_number">1.1</span><a name="hir_1_1"/>Document versions</cdml_title>
+<cdml_body>
+<table class="versions">
+<thead><tr><td>Version</td><td>Scope</td><td>Date</td><td>Notes</td></tr></thead>
+<tbody>
+<tr><td>1.1</td><td>private</td><td>2018&minus;08&minus;15</td><td>Testing reparametrization</td></tr>
+<tr><td>1.0</td><td>private</td><td>2018&minus;07&minus;13</td><td>Preparing for LDPK 2.0</td></tr>
+</tbody>
+</table>
+</cdml_body>
+</cdml_section>
+
+</cdml_body>
+</cdml_chapter>
+
+<cdml_chapter>
+<cdml_title><span class="hir_number">2</span><a name="hir_2"/>Implementations of the lens distortion models</cdml_title>
+<cdml_body>
+The lens distortion model &anamorphic_rescaled_degree_4; will be part of &tde4; Release 6.
+This lens distortion model is officially part of the LDPK as of version LDPK 2.0.
+</cdml_body>
+
+	<cdml_section>
+	<cdml_title><span class="hir_number">2.1</span><a name="hir_2_1"/>Python bindings and wrapper</cdml_title>
+	<cdml_body>
+	The LDPK is shipped with a python module which provides python bindings to the
+	compiled binaries (currently &linux; and &osx;). Additionally, there are wrapper classes to the lens distortion models
+	which are easier to use and allow to draw the connection to the mathematical expressions used in the white paper.
+	The bindings module is located in
+	<center><tde4_file>$LDPK/python/[os]/lens_distortion_plugins.so</tde4_file></center>
+	and the wrapper is
+	<center><tde4_file>$LDPK/python/ldpk.py</tde4_file>.</center>
+	The purpose of these modules is mainly testing and experimenting, up to now they are not really
+	relevant in production enviroments; they only provide the distort and undistort mappings, but
+	no image processing functionality.
+	</cdml_body>
+		<cdml_subsection>
+		<cdml_title><span class="hir_number">2.1.1</span><a name="hir_2_1_1"/>Importing the module</cdml_title>
+		<cdml_body>
+Once you have set your python paths appropriately, you can import the (wrapper) module by
+<cdml_code lang="py"><pre class="pycode"><span class="hl kwa">import</span> ldpk</pre></cdml_code>
+The module contains a class for each distortion model, including
+<cdml_code lang="py"><pre class="pycode">ldpk<span class="hl opt">.</span>classic_3de_mixed
+ldpk<span class="hl opt">.</span>radial_standard_degree_4
+ldpk<span class="hl opt">.</span>anamorphic_standard_degree_4
+ldpk<span class="hl opt">.</span>anamorphic_degree_6
+ldpk<span class="hl opt">.</span>radial_fisheye_degree_8</pre></cdml_code>
+		</cdml_body>
+		</cdml_subsection>
+		<cdml_subsection>
+		<cdml_title><span class="hir_number">2.1.2</span><a name="hir_2_1_2"/>Creating an instance of a distortion model</cdml_title>
+		<cdml_body>
+<cdml_code lang="py"><pre class="pycode">ldm <span class="hl opt">=</span> ldpk<span class="hl opt">.</span><span class="hl kwd">radial_standard_degree_4</span><span class="hl opt">()</span></pre></cdml_code>
+An instance contains the seven built-in camera parameters and the model specific distortion parameters.
+Let us have a look at the default values of focal length, filmback, lens center offst, pixel aspect ratio and focus distance:
+<cdml_code lang="py"><pre class="pycode"><span class="hl kwa">print</span> ldm<span class="hl opt">.</span><span class="hl kwd">fl_cm</span><span class="hl opt">(),</span>
+<span class="hl kwa">print</span> ldm<span class="hl opt">.</span><span class="hl kwd">w_fb_cm</span><span class="hl opt">(),</span>
+<span class="hl kwa">print</span> ldm<span class="hl opt">.</span><span class="hl kwd">h_fb_cm</span><span class="hl opt">(),</span>
+<span class="hl kwa">print</span> ldm<span class="hl opt">.</span><span class="hl kwd">x_lco_cm</span><span class="hl opt">(),</span>
+<span class="hl kwa">print</span> ldm<span class="hl opt">.</span><span class="hl kwd">y_lco_cm</span><span class="hl opt">(),</span>
+<span class="hl kwa">print</span> ldm<span class="hl opt">.</span><span class="hl kwd">r_pa</span><span class="hl opt">(),</span>
+<span class="hl kwa">print</span> ldm<span class="hl opt">.</span><span class="hl kwd">fd_cm</span><span class="hl opt">()</span></pre></cdml_code>
+This leads to
+<cdml_run><pre class='ttycode'><span class="numericconstant">2.0</span> <span class="numericconstant">1.6</span> <span class="numericconstant">0.9</span> <span class="numericconstant">0.0</span> <span class="numericconstant">0.0</span> <span class="numericconstant">1.0</span> <span class="numericconstant">100.0</span></pre></cdml_run>
+Similarly, camera parameters can be extracted by a single call like
+<cdml_code lang="py"><pre class="pycode"><span class="hl kwa">print</span> ldm<span class="hl opt">.</span><span class="hl kwd">getCamera</span><span class="hl opt">()</span></pre></cdml_code>
+which prints out a tuple
+<cdml_run><pre class='ttycode'>(<span class="numericconstant">2.0</span>, <span class="numericconstant">1.6</span>, <span class="numericconstant">0.9</span>, <span class="numericconstant">0.0</span>, <span class="numericconstant">0.0</span>, <span class="numericconstant">1.0</span>, <span class="numericconstant">100.0</span>)</pre></cdml_run>
+		</cdml_body>
+		</cdml_subsection>
+		<cdml_subsection>
+		<cdml_title><span class="hir_number">2.1.3</span><a name="hir_2_1_3"/>Specifying parameters</cdml_title>
+		<cdml_body>
+Distortion parameters can be specified in two ways, either using the <quote>official</quote> gui parameter names
+you already know from &tde4; or the &nuke; plugins, or using the compact math-inspired names from the white paper.
+For using the gui parameter names, call one of the methods
+<cdml_code lang="py"><pre class="pycode"><span class="hl slc"># common:</span>
+ldm<span class="hl opt">.</span><span class="hl kwd">setParameterValueDouble</span><span class="hl opt">(</span>parname<span class="hl opt">,</span>value<span class="hl opt">)</span>
+<span class="hl slc"># exotic:</span>
+ldm<span class="hl opt">.</span><span class="hl kwd">setParameterValueBool</span><span class="hl opt">(</span>parname<span class="hl opt">,</span>value<span class="hl opt">)</span>
+ldm<span class="hl opt">.</span><span class="hl kwd">setParameterValueInt</span><span class="hl opt">(</span>parname<span class="hl opt">,</span>value<span class="hl opt">)</span>
+ldm<span class="hl opt">.</span><span class="hl kwd">setParameterValueString</span><span class="hl opt">(</span>parname<span class="hl opt">,</span>value<span class="hl opt">)</span></pre></cdml_code>		
+In this document which is meant as a supplement for the white paper we shall use the compact math notation.
+Each model instance provides a number of getters and setters which are realized as one single method per parameter.
+The setter syntax allows to concatenate calls. After specifying parameters and before using any of the computational
+methods, the method <tde4_func>prepare()</tde4_func> must be invoked.
+The following code snippet will specify parameters <tde4_gui>Distortion - Degree 2</tde4_gui> and
+<tde4_gui>Quartic Distortion - Degree 4</tde4_gui>, and prepare the instance for usage:
+<cdml_code lang="py"><pre class="pycode">ldm <span class="hl opt">=</span> ldpk<span class="hl opt">.</span><span class="hl kwd">radial_standard_degree_4</span><span class="hl opt">()</span>
+ldm<span class="hl opt">.</span><span class="hl kwd">c2</span><span class="hl opt">(</span><span class="hl num">0.1</span><span class="hl opt">).</span><span class="hl kwd">c4</span><span class="hl opt">(</span><span class="hl num">0.1</span><span class="hl opt">).</span><span class="hl kwd">prepare</span><span class="hl opt">()</span></pre></cdml_code>		
+		</cdml_body>
+		</cdml_subsection>
+		<cdml_subsection>
+		<cdml_title><span class="hir_number">2.1.4</span><a name="hir_2_1_4"/>Evaluating</cdml_title>
+		<cdml_body>
+We can use the instance in order to distort and undistort points, compute the &jacobian;, the twist vector (mixed derivatives)
+or bounding boxes for distort and undistort operations.
+The code snippet
+<cdml_code lang="py"><pre class="pycode">ldm <span class="hl opt">=</span> ldpk<span class="hl opt">.</span><span class="hl kwd">radial_standard_degree_4</span><span class="hl opt">()</span>
+ldm<span class="hl opt">.</span><span class="hl kwd">c2</span><span class="hl opt">(</span><span class="hl num">0.1</span><span class="hl opt">).</span><span class="hl kwd">c4</span><span class="hl opt">(</span><span class="hl num">0.1</span><span class="hl opt">).</span><span class="hl kwd">prepare</span><span class="hl opt">()</span>
+
+<span class="hl kwa">def</span> <span class="hl kwd">pretty</span><span class="hl opt">(</span>q<span class="hl opt">):</span>
+        <span class="hl kwa">return</span> string<span class="hl opt">.</span><span class="hl kwd">join</span><span class="hl opt">([</span><span class="hl str">&quot;{0:9f}&quot;</span><span class="hl opt">.</span><span class="hl kwd">format</span><span class="hl opt">(</span>i<span class="hl opt">).</span><span class="hl kwd">rstrip</span><span class="hl opt">(</span><span class="hl str">&quot;0&quot;</span><span class="hl opt">).</span><span class="hl kwd">rstrip</span><span class="hl opt">(</span><span class="hl str">&quot;.&quot;</span><span class="hl opt">)</span> <span class="hl kwa">for</span> i <span class="hl kwa">in</span> q<span class="hl opt">])</span>
+
+<span class="hl kwa">print</span> <span class="hl kwd">pretty</span><span class="hl opt">(</span>ldm<span class="hl opt">.</span><span class="hl kwd">undistort</span><span class="hl opt">((</span><span class="hl num">0</span><span class="hl opt">,</span><span class="hl num">0</span><span class="hl opt">)))</span>
+<span class="hl kwa">print</span> <span class="hl kwd">pretty</span><span class="hl opt">(</span>ldm<span class="hl opt">.</span><span class="hl kwd">undistort</span><span class="hl opt">((</span><span class="hl num">1</span><span class="hl opt">,</span><span class="hl num">0</span><span class="hl opt">)))</span>
+<span class="hl kwa">print</span> <span class="hl kwd">pretty</span><span class="hl opt">(</span>ldm<span class="hl opt">.</span><span class="hl kwd">undistort</span><span class="hl opt">((</span><span class="hl num">0</span><span class="hl opt">,</span><span class="hl num">1</span><span class="hl opt">)))</span>
+<span class="hl kwa">print</span> <span class="hl kwd">pretty</span><span class="hl opt">(</span>ldm<span class="hl opt">.</span><span class="hl kwd">undistort</span><span class="hl opt">((</span><span class="hl num">1</span><span class="hl opt">,</span><span class="hl num">1</span><span class="hl opt">)))</span></pre></cdml_code>		
+leads to the following output:
+<cdml_run><pre class='ttycode'>-<span class="numericconstant">0.1</span> -<span class="numericconstant">0.1</span>
+ <span class="numericconstant">1.1</span> -<span class="numericconstant">0.1</span>
+-<span class="numericconstant">0.1</span>  <span class="numericconstant">1.1</span>
+ <span class="numericconstant">1.1</span>  <span class="numericconstant">1.1</span></pre></cdml_run>
+Likewise, we can distort points:
+<cdml_code lang="py"><pre class="pycode"><span class="hl opt">...</span>
+<span class="hl kwa">print</span> <span class="hl kwd">pretty</span><span class="hl opt">(</span>ldm<span class="hl opt">.</span><span class="hl kwd">distort</span><span class="hl opt">((</span><span class="hl num">0</span><span class="hl opt">,</span><span class="hl num">0</span><span class="hl opt">)))</span>
+<span class="hl kwa">print</span> <span class="hl kwd">pretty</span><span class="hl opt">(</span>ldm<span class="hl opt">.</span><span class="hl kwd">distort</span><span class="hl opt">((</span><span class="hl num">1</span><span class="hl opt">,</span><span class="hl num">0</span><span class="hl opt">)))</span>
+<span class="hl kwa">print</span> <span class="hl kwd">pretty</span><span class="hl opt">(</span>ldm<span class="hl opt">.</span><span class="hl kwd">distort</span><span class="hl opt">((</span><span class="hl num">0</span><span class="hl opt">,</span><span class="hl num">1</span><span class="hl opt">)))</span>
+<span class="hl kwa">print</span> <span class="hl kwd">pretty</span><span class="hl opt">(</span>ldm<span class="hl opt">.</span><span class="hl kwd">distort</span><span class="hl opt">((</span><span class="hl num">1</span><span class="hl opt">,</span><span class="hl num">1</span><span class="hl opt">)))</span></pre></cdml_code>		
+which yields
+<cdml_run><pre class='ttycode'> <span class="numericconstant">0.0603</span>  <span class="numericconstant">0.0603</span>
+ <span class="numericconstant">0.9397</span>  <span class="numericconstant">0.0603</span>
+ <span class="numericconstant">0.0603</span>  <span class="numericconstant">0.9397</span>
+ <span class="numericconstant">0.9397</span>  <span class="numericconstant">0.9397</span></pre></cdml_run>
+		</cdml_body>
+		</cdml_subsection>
+		<cdml_subsection>
+		<cdml_title><span class="hir_number">2.1.5</span><a name="hir_2_1_5"/>&jacobian; and twist vector</cdml_title>
+		<cdml_body>
+In this section we document the evaluation of &jacobian; and twist vector. Both quantities are defined in unit-coordinates
+and based on the undistort-function.
+The &jacobian; is of interest if your are building a compositing operator for (un-)distorting images based on a grid warp
+(like e.g. Nuke's GridWarp node). Sophisticated grid warp operators allow to specify the grid vertices and the two tangent vectors
+at the grid vertex positions along the grid lines. The &jacobian; directly relates to these tangent vectors.
+The following snippets are a test for <cdml_xeqref sref="JacobianPolyFourRadial">(69)</cdml_xeqref> in <cdml_xbibref sref="stdmod"><a href="#cap_bibitem_1">[1]</a></cdml_xbibref>. For our examples we prepare a filmback of 2 &cm; &times; 1 &cm;
+and a simple model function:
+<cdml_code><pre class="cppcode">ldm <span class="hl opt">=</span> ldpk<span class="hl opt">.</span><span class="hl kwd">radial_standard_degree_4</span><span class="hl opt">()</span>
+ldm<span class="hl opt">.</span><span class="hl kwd">w_fb_cm</span><span class="hl opt">(</span><span class="hl num">2.0</span><span class="hl opt">).</span><span class="hl kwd">h_fb_cm</span><span class="hl opt">(</span><span class="hl num">1.0</span><span class="hl opt">)</span>
+ldm<span class="hl opt">.</span><span class="hl kwd">c2</span><span class="hl opt">(</span><span class="hl num">0.1</span><span class="hl opt">).</span><span class="hl kwd">prepare</span><span class="hl opt">()</span></pre></cdml_code>
+Now let us have a look at the &jacobian;:
+<cdml_code><pre class="cppcode">print <span class="hl kwd">pretty</span><span class="hl opt">(</span>ldm<span class="hl opt">.</span><span class="hl kwd">getJacobianMatrix</span><span class="hl opt">((</span><span class="hl num">.5</span><span class="hl opt">,</span><span class="hl num">.5</span><span class="hl opt">)))</span>
+
+print <span class="hl kwd">pretty</span><span class="hl opt">(</span>ldm<span class="hl opt">.</span><span class="hl kwd">getJacobianMatrix</span><span class="hl opt">((</span><span class="hl num">0</span><span class="hl opt">,</span><span class="hl num">0</span><span class="hl opt">)))</span>
+print <span class="hl kwd">pretty</span><span class="hl opt">(</span>ldm<span class="hl opt">.</span><span class="hl kwd">getJacobianMatrix</span><span class="hl opt">((</span><span class="hl num">1</span><span class="hl opt">,</span><span class="hl num">0</span><span class="hl opt">)))</span>
+print <span class="hl kwd">pretty</span><span class="hl opt">(</span>ldm<span class="hl opt">.</span><span class="hl kwd">getJacobianMatrix</span><span class="hl opt">((</span><span class="hl num">0</span><span class="hl opt">,</span><span class="hl num">1</span><span class="hl opt">)))</span>
+print <span class="hl kwd">pretty</span><span class="hl opt">(</span>ldm<span class="hl opt">.</span><span class="hl kwd">getJacobianMatrix</span><span class="hl opt">((</span><span class="hl num">1</span><span class="hl opt">,</span><span class="hl num">1</span><span class="hl opt">)))</span></pre></cdml_code>
+For the radial standard model the &jacobian; at the lens center is the unit matrix.
+In the corners we get a regular behaviour due to the symmetric distortion function.
+<cdml_run><pre class='ttycode'> <span class="numericconstant">1</span>  <span class="numericconstant">0</span>  <span class="numericconstant">0</span>  <span class="numericconstant">1</span>
+ <span class="numericconstant">1.26</span>  <span class="numericconstant">0.04</span>  <span class="numericconstant">0.16</span>  <span class="numericconstant">1.14</span>
+ <span class="numericconstant">1.26</span> -<span class="numericconstant">0.04</span> -<span class="numericconstant">0.16</span>  <span class="numericconstant">1.14</span>
+ <span class="numericconstant">1.26</span> -<span class="numericconstant">0.04</span> -<span class="numericconstant">0.16</span>  <span class="numericconstant">1.14</span>
+ <span class="numericconstant">1.26</span>  <span class="numericconstant">0.04</span>  <span class="numericconstant">0.16</span>  <span class="numericconstant">1.14</span></pre></cdml_run>
+The twist vector is a two-component vector which represents the mixed derivatives of each component of the undistort-function.
+We have implemented this for reasons of completeness. It could be used in grid warp based compositing operators as well, although
+currently there is no practical implementation of such an operator.
+<cdml_code><pre class="cppcode">print <span class="hl kwd">pretty</span><span class="hl opt">(</span>ldm<span class="hl opt">.</span><span class="hl kwd">getTwistVector</span><span class="hl opt">((</span><span class="hl num">.5</span><span class="hl opt">,</span><span class="hl num">.5</span><span class="hl opt">)))</span>
+
+print <span class="hl kwd">pretty</span><span class="hl opt">(</span>ldm<span class="hl opt">.</span><span class="hl kwd">getTwistVector</span><span class="hl opt">((</span><span class="hl num">0</span><span class="hl opt">,</span><span class="hl num">0</span><span class="hl opt">)))</span>
+print <span class="hl kwd">pretty</span><span class="hl opt">(</span>ldm<span class="hl opt">.</span><span class="hl kwd">getTwistVector</span><span class="hl opt">((</span><span class="hl num">1</span><span class="hl opt">,</span><span class="hl num">0</span><span class="hl opt">)))</span>
+print <span class="hl kwd">pretty</span><span class="hl opt">(</span>ldm<span class="hl opt">.</span><span class="hl kwd">getTwistVector</span><span class="hl opt">((</span><span class="hl num">0</span><span class="hl opt">,</span><span class="hl num">1</span><span class="hl opt">)))</span>
+print <span class="hl kwd">pretty</span><span class="hl opt">(</span>ldm<span class="hl opt">.</span><span class="hl kwd">getTwistVector</span><span class="hl opt">((</span><span class="hl num">1</span><span class="hl opt">,</span><span class="hl num">1</span><span class="hl opt">)))</span></pre></cdml_code>
+The result is:
+<cdml_run><pre class='ttycode'> <span class="numericconstant">0</span>  <span class="numericconstant">0</span>
+-<span class="numericconstant">0.08</span> -<span class="numericconstant">0.32</span>
+-<span class="numericconstant">0.08</span>  <span class="numericconstant">0.32</span>
+ <span class="numericconstant">0.08</span> -<span class="numericconstant">0.32</span>
+ <span class="numericconstant">0.08</span>  <span class="numericconstant">0.32</span></pre></cdml_run>
+		</cdml_body>
+		</cdml_subsection>
+	</cdml_section>
+
+	<cdml_section>
+	<cdml_title><span class="hir_number">2.2</span><a name="hir_2_2"/>&nuke;</cdml_title>
+	<cdml_body>
+	As of version 2.0 of the LDPK, the lens distortion nodes for Nuke 10 and later
+	are equipped with
+	<ul>
+		<li>An internal caching mechanism which accelerates the node for sequences with non-animated lens distortion.</li>
+		<li>More options for constructing the output bounding box depending on the input boundig box / format.</li>
+	</ul>
+	<cdml_todo><a name="todoitem_1"/><a href="#hir_todolist"><img class="icon" src="img/cdml_icon_todo.svg"/></a> Need to test &output_mode; &om_stmap;.</cdml_todo>
+	<cdml_todo><a name="todoitem_2"/><a href="#hir_todolist"><img class="icon" src="img/cdml_icon_todo.svg"/></a> Document caching</cdml_todo>
+	</cdml_body>
+
+		<cdml_subsection>
+		<cdml_title><span class="hir_number">2.2.1</span><a name="hir_2_2_1"/>Bounding box</cdml_title>
+		<cdml_body>
+Figure <cdml_numref sref="bounding_box_nuke"><a href="#cap_52">1</a></cdml_numref> shows how the output bounding box of a lens distortion node is constructed, based on
+the input bounding box, the format and the settings &bounding_box_mode;, &bounding_box_margin;
+and <tde4_gui>direction</tde4_gui>.
+
+The switches &quot;merge | intersect&quot; and &quot;either | or &quot; are realized as a single
+knob &bounding_box_mode; with four entries .
+
+The current proposal for this knob is to have the four entries
+<ul>
+	<li>&merge_with_format; (default)</li>
+	<li>&isect_with_format;</li>
+	<li>&merge_with_bbox;</li>
+	<li>&isect_with_bbox;</li>
+</ul>
+
+Up to version 1.9 of the LDPK, the output bounding box was computed as
+[un]distort format merged with input bounding box with margin 0,0. The lens distortion node does <b>not</b> alter the format.
+<img class="diagram" src="img/bbox_nuke.svg"></img>
+<cdml_caption ident="bounding_box_nuke"><span class="span_caption_number">Figure 1:</span> Computing the bounding box from input bounding box or format</cdml_caption>
+
+		</cdml_body>
+		</cdml_subsection>
+
+		<cdml_subsection>
+		<cdml_title><span class="hir_number">2.2.2</span><a name="hir_2_2_2"/>Testing bounding box</cdml_title>
+		<cdml_body>
+This section contains a description of the &nuke; reference project
+<center><tde4_file>$LDPK/projects/nuke/reference_project_bbox_mode.nk</tde4_file>.</center>
+<img class="screenshot" src="img/reference_project_bbox_mode.png"></img>
+<cdml_caption ident="nuke_reference_project_bbox_mode"><span class="span_caption_number">Figure 2:</span> Test project for construction of the bounding box</cdml_caption>
+<ul>
+<li>0. We start with a checker board image, format = 2000x1500.</li>
+<li>1.	We insert an AdjBBox node (for demonstration purposes) which modifies the bounding box by 200,&minus;200, so that we now have a bbox of <bbox>&minus;200,200;2200,1300</bbox>.
+	This incoming bounding box is altered by the distortion nodes due to a &bounding_box_margin; of &minus;400,400 into <bbox>200,&minus;200;1800,1700</bbox>.
+	This altered box is then united or intersected with the distorted or undistorted box from the format or the input bounding box itself.</li>
+
+<li> 2. We test the four entries for &bounding_box_mode;. In path A, &direction; is &dir_distort;, in path B it is &dir_undistort;.
+	<ul>
+	<li>A. All tests are done with:
+		<table>
+		<thead><tr><td>knob</td><td>value</td></tr></thead>
+		<tbody>
+			<tr><td>&bounding_box_margin;</td><td>&minus;400,400</td></tr>
+			<tr><td>&direction;</td><td>&dir_distort;</td></tr>
+			<tr><td>&distortion_degree_2;</td><td>0.5</td></tr>
+			<tr><td>All other distortion knobs</td><td>default</td></tr>
+		</tbody></table>
+	When distort() with strength 0.5 is applied to the format 2000x1500, the result is a box <bbox>175,89;1825,1411</bbox>.
+	When distort() with strength 0.5 is applied to the bbox <bbox>200,&minus;200;1800,1700</bbox>, the result is <bbox>175,89;1825,1411</bbox>.
+		<ul>
+		<li>(i)
+		<table>
+		<thead><tr><td>knob</td><td>value</td></tr></thead>
+		<tbody>
+			<tr><td>&bounding_box_mode;</td><td>&merge_with_format;</td></tr>
+		</tbody></table>
+		The bounding box is the union of <bbox>200,&minus;200;1800,1700</bbox> and the distorted box <bbox>175,89;1825,1411</bbox> of the format 2000x1500.
+		<br></br>Result: bbox = <bbox>&minus;200,89;2200,1411</bbox>.
+		</li>
+		<li>(ii)
+		<table>
+		<thead><tr><td>knob</td><td>value</td></tr></thead>
+		<tbody>
+			<tr><td>&bounding_box_mode;</td><td>&isect_with_format;</td></tr>
+		</tbody></table>
+		The bounding box is the intersection of <bbox>200,&minus;200;1800,1700</bbox> and the distorted box <bbox>175,89;1825,1411</bbox> of the format 2000x1500.
+		<br></br>Result: bbox = <bbox>175,200;1825,1300</bbox>
+		</li>
+		<li>(iii)
+		<table>
+		<thead><tr><td>knob</td><td>value</td></tr></thead>
+		<tbody>
+			<tr><td>&bounding_box_mode;</td><td>&merge_with_bbox;</td></tr>
+		</tbody></table>
+		The bounding box is the union of <bbox>200,&minus;200;1800,1700</bbox> and the distorted box <bbox>61,239;1939,1261</bbox> of the input bbox <bbox>200,&minus;200;1800,1700</bbox>.
+		<br></br>Result: bbox = <bbox>61,&minus;200;1939,1700</bbox>.
+		</li>
+		<li>(iv)
+		<table>
+		<thead><tr><td>knob</td><td>value</td></tr></thead>
+		<tbody>
+			<tr><td>&bounding_box_mode;</td><td>&isect_with_bbox;</td></tr>
+		</tbody></table>
+		The bounding box is the intersection of <bbox>200,&minus;200;1800,1700</bbox> and the distorted box <bbox>61,239;1939,1261</bbox> of the input bbox <bbox>200,&minus;200;1800,1700</bbox>.
+		<br></br>Result: bbox = <bbox>200,239;1800,1261</bbox>
+		</li>
+		</ul>
+	</li>
+	<li>B. All tests are done with:
+		<table><thead><tr><td>knob</td><td>value</td></tr></thead>
+		<tbody>
+			<tr><td>&bounding_box_margin;</td><td>&minus;400,400</td></tr>
+			<tr><td>&direction;</td><td>&dir_undistort;</td></tr>
+			<tr><td>&distortion_degree_2;</td><td>0.5</td></tr>
+			<tr><td>All other distortion knobs</td><td>default</td></tr>
+		</tbody></table>
+	When undistort() with strength 0.5 is applied to the format 2000x1500, the result is a box <bbox>&minus;503,&minus;377;2502,1877</bbox>.
+	When undistort() with strength 0.5 is applied to the <bbox>200,&minus;200;1800,1700</bbox>, the result is a box <bbox>&minus;872,&minus;109;2872,1609</bbox>.
+		<ul>
+		<li>(i)
+		<table>
+		<thead><tr><td>knob</td><td>value</td></tr></thead>
+		<tbody>
+			<tr><td>&bounding_box_mode;</td><td>&merge_with_format;</td></tr>
+		</tbody></table>
+		The bounding box is the union of <bbox>200,&minus;200;1800,1700</bbox> and the undistorted box <bbox>&minus;503,&minus;377;2502,1877</bbox> of the format 2000x1500.
+		<br></br>Result: bbox = <bbox>&minus;503,&minus;377;2502,1877</bbox>.
+		</li>
+		<li>(ii)
+		<table>
+		<thead><tr><td>knob</td><td>value</td></tr></thead>
+		<tbody>
+			<tr><td>&bounding_box_mode;</td><td>&isect_with_format;</td></tr>
+		</tbody></table>
+		The bounding box is the intersection of <bbox>200,&minus;200;1800,1700</bbox> and the undistorted box <bbox>&minus;503,&minus;377;2502,1877</bbox> of the format 2000x1500.
+		<br></br>Result: bbox = <bbox>200,&minus;200;1800,1700</bbox>.
+		</li>
+		<li>(iii)
+		<table>
+		<thead><tr><td>knob</td><td>value</td></tr></thead>
+		<tbody>
+			<tr><td>&bounding_box_mode;</td><td>&merge_with_bbox;</td></tr>
+		</tbody></table>
+		The bounding box is the union of <bbox>200,&minus;200;1800,1700</bbox> and the undistorted box <bbox>&minus;872,&minus;109;2872,1609</bbox> of the input bbox <bbox>200,&minus;200;1800,1700</bbox>.
+		<br></br>Result: bbox = <bbox>&minus;872,&minus;200;2872,1700</bbox>.
+		</li>
+		<li>(iv)
+		<table>
+		<thead><tr><td>knob</td><td>value</td></tr></thead>
+		<tbody>
+			<tr><td>&bounding_box_mode;</td><td>&isect_with_bbox;</td></tr>
+		</tbody></table>
+		The bounding box is the intersection of <bbox>200,&minus;200;1800,1700</bbox> and the undistorted box <bbox>&minus;872,&minus;109;2872,1609</bbox> of the input bbox <bbox>200,&minus;200;1800,1700</bbox>.
+		<br></br>Result: bbox = <bbox>200,&minus;109;1800,1609</bbox>.
+		</li>
+		</ul>
+	</li>
+	</ul>
+</li>
+</ul>
+		</cdml_body>
+		</cdml_subsection>
+	</cdml_section>
+</cdml_chapter>
+<cdml_chapter>
+<cdml_title><span class="hir_number">3</span><a name="hir_3"/>Tests</cdml_title>
+<cdml_body>
+</cdml_body>
+	<cdml_section>
+	<cdml_title><span class="hir_number">3.1</span><a name="hir_3_1"/>Reparametrization</cdml_title>
+	<cdml_body>
+	In this section we will use the python bindings for verifying
+	the reparametrization results
+	<cdml_xeqref sref="ReparametrizationPolyFourRadial">(92)</cdml_xeqref>,
+	<cdml_xeqref sref="ReparametrizationPolyFourRadialDecenter">(95)</cdml_xeqref> and
+	<cdml_xeqref sref="ReparametrizationPolyFourRadialDecenterElliptic">(96)</cdml_xeqref> in <cdml_xbibref sref="stdmod"><a href="#cap_bibitem_1">[1]</a></cdml_xbibref>.
+	In order to do this we specify two filmbacks and lens center offsets
+	and define that these represent to regions in the same focal plane
+	of a hypothetical camera with coincident lens center. Of course,
+	we get different unit coordinates for the two filmbacks. Yet, we can
+	compare the two setups by expressing in- and output of the distortion mapping
+	in length units on the virtual filmback relative to the lens center. Fur this purpose
+	we implement two functions:
+<cdml_code lang="py"><pre class="pycode"><span class="hl kwa">def</span> <span class="hl kwd">unit2cm</span><span class="hl opt">(</span>ldm<span class="hl opt">,</span>p_unit<span class="hl opt">):</span>
+        <span class="hl kwa">return</span> <span class="hl opt">(</span>p_unit<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">] *</span> ldm<span class="hl opt">.</span><span class="hl kwd">w_fb_cm</span><span class="hl opt">() -</span> ldm<span class="hl opt">.</span><span class="hl kwd">x_lc_cm</span><span class="hl opt">(),</span>p_unit<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">] *</span> ldm<span class="hl opt">.</span><span class="hl kwd">h_fb_cm</span><span class="hl opt">() -</span> ldm<span class="hl opt">.</span><span class="hl kwd">y_lc_cm</span><span class="hl opt">())</span>
+<span class="hl kwa">def</span> <span class="hl kwd">cm2unit</span><span class="hl opt">(</span>ldm<span class="hl opt">,</span>p_cm<span class="hl opt">):</span>
+        <span class="hl kwa">return</span> <span class="hl opt">((</span>p_cm<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">] +</span> ldm<span class="hl opt">.</span><span class="hl kwd">x_lc_cm</span><span class="hl opt">()) /</span> ldm<span class="hl opt">.</span><span class="hl kwd">w_fb_cm</span><span class="hl opt">(),(</span>p_cm<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">] +</span> ldm<span class="hl opt">.</span><span class="hl kwd">y_lc_cm</span><span class="hl opt">()) /</span> ldm<span class="hl opt">.</span><span class="hl kwd">h_fb_cm</span><span class="hl opt">())</span></pre></cdml_code>
+	In our tests we shall use these functions as frontend and backend for the undistort-mapping.
+	</cdml_body>
+		<cdml_subsection>
+		<cdml_title><span class="hir_number">3.1.1</span><a name="hir_3_1_1"/>Subimage</cdml_title>
+		<cdml_body>
+	You will find the code for the following test in
+	<center><tde4_file>run/test_reparametrization_subimage_radial_standard_degree_4.py</tde4_file>.</center>
+
+	For the model &radial_standard_degree_4; we define the following (hypothetical!) camera data:
+<cdml_code lang="py"><pre class="pycode"><span class="hl slc"># Old filmback</span>
+w_fb_cm_old<span class="hl opt">,</span>h_fb_cm_old <span class="hl opt">=</span>       <span class="hl num">3.6</span><span class="hl opt">,</span>    <span class="hl num">1.5</span>
+x_lco_cm_old<span class="hl opt">,</span>y_lco_cm_old <span class="hl opt">=</span>     <span class="hl num">0.4</span><span class="hl opt">,</span>    <span class="hl num">0.1</span>
+
+ldm_old <span class="hl opt">=</span> ldpk<span class="hl opt">.</span><span class="hl kwd">radial_standard_degree_4</span><span class="hl opt">()</span>
+ldm_old<span class="hl opt">.</span><span class="hl kwd">fl_cm</span><span class="hl opt">(</span>fl_cm<span class="hl opt">)</span>
+ldm_old<span class="hl opt">.</span><span class="hl kwd">w_fb_cm</span><span class="hl opt">(</span>w_fb_cm_old<span class="hl opt">).</span><span class="hl kwd">h_fb_cm</span><span class="hl opt">(</span>h_fb_cm_old<span class="hl opt">)</span>
+ldm_old<span class="hl opt">.</span><span class="hl kwd">x_lco_cm</span><span class="hl opt">(</span>x_lco_cm_old<span class="hl opt">).</span><span class="hl kwd">y_lco_cm</span><span class="hl opt">(</span>y_lco_cm_old<span class="hl opt">)</span></pre></cdml_code>
+	Now, let us assume during the post-processing pipeline a different portion
+	of the images is picked, which corresponds to a different filmback and lens center offset:
+<cdml_code lang="py"><pre class="pycode"><span class="hl slc"># New filmback</span>
+w_fb_cm_new<span class="hl opt">,</span>h_fb_cm_new <span class="hl opt">=</span>       <span class="hl num">2.0</span><span class="hl opt">,</span>    <span class="hl num">1.2</span>
+x_lco_cm_new<span class="hl opt">,</span>y_lco_cm_new <span class="hl opt">=</span>     <span class="hl num">0.2</span><span class="hl opt">,</span>    <span class="hl num">0.2</span>
+
+ldm_new <span class="hl opt">=</span> ldpk<span class="hl opt">.</span><span class="hl kwd">radial_standard_degree_4</span><span class="hl opt">()</span>
+ldm_new<span class="hl opt">.</span><span class="hl kwd">fl_cm</span><span class="hl opt">(</span>fl_cm<span class="hl opt">)</span>
+ldm_new<span class="hl opt">.</span><span class="hl kwd">w_fb_cm</span><span class="hl opt">(</span>w_fb_cm_new<span class="hl opt">).</span><span class="hl kwd">h_fb_cm</span><span class="hl opt">(</span>h_fb_cm_new<span class="hl opt">)</span>
+ldm_new<span class="hl opt">.</span><span class="hl kwd">x_lco_cm</span><span class="hl opt">(</span>x_lco_cm_new<span class="hl opt">).</span><span class="hl kwd">y_lco_cm</span><span class="hl opt">(</span>y_lco_cm_new<span class="hl opt">)</span></pre></cdml_code>
+For the original filmback we build an example lens distortion parameter set:
+<cdml_code lang="py"><pre class="pycode">c2_old<span class="hl opt">,</span>u2_old<span class="hl opt">,</span>v2_old <span class="hl opt">=</span>          <span class="hl num">0.1</span><span class="hl opt">,    -</span><span class="hl num">0.01</span><span class="hl opt">,</span>  <span class="hl num">0.03</span>
+c4_old<span class="hl opt">,</span>u4_old<span class="hl opt">,</span>v4_old <span class="hl opt">=</span>          <span class="hl num">0.05</span><span class="hl opt">,   -</span><span class="hl num">0.02</span><span class="hl opt">,</span>  <span class="hl num">0.015</span>
+phi_bs_old<span class="hl opt">,</span>b_bs_old <span class="hl opt">=</span>           <span class="hl num">45.0</span><span class="hl opt">,</span>   <span class="hl num">0.05</span>
+ldm_old<span class="hl opt">.</span><span class="hl kwd">c2</span><span class="hl opt">(</span>c2_old<span class="hl opt">).</span><span class="hl kwd">u2</span><span class="hl opt">(</span>u2_old<span class="hl opt">).</span><span class="hl kwd">v2</span><span class="hl opt">(</span>v2_old<span class="hl opt">)</span>
+ldm_old<span class="hl opt">.</span><span class="hl kwd">c4</span><span class="hl opt">(</span>c4_old<span class="hl opt">).</span><span class="hl kwd">u4</span><span class="hl opt">(</span>u4_old<span class="hl opt">).</span><span class="hl kwd">v4</span><span class="hl opt">(</span>v4_old<span class="hl opt">)</span>
+ldm_old<span class="hl opt">.</span><span class="hl kwd">phi_bs</span><span class="hl opt">(</span>phi_bs_old<span class="hl opt">).</span><span class="hl kwd">b_bs</span><span class="hl opt">(</span>b_bs_old<span class="hl opt">)</span>
+ldm_old<span class="hl opt">.</span><span class="hl kwd">prepare</span><span class="hl opt">()</span></pre></cdml_code>
+The rules for reparametrization derived in [1] now tell us that
+we will get an equivalent model function for the new filmback, if
+we compute the new coefficients form the original ones as
+<cdml_code lang="py"><pre class="pycode"><span class="hl slc"># New distortion parameters</span>
+c2_new <span class="hl opt">=</span> c2_old <span class="hl opt">*</span> math<span class="hl opt">.</span><span class="hl kwb">pow</span><span class="hl opt">(</span>rho<span class="hl opt">,</span><span class="hl num">2</span><span class="hl opt">)</span>
+u2_new <span class="hl opt">=</span> u2_old <span class="hl opt">*</span> rho
+v2_new <span class="hl opt">=</span> v2_old <span class="hl opt">*</span> rho
+c4_new <span class="hl opt">=</span> c4_old <span class="hl opt">*</span> math<span class="hl opt">.</span><span class="hl kwb">pow</span><span class="hl opt">(</span>rho<span class="hl opt">,</span><span class="hl num">4</span><span class="hl opt">)</span>
+u4_new <span class="hl opt">=</span> u4_old <span class="hl opt">*</span> math<span class="hl opt">.</span><span class="hl kwb">pow</span><span class="hl opt">(</span>rho<span class="hl opt">,</span><span class="hl num">3</span><span class="hl opt">)</span>
+v4_new <span class="hl opt">=</span> v4_old <span class="hl opt">*</span> math<span class="hl opt">.</span><span class="hl kwb">pow</span><span class="hl opt">(</span>rho<span class="hl opt">,</span><span class="hl num">3</span><span class="hl opt">)</span>
+phi_bs_new <span class="hl opt">=</span> phi_bs_old
+b_bs_new <span class="hl opt">=</span> b_bs_old
+ldm_new<span class="hl opt">.</span><span class="hl kwd">c2</span><span class="hl opt">(</span>c2_new<span class="hl opt">).</span><span class="hl kwd">u2</span><span class="hl opt">(</span>u2_new<span class="hl opt">).</span><span class="hl kwd">v2</span><span class="hl opt">(</span>v2_new<span class="hl opt">)</span>
+ldm_new<span class="hl opt">.</span><span class="hl kwd">c4</span><span class="hl opt">(</span>c4_new<span class="hl opt">).</span><span class="hl kwd">u4</span><span class="hl opt">(</span>u4_new<span class="hl opt">).</span><span class="hl kwd">v4</span><span class="hl opt">(</span>v4_new<span class="hl opt">)</span>
+ldm_new<span class="hl opt">.</span><span class="hl kwd">phi_bs</span><span class="hl opt">(</span>phi_bs_new<span class="hl opt">).</span><span class="hl kwd">b_bs</span><span class="hl opt">(</span>b_bs_new<span class="hl opt">)</span>
+ldm_new<span class="hl opt">.</span><span class="hl kwd">prepare</span><span class="hl opt">()</span></pre></cdml_code>
+In order to verify that this transformation is correct we
+pick a few sample points and apply <tde4_func>undistort()</tde4_func>.
+This test is particularly safe, because the &quot;undistort&quot;-direction
+is robust with respect to inappropriate choices of filmback, lens center offset and
+distortion parameters. In principle we can do the same test by distorting point positions,
+but in that case we have to make sure that the points are lying with in the domain
+of <tde4_func>distort()</tde4_func>.
+<cdml_code lang="py"><pre class="pycode">corners_old <span class="hl opt">= ((-</span><span class="hl num">2.2</span><span class="hl opt">,-</span><span class="hl num">0.85</span><span class="hl opt">),(</span> <span class="hl num">1.4</span><span class="hl opt">,-</span><span class="hl num">0.85</span><span class="hl opt">),(-</span><span class="hl num">2.2</span><span class="hl opt">,</span> <span class="hl num">0.65</span><span class="hl opt">),(</span> <span class="hl num">1.4</span><span class="hl opt">,</span> <span class="hl num">0.65</span><span class="hl opt">))</span>
+<span class="hl kwa">for</span> p_cm <span class="hl kwa">in</span> corners_old<span class="hl opt">:</span>
+        <span class="hl kwa">print</span> <span class="hl kwd">pretty</span><span class="hl opt">(</span><span class="hl kwd">unit2cm</span><span class="hl opt">(</span>ldm_old<span class="hl opt">,</span>ldm_old<span class="hl opt">.</span><span class="hl kwd">undistort</span><span class="hl opt">(</span><span class="hl kwd">cm2unit</span><span class="hl opt">(</span>ldm_old<span class="hl opt">,</span>p_cm<span class="hl opt">))))</span>
+        <span class="hl kwa">print</span> <span class="hl kwd">pretty</span><span class="hl opt">(</span><span class="hl kwd">unit2cm</span><span class="hl opt">(</span>ldm_new<span class="hl opt">,</span>ldm_new<span class="hl opt">.</span><span class="hl kwd">undistort</span><span class="hl opt">(</span><span class="hl kwd">cm2unit</span><span class="hl opt">(</span>ldm_new<span class="hl opt">,</span>p_cm<span class="hl opt">))))</span></pre></cdml_code>
+The output shows that both model functions map to the same undistorted point positions, which is the result we were looking for.
+<cdml_run><pre class='ttycode'>-<span class="numericconstant">2.988612</span> -<span class="numericconstant">1.026531</span>
+-<span class="numericconstant">2.988612</span> -<span class="numericconstant">1.026531</span>
+ <span class="numericconstant">1.382953</span> -<span class="numericconstant">0.781818</span>
+ <span class="numericconstant">1.382953</span> -<span class="numericconstant">0.781818</span>
+-<span class="numericconstant">3.054451</span>  <span class="numericconstant">0.941648</span>
+-<span class="numericconstant">3.054451</span>  <span class="numericconstant">0.941648</span>
+ <span class="numericconstant">1.49783</span>  <span class="numericconstant">0.783976</span>
+ <span class="numericconstant">1.49783</span>  <span class="numericconstant">0.783976</span></pre></cdml_run>
+		</cdml_body>
+		</cdml_subsection>
+		<cdml_subsection>
+		<cdml_title><span class="hir_number">3.1.2</span><a name="hir_3_1_2"/>Flipping</cdml_title>
+		<cdml_body>
+		</cdml_body>
+		</cdml_subsection>
+	</cdml_section>
+</cdml_chapter>
+
+
+<cdml_todolist><cdml_title><a name="hir_todolist"/>Todo</cdml_title><ul>
+<li><a href="#todoitem_1">2.2</a>: Need to test &output_mode; &om_stmap;.</li>
+<li><a href="#todoitem_2">2.2</a>: Document caching</li>
+</ul>
+</cdml_todolist>
+<cdml_annotations><cdml_title><a name="hir_annotations"/>Annotations</cdml_title><br/></cdml_annotations>
+
+<cdml_appendix></cdml_appendix>
+<cdml_annotations><cdml_title><a name="hir_annotations"/>References</cdml_title><br/></cdml_annotations>
+[1] --- U. Sassenberg, The Standard Models for Lens Distortion in 3DE4, <i>SDV internal</i>, in <tde4_file>$LDPK/doc/tex</tde4_file>, 2018
+
+</cdml_article>
+<div class="cdml_credit">Document created with CDML from <cdml_source>/server/devel/sdv/privat/uwe/source/tde4_doc/tde4_ldm_standard/cdml/tde4_ldm_standard.xml</cdml_source></div>
+
+<div style="width:98%;margin:20px auto 40px auto;text-align:center;border-top:1px solid rgb(200,200,200);padding-top:20px;font-size:14px;">
+<img class="logo" src="img/sdv_logo2008_large.jpg" style="width:200px;height:auto;"></img><br></br>
+&copy; 2015 by Science-D-Visions.
+</div>
+</body>
+</html>

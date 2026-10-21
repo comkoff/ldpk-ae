@@ -1,0 +1,5 @@
+<map id="ldpk::generic_radial_distortion&lt; VEC2, MAT2, N &gt;" name="ldpk::generic_radial_distortion&lt; VEC2, MAT2, N &gt;">
+<area shape="rect" id="node1" title="A polynomial model with N coefficients for radially symmetric lenses. This class contains the model f..." alt="" coords="5,169,223,211"/>
+<area shape="rect" id="node2" href="$classldpk_1_1generic__distortion__base.html" title="Base class for a distortion model with N parameters. You may find it useful to derive your own distor..." alt="" coords="21,80,207,121"/>
+<area shape="rect" id="node3" href="$classldpk_1_1generic__distortion__api.html" title="For organizing the documentation. This class is not really required and there are not many common fun..." alt="" coords="13,5,215,32"/>
+</map>

@@ -1,0 +1,15 @@
+sqlcode
+	{
+	font-family:monospace;
+	}
+pre.sqlcode
+	{
+	border: 1px solid #aaa;
+	padding-top:5px;
+	padding-bottom:5px;
+	padding-left:5px;
+	padding-right:5px;
+	background-color:#eee;
+	color:inherit;
+	font-size:smaller;
+	}

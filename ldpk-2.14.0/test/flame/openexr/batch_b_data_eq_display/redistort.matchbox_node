@@ -1,0 +1,923 @@
+<Setup>
+	<Base>
+		<Version>17</Version>
+		<NAME>LD_3DE4_Anamorphic_Rescaled_Degree_6</NAME>
+		<Note/>
+		<Expanded>False</Expanded>
+		<ScrollBar>0</ScrollBar>
+		<Frames>0</Frames>
+		<Current_Time>1</Current_Time>
+		<Input_DataType>4</Input_DataType>
+		<ClampMode>0</ClampMode>
+		<AdapDegrad>False</AdapDegrad>
+		<ReadOnly>False</ReadOnly>
+		<Range Before='2' After='2' Start='0' End='0' SpanEnable='False' Span='1'/>
+		<NoMediaHandling>1</NoMediaHandling>
+		<UsedAsTransition>False</UsedAsTransition>
+		<FrameBounds W='2400' H='1200' X='0' Y='0' SX='20.0' SY='10.0'/>
+	</Base>
+	<State>
+		<NbPasses>1</NbPasses>
+		<Regen>True</Regen>
+		<OutputResMode>1</OutputResMode>
+		<OutputResolution>
+			<Width>2400</Width>
+			<Height>1200</Height>
+			<Format>124</Format>
+			<ScanFormat>2</ScanFormat>
+			<AspectRatio>2.0</AspectRatio>
+			<ColourSpace>Unknown</ColourSpace>
+		</OutputResolution>
+		<TopChannel>
+			<Channel Name='LD_3DE4_Anamorphic_Rescaled_Degree_6'>
+				<Uncollapsed/>
+			</Channel>
+		</TopChannel>
+		<ShaderParameters>
+<!-- Built-in parameters -->
+			<Parameter>
+				<Data>
+					<Channel Name='tde4_filmback_width_cm'>
+						<Extrap>constant</Extrap>
+						<Value>2.0</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Data>
+			</Parameter>
+			<Parameter>
+				<Data>
+					<Channel Name='tde4_filmback_height_cm'>
+						<Extrap>constant</Extrap>
+						<Value>1.0</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Data>
+			</Parameter>
+			<Parameter>
+				<Data>
+					<Channel Name='tde4_lens_center_offset_x_cm'>
+						<Extrap>constant</Extrap>
+						<Value>0.0</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Data>
+			</Parameter>
+			<Parameter>
+				<Data>
+					<Channel Name='tde4_lens_center_offset_y_cm'>
+						<Extrap>constant</Extrap>
+						<Value>0.0</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Data>
+			</Parameter>
+			<Parameter>
+				<Data>
+					<Channel Name='tde4_pixel_aspect'>
+						<Extrap>constant</Extrap>
+						<Value>1.0</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Data>
+			</Parameter>
+			<Parameter>
+				<Data>
+					<Channel Name='tde4_focal_length_cm'>
+						<Extrap>constant</Extrap>
+						<Value>3.0</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Data>
+			</Parameter>
+			<Parameter>
+				<Data>
+					<Channel Name='tde4_focus_distance_cm'>
+						<Extrap>constant</Extrap>
+						<Value>91.44</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Data>
+			</Parameter>
+<!-- Field of View -->
+			<Parameter>
+				<X>
+					<Channel Name='X'>
+						<Extrap>constant</Extrap>
+						<Value>0.08333333</Value>
+						<Uncollapsed/>
+					</Channel>
+				</X>
+				<Y>
+					<Channel Name='Y'>
+						<Extrap>constant</Extrap>
+						<Value>0.08333333</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Y>
+				<Icon>False</Icon>
+				<Action3D>False</Action3D>
+			</Parameter>
+			<Parameter>
+				<X>
+					<Channel Name='X'>
+						<Extrap>constant</Extrap>
+						<Value>0.91666667</Value>
+						<Uncollapsed/>
+					</Channel>
+				</X>
+				<Y>
+					<Channel Name='Y'>
+						<Extrap>constant</Extrap>
+						<Value>0.91666667</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Y>
+				<Icon>False</Icon>
+				<Action3D>False</Action3D>
+			</Parameter>
+			<Parameter>
+				<X>
+					<Channel Name='X'>
+						<Extrap>constant</Extrap>
+						<Value>0.08333333</Value>
+						<Uncollapsed/>
+					</Channel>
+				</X>
+				<Y>
+					<Channel Name='Y'>
+						<Extrap>constant</Extrap>
+						<Value>0.08333333</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Y>
+				<Icon>False</Icon>
+				<Action3D>False</Action3D>
+			</Parameter>
+			<Parameter>
+				<X>
+					<Channel Name='X'>
+						<Extrap>constant</Extrap>
+						<Value>0.91666667</Value>
+						<Uncollapsed/>
+					</Channel>
+				</X>
+				<Y>
+					<Channel Name='Y'>
+						<Extrap>constant</Extrap>
+						<Value>0.91666667</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Y>
+				<Icon>False</Icon>
+				<Action3D>False</Action3D>
+			</Parameter>
+<!-- Flow control -->
+<!-- Direction: distort, undistort, chebyshev, identity -->
+			<Parameter>
+				<value>0</value>
+			</Parameter>
+<!-- Render Mode: image, stmap, jacobi, jacobi diffquot, twist vector (nyi), twist vector diffquot -->
+			<Parameter>
+				<value>0</value>
+			</Parameter>
+<!-- Reconstruction filter: bilinear, bicubic -->
+			<Parameter>
+				<value>2</value>
+			</Parameter>
+<!-- Initial value mode: image, polynomial -->
+			<Parameter>
+				<value>1</value>
+			</Parameter>
+			<Parameter>
+				<Data>
+					<Channel Name='w_in_px'>
+						<Extrap>constant</Extrap>
+						<Value>2400</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Data>
+			</Parameter>
+			<Parameter>
+				<Data>
+					<Channel Name='h_in_px'>
+						<Extrap>constant</Extrap>
+						<Value>1200</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Data>
+			</Parameter>
+<!-- Model dependent parameters -->
+			<Parameter>
+				<Data>
+					<Channel Name='Cx02 - Degree 2'>
+						<Extrap>constant</Extrap>
+						<Value>0.1</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Data>
+			</Parameter>
+			<Parameter>
+				<Data>
+					<Channel Name='Cy02 - Degree 2'>
+						<Extrap>constant</Extrap>
+						<Value>0.2</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Data>
+			</Parameter>
+			<Parameter>
+				<Data>
+					<Channel Name='Cx22 - Degree 2'>
+						<Extrap>constant</Extrap>
+						<Value>0.0</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Data>
+			</Parameter>
+			<Parameter>
+				<Data>
+					<Channel Name='Cy22 - Degree 2'>
+						<Extrap>constant</Extrap>
+						<Value>0.0</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Data>
+			</Parameter>
+			<Parameter>
+				<Data>
+					<Channel Name='Cx04 - Degree 4'>
+						<Extrap>constant</Extrap>
+						<Value>0.0</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Data>
+			</Parameter>
+			<Parameter>
+				<Data>
+					<Channel Name='Cy04 - Degree 4'>
+						<Extrap>constant</Extrap>
+						<Value>0.0</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Data>
+			</Parameter>
+			<Parameter>
+				<Data>
+					<Channel Name='Cx24 - Degree 4'>
+						<Extrap>constant</Extrap>
+						<Value>0.0</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Data>
+			</Parameter>
+			<Parameter>
+				<Data>
+					<Channel Name='Cy24 - Degree 4'>
+						<Extrap>constant</Extrap>
+						<Value>0.0</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Data>
+			</Parameter>
+			<Parameter>
+				<Data>
+					<Channel Name='Cx44 - Degree 4'>
+						<Extrap>constant</Extrap>
+						<Value>0.0</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Data>
+			</Parameter>
+			<Parameter>
+				<Data>
+					<Channel Name='Cy44 - Degree 4'>
+						<Extrap>constant</Extrap>
+						<Value>0.0</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Data>
+			</Parameter>
+			<Parameter>
+				<Data>
+					<Channel Name='Cx06 - Degree 6'>
+						<Extrap>constant</Extrap>
+						<Value>0.0</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Data>
+			</Parameter>
+			<Parameter>
+				<Data>
+					<Channel Name='Cy06 - Degree 6'>
+						<Extrap>constant</Extrap>
+						<Value>0.0</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Data>
+			</Parameter>
+			<Parameter>
+				<Data>
+					<Channel Name='Cx26 - Degree 6'>
+						<Extrap>constant</Extrap>
+						<Value>0.0</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Data>
+			</Parameter>
+			<Parameter>
+				<Data>
+					<Channel Name='Cy26 - Degree 6'>
+						<Extrap>constant</Extrap>
+						<Value>0.0</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Data>
+			</Parameter>
+			<Parameter>
+				<Data>
+					<Channel Name='Cx46 - Degree 6'>
+						<Extrap>constant</Extrap>
+						<Value>0.0</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Data>
+			</Parameter>
+			<Parameter>
+				<Data>
+					<Channel Name='Cy46 - Degree 6'>
+						<Extrap>constant</Extrap>
+						<Value>0.0</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Data>
+			</Parameter>
+			<Parameter>
+				<Data>
+					<Channel Name='Cx66 - Degree 6'>
+						<Extrap>constant</Extrap>
+						<Value>0.05</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Data>
+			</Parameter>
+			<Parameter>
+				<Data>
+					<Channel Name='Cy66 - Degree 6'>
+						<Extrap>constant</Extrap>
+						<Value>-0.1</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Data>
+			</Parameter>
+			<Parameter>
+				<Data>
+					<Channel Name='Lens Rotation'>
+						<Extrap>constant</Extrap>
+						<Value>2.0</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Data>
+			</Parameter>
+			<Parameter>
+				<Data>
+					<Channel Name='Squeeze-X'>
+						<Extrap>constant</Extrap>
+						<Value>0.95</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Data>
+			</Parameter>
+			<Parameter>
+				<Data>
+					<Channel Name='Squeeze-Y'>
+						<Extrap>constant</Extrap>
+						<Value>1.05</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Data>
+			</Parameter>
+			<Parameter>
+				<Data>
+					<Channel Name='Rescale'>
+						<Extrap>constant</Extrap>
+						<Value>2.0</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Data>
+			</Parameter>
+<!-- Chebyshev coefficients -->
+			<Parameter>
+				<X>
+					<Channel Name='X'>
+						<Extrap>constant</Extrap>
+						<Value>3.054905694800891e-16</Value>
+						<Uncollapsed/>
+					</Channel>
+				</X>
+				<Y>
+					<Channel Name='Y'>
+						<Extrap>constant</Extrap>
+						<Value>-1.2163405365342318e-17</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Y>
+				<Icon>False</Icon>
+				<Action3D>False</Action3D>
+			</Parameter>
+			<Parameter>
+				<X>
+					<Channel Name='X'>
+						<Extrap>constant</Extrap>
+						<Value>1.0202035289943572</Value>
+						<Uncollapsed/>
+					</Channel>
+				</X>
+				<Y>
+					<Channel Name='Y'>
+						<Extrap>constant</Extrap>
+						<Value>-0.025433057606459655</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Y>
+				<Icon>False</Icon>
+				<Action3D>False</Action3D>
+			</Parameter>
+			<Parameter>
+				<X>
+					<Channel Name='X'>
+						<Extrap>constant</Extrap>
+						<Value>-0.012545432510840001</Value>
+						<Uncollapsed/>
+					</Channel>
+				</X>
+				<Y>
+					<Channel Name='Y'>
+						<Extrap>constant</Extrap>
+						<Value>0.8956072908585248</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Y>
+				<Icon>False</Icon>
+				<Action3D>False</Action3D>
+			</Parameter>
+			<Parameter>
+				<X>
+					<Channel Name='X'>
+						<Extrap>constant</Extrap>
+						<Value>3.5600643032644676e-16</Value>
+						<Uncollapsed/>
+					</Channel>
+				</X>
+				<Y>
+					<Channel Name='Y'>
+						<Extrap>constant</Extrap>
+						<Value>-1.1071764008768653e-16</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Y>
+				<Icon>False</Icon>
+				<Action3D>False</Action3D>
+			</Parameter>
+			<Parameter>
+				<X>
+					<Channel Name='X'>
+						<Extrap>constant</Extrap>
+						<Value>9.212228441537314e-16</Value>
+						<Uncollapsed/>
+					</Channel>
+				</X>
+				<Y>
+					<Channel Name='Y'>
+						<Extrap>constant</Extrap>
+						<Value>2.0340025852246019e-16</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Y>
+				<Icon>False</Icon>
+				<Action3D>False</Action3D>
+			</Parameter>
+			<Parameter>
+				<X>
+					<Channel Name='X'>
+						<Extrap>constant</Extrap>
+						<Value>1.723413016729003e-16</Value>
+						<Uncollapsed/>
+					</Channel>
+				</X>
+				<Y>
+					<Channel Name='Y'>
+						<Extrap>constant</Extrap>
+						<Value>-2.5271848921963796e-16</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Y>
+				<Icon>False</Icon>
+				<Action3D>False</Action3D>
+			</Parameter>
+			<Parameter>
+				<X>
+					<Channel Name='X'>
+						<Extrap>constant</Extrap>
+						<Value>-0.007105671443674021</Value>
+						<Uncollapsed/>
+					</Channel>
+				</X>
+				<Y>
+					<Channel Name='Y'>
+						<Extrap>constant</Extrap>
+						<Value>0.00018643153409303058</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Y>
+				<Icon>False</Icon>
+				<Action3D>False</Action3D>
+			</Parameter>
+			<Parameter>
+				<X>
+					<Channel Name='X'>
+						<Extrap>constant</Extrap>
+						<Value>0.0011228761448258393</Value>
+						<Uncollapsed/>
+					</Channel>
+				</X>
+				<Y>
+					<Channel Name='Y'>
+						<Extrap>constant</Extrap>
+						<Value>-0.02177912805337091</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Y>
+				<Icon>False</Icon>
+				<Action3D>False</Action3D>
+			</Parameter>
+			<Parameter>
+				<X>
+					<Channel Name='X'>
+						<Extrap>constant</Extrap>
+						<Value>-0.008239110554799287</Value>
+						<Uncollapsed/>
+					</Channel>
+				</X>
+				<Y>
+					<Channel Name='Y'>
+						<Extrap>constant</Extrap>
+						<Value>0.0025263094414512636</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Y>
+				<Icon>False</Icon>
+				<Action3D>False</Action3D>
+			</Parameter>
+			<Parameter>
+				<X>
+					<Channel Name='X'>
+						<Extrap>constant</Extrap>
+						<Value>0.0005701767538755651</Value>
+						<Uncollapsed/>
+					</Channel>
+				</X>
+				<Y>
+					<Channel Name='Y'>
+						<Extrap>constant</Extrap>
+						<Value>-0.009542535706483375</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Y>
+				<Icon>False</Icon>
+				<Action3D>False</Action3D>
+			</Parameter>
+			<Parameter>
+				<X>
+					<Channel Name='X'>
+						<Extrap>constant</Extrap>
+						<Value>3.746148910965095e-17</Value>
+						<Uncollapsed/>
+					</Channel>
+				</X>
+				<Y>
+					<Channel Name='Y'>
+						<Extrap>constant</Extrap>
+						<Value>-5.589585560305205e-17</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Y>
+				<Icon>False</Icon>
+				<Action3D>False</Action3D>
+			</Parameter>
+			<Parameter>
+				<X>
+					<Channel Name='X'>
+						<Extrap>constant</Extrap>
+						<Value>-5.865737358662401e-16</Value>
+						<Uncollapsed/>
+					</Channel>
+				</X>
+				<Y>
+					<Channel Name='Y'>
+						<Extrap>constant</Extrap>
+						<Value>9.280217852021282e-17</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Y>
+				<Icon>False</Icon>
+				<Action3D>False</Action3D>
+			</Parameter>
+			<Parameter>
+				<X>
+					<Channel Name='X'>
+						<Extrap>constant</Extrap>
+						<Value>4.69492286670987e-17</Value>
+						<Uncollapsed/>
+					</Channel>
+				</X>
+				<Y>
+					<Channel Name='Y'>
+						<Extrap>constant</Extrap>
+						<Value>1.39570126415842e-16</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Y>
+				<Icon>False</Icon>
+				<Action3D>False</Action3D>
+			</Parameter>
+			<Parameter>
+				<X>
+					<Channel Name='X'>
+						<Extrap>constant</Extrap>
+						<Value>1.3955611798535853e-16</Value>
+						<Uncollapsed/>
+					</Channel>
+				</X>
+				<Y>
+					<Channel Name='Y'>
+						<Extrap>constant</Extrap>
+						<Value>9.217413546459673e-17</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Y>
+				<Icon>False</Icon>
+				<Action3D>False</Action3D>
+			</Parameter>
+			<Parameter>
+				<X>
+					<Channel Name='X'>
+						<Extrap>constant</Extrap>
+						<Value>-5.263799669715623e-16</Value>
+						<Uncollapsed/>
+					</Channel>
+				</X>
+				<Y>
+					<Channel Name='Y'>
+						<Extrap>constant</Extrap>
+						<Value>-8.856502930340775e-17</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Y>
+				<Icon>False</Icon>
+				<Action3D>False</Action3D>
+			</Parameter>
+			<Parameter>
+				<X>
+					<Channel Name='X'>
+						<Extrap>constant</Extrap>
+						<Value>0.0005488912634803315</Value>
+						<Uncollapsed/>
+					</Channel>
+				</X>
+				<Y>
+					<Channel Name='Y'>
+						<Extrap>constant</Extrap>
+						<Value>0.00019668843458653113</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Y>
+				<Icon>False</Icon>
+				<Action3D>False</Action3D>
+			</Parameter>
+			<Parameter>
+				<X>
+					<Channel Name='X'>
+						<Extrap>constant</Extrap>
+						<Value>0.0001451151365483697</Value>
+						<Uncollapsed/>
+					</Channel>
+				</X>
+				<Y>
+					<Channel Name='Y'>
+						<Extrap>constant</Extrap>
+						<Value>-0.0025117729919267367</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Y>
+				<Icon>False</Icon>
+				<Action3D>False</Action3D>
+			</Parameter>
+			<Parameter>
+				<X>
+					<Channel Name='X'>
+						<Extrap>constant</Extrap>
+						<Value>0.0011717154082682515</Value>
+						<Uncollapsed/>
+					</Channel>
+				</X>
+				<Y>
+					<Channel Name='Y'>
+						<Extrap>constant</Extrap>
+						<Value>-0.0006409070380834344</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Y>
+				<Icon>False</Icon>
+				<Action3D>False</Action3D>
+			</Parameter>
+			<Parameter>
+				<X>
+					<Channel Name='X'>
+						<Extrap>constant</Extrap>
+						<Value>0.0003296826243245156</Value>
+						<Uncollapsed/>
+					</Channel>
+				</X>
+				<Y>
+					<Channel Name='Y'>
+						<Extrap>constant</Extrap>
+						<Value>0.001755238570858313</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Y>
+				<Icon>False</Icon>
+				<Action3D>False</Action3D>
+			</Parameter>
+			<Parameter>
+				<X>
+					<Channel Name='X'>
+						<Extrap>constant</Extrap>
+						<Value>-0.0007923224217579911</Value>
+						<Uncollapsed/>
+					</Channel>
+				</X>
+				<Y>
+					<Channel Name='Y'>
+						<Extrap>constant</Extrap>
+						<Value>-0.0004921049081711288</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Y>
+				<Icon>False</Icon>
+				<Action3D>False</Action3D>
+			</Parameter>
+			<Parameter>
+				<X>
+					<Channel Name='X'>
+						<Extrap>constant</Extrap>
+						<Value>-4.1998121715415226e-05</Value>
+						<Uncollapsed/>
+					</Channel>
+				</X>
+				<Y>
+					<Channel Name='Y'>
+						<Extrap>constant</Extrap>
+						<Value>0.0005504443894384642</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Y>
+				<Icon>False</Icon>
+				<Action3D>False</Action3D>
+			</Parameter>
+			<Parameter>
+				<X>
+					<Channel Name='X'>
+						<Extrap>constant</Extrap>
+						<Value>-5.045757285199145e-17</Value>
+						<Uncollapsed/>
+					</Channel>
+				</X>
+				<Y>
+					<Channel Name='Y'>
+						<Extrap>constant</Extrap>
+						<Value>3.0525016671838923e-17</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Y>
+				<Icon>False</Icon>
+				<Action3D>False</Action3D>
+			</Parameter>
+			<Parameter>
+				<X>
+					<Channel Name='X'>
+						<Extrap>constant</Extrap>
+						<Value>8.378351668106161e-17</Value>
+						<Uncollapsed/>
+					</Channel>
+				</X>
+				<Y>
+					<Channel Name='Y'>
+						<Extrap>constant</Extrap>
+						<Value>-5.3274094423355057e-17</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Y>
+				<Icon>False</Icon>
+				<Action3D>False</Action3D>
+			</Parameter>
+			<Parameter>
+				<X>
+					<Channel Name='X'>
+						<Extrap>constant</Extrap>
+						<Value>2.0772103516213416e-17</Value>
+						<Uncollapsed/>
+					</Channel>
+				</X>
+				<Y>
+					<Channel Name='Y'>
+						<Extrap>constant</Extrap>
+						<Value>-7.923805872040709e-18</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Y>
+				<Icon>False</Icon>
+				<Action3D>False</Action3D>
+			</Parameter>
+			<Parameter>
+				<X>
+					<Channel Name='X'>
+						<Extrap>constant</Extrap>
+						<Value>9.984865586693344e-17</Value>
+						<Uncollapsed/>
+					</Channel>
+				</X>
+				<Y>
+					<Channel Name='Y'>
+						<Extrap>constant</Extrap>
+						<Value>1.4405252693774792e-17</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Y>
+				<Icon>False</Icon>
+				<Action3D>False</Action3D>
+			</Parameter>
+			<Parameter>
+				<X>
+					<Channel Name='X'>
+						<Extrap>constant</Extrap>
+						<Value>-4.202754537767021e-17</Value>
+						<Uncollapsed/>
+					</Channel>
+				</X>
+				<Y>
+					<Channel Name='Y'>
+						<Extrap>constant</Extrap>
+						<Value>-3.576208538615958e-17</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Y>
+				<Icon>False</Icon>
+				<Action3D>False</Action3D>
+			</Parameter>
+			<Parameter>
+				<X>
+					<Channel Name='X'>
+						<Extrap>constant</Extrap>
+						<Value>-8.683180777921603e-17</Value>
+						<Uncollapsed/>
+					</Channel>
+				</X>
+				<Y>
+					<Channel Name='Y'>
+						<Extrap>constant</Extrap>
+						<Value>-2.451229074702024e-17</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Y>
+				<Icon>False</Icon>
+				<Action3D>False</Action3D>
+			</Parameter>
+			<Parameter>
+				<X>
+					<Channel Name='X'>
+						<Extrap>constant</Extrap>
+						<Value>8.880655677190495e-17</Value>
+						<Uncollapsed/>
+					</Channel>
+				</X>
+				<Y>
+					<Channel Name='Y'>
+						<Extrap>constant</Extrap>
+						<Value>2.699982856068197e-17</Value>
+						<Uncollapsed/>
+					</Channel>
+				</Y>
+				<Icon>False</Icon>
+				<Action3D>False</Action3D>
+			</Parameter>
+		</ShaderParameters>
+		<InputPage>0</InputPage>
+		<RenderContext>0</RenderContext>
+		<InputRewiring>
+			<InputIndex SamplerIndex='0'>0</InputIndex>
+			<InputIndex SamplerIndex='1'>1</InputIndex>
+			<InputIndex SamplerIndex='2'>2</InputIndex>
+		</InputRewiring>
+		<ShaderPresetIndex>0</ShaderPresetIndex>
+	</State>
+</Setup>

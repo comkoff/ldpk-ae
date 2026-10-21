@@ -1,0 +1,300 @@
+#! /server/software/linux64/nuke/Nuke13.0v1/libnuke-13.0.1.so -nx
+version 13.0 v1
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="690" y="0" w="1918" h="1059" screen="0">
+        <splitter orientation="1">
+            <split size="40"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="1255" stretch="1"/>
+            <splitter orientation="2">
+                <split size="597"/>
+                <dock id="" activePageId="Viewer.1" focus="true">
+                    <page id="Viewer.1"/>
+                </dock>
+                <split size="420"/>
+                <dock id="" activePageId="DAG.1">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                </dock>
+            </splitter>
+            <split size="615"/>
+            <dock id="" activePageId="Properties.1">
+                <page id="Properties.1"/>
+                <page id="uk.co.thefoundry.backgroundrenderview.1"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name /server/devel/sdv/privat/uwe/source/ldpk/projects/nuke/fisheye_experimental.nk
+ format "2048 1556 0 0 2048 1556 1 2K_Super_35(full-ap)"
+ proxy_type scale
+ proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+ colorManagement Nuke
+ workingSpaceLUT linear
+ monitorLut sRGB
+ monitorOutLUT rec709
+ int8Lut sRGB
+ int16Lut sRGB
+ logLut Cineon
+ floatLut linear
+}
+CheckerBoard2 {
+ inputs 0
+ format "1024 1024 0 0 1024 1024 1 square_1K"
+ name CheckerBoard1
+ xpos -553
+ ypos -241
+}
+BlackOutside {
+ name BlackOutside1
+ xpos -553
+ ypos -169
+}
+set Nae746b00 [stack 0]
+LD_3DE4_Radial_Fisheye_Stereographic_Degree_8 {
+ direction distort
+ tde4_filmback_width_cm 4
+ tde4_filmback_height_cm 4
+ name LD_3DE4_Radial_Fisheye_Stereographic_Degree_8_3
+ xpos -205
+ ypos -129
+}
+LD_3DE4_Radial_Fisheye_Stereographic_Degree_8 {
+ tde4_filmback_width_cm 4
+ tde4_filmback_height_cm 4
+ name LD_3DE4_Radial_Fisheye_Stereographic_Degree_8_4
+ xpos 67
+ ypos -129
+}
+push $Nae746b00
+LD_3DE4_Radial_Fisheye_Orthographic_Degree_8 {
+ direction distort
+ bbox_mode "intersect bbox plus margin with \[un]distorted format"
+ tde4_filmback_width_cm 4
+ tde4_filmback_height_cm 4
+ name LD_3DE4_Radial_Fisheye_Orthographic_Degree_8_3
+ xpos -205
+ ypos -175
+}
+LD_3DE4_Radial_Fisheye_Orthographic_Degree_8 {
+ bbox_mode "intersect bbox plus margin with \[un]distorted format"
+ tde4_filmback_width_cm 4
+ tde4_filmback_height_cm 4
+ name LD_3DE4_Radial_Fisheye_Orthographic_Degree_8_4
+ xpos 67
+ ypos -175
+}
+push $Nae746b00
+LD_3DE4_Radial_Fisheye_Equisolid_Degree_8 {
+ direction distort
+ tde4_filmback_width_cm 4
+ tde4_filmback_height_cm 4
+ name LD_3DE4_Radial_Fisheye_Equisolid_Degree_8_3
+ xpos -205
+ ypos -221
+}
+LD_3DE4_Radial_Fisheye_Equisolid_Degree_8 {
+ tde4_filmback_width_cm 4
+ tde4_filmback_height_cm 4
+ name LD_3DE4_Radial_Fisheye_Equisolid_Degree_8_4
+ xpos 67
+ ypos -221
+}
+push $Nae746b00
+LD_3DE4_Radial_Fisheye_Equidistant_Degree_8 {
+ direction distort
+ tde4_filmback_width_cm 4
+ tde4_filmback_height_cm 4
+ name LD_3DE4_Radial_Fisheye_Equidistant_Degree_8_3
+ xpos -204
+ ypos -269
+}
+LD_3DE4_Radial_Fisheye_Equidistant_Degree_8 {
+ tde4_filmback_width_cm 4
+ tde4_filmback_height_cm 4
+ name LD_3DE4_Radial_Fisheye_Equidistant_Degree_8_4
+ xpos 68
+ ypos -269
+}
+Viewer {
+ inputs 4
+ frame_range 1-100
+ input_number 2
+ name Viewer3
+ xpos 417
+ ypos -187
+}
+push $Nae746b00
+Reformat {
+ type "to box"
+ format "2048 2048 0 0 2048 2048 1 square_2K"
+ box_width 3072
+ box_height 3072
+ resize none
+ name Reformat8
+ xpos -423
+ ypos 50
+}
+set Nae64e400 [stack 0]
+Reformat {
+ type "to box"
+ format "2048 2048 0 0 2048 2048 1 square_2K"
+ box_width 2048
+ box_height 2048
+ resize none
+ name Reformat1
+ selected true
+ xpos -423
+ ypos 96
+}
+LD_3DE4_Radial_Fisheye_Stereographic_Degree_8 {
+ "bounding box margin \[px]" 200
+ tde4_filmback_width_cm 4
+ tde4_filmback_height_cm 4
+ Degree_8 0.1
+ name LD_3DE4_Radial_Fisheye_Stereographic_Degree_8_2
+ xpos -313
+ ypos 90
+}
+set Nae64eb00 [stack 0]
+push $Nae64e400
+LD_3DE4_Radial_Fisheye_Orthographic_Degree_8 {
+ tde4_filmback_width_cm 4
+ tde4_filmback_height_cm 4
+ Degree_6 0.1
+ name LD_3DE4_Radial_Fisheye_Orthographic_Degree_8_2
+ xpos -313
+ ypos 44
+}
+set Nae64dd00 [stack 0]
+push $Nae746b00
+Reformat {
+ type "to box"
+ format "2048 2048 0 0 2048 2048 1 square_2K"
+ box_width 2048
+ box_height 2048
+ resize none
+ name Reformat7
+ xpos -423
+ ypos 4
+}
+LD_3DE4_Radial_Fisheye_Equisolid_Degree_8 {
+ tde4_filmback_width_cm 4
+ tde4_filmback_height_cm 4
+ Degree_4 0.1
+ name LD_3DE4_Radial_Fisheye_Equisolid_Degree_8_2
+ xpos -313
+ ypos -2
+}
+set Nae64cf00 [stack 0]
+push $Nae746b00
+Reformat {
+ type "to box"
+ format "2048 2048 0 0 2048 2048 1 square_2K"
+ box_width 2048
+ box_height 2048
+ resize none
+ name Reformat6
+ xpos -422
+ ypos -44
+}
+LD_3DE4_Radial_Fisheye_Equidistant_Degree_8 {
+ tde4_filmback_width_cm 4
+ tde4_filmback_height_cm 4
+ Degree_2 0.1
+ name LD_3DE4_Radial_Fisheye_Equidistant_Degree_8_2
+ xpos -312
+ ypos -50
+}
+set Nae64c100 [stack 0]
+Viewer {
+ inputs 4
+ frame_range 1-100
+ input_number 2
+ name Viewer2
+ xpos -106
+ ypos 160
+}
+push $Nae64eb00
+LD_3DE4_Radial_Fisheye_Stereographic_Degree_8 {
+ direction distort
+ "bounding box margin \[px]" 200
+ tde4_filmback_width_cm 4
+ tde4_filmback_height_cm 4
+ Degree_8 0.1
+ name LD_3DE4_Radial_Fisheye_Stereographic_Degree_8_1
+ xpos 215
+ ypos 90
+}
+Reformat {
+ format "1024 1024 0 0 1024 1024 1 square_1K"
+ resize none
+ name ReformatStereographic
+ xpos 309
+ ypos 90
+}
+push $Nae64dd00
+LD_3DE4_Radial_Fisheye_Orthographic_Degree_8 {
+ direction distort
+ tde4_filmback_width_cm 4
+ tde4_filmback_height_cm 4
+ Degree_6 0.1
+ name LD_3DE4_Radial_Fisheye_Orthographic_Degree_8_1
+ xpos 215
+ ypos 44
+}
+Reformat {
+ format "1024 1024 0 0 1024 1024 1 square_1K"
+ resize none
+ name ReformatOrthographic
+ xpos 308
+ ypos 44
+}
+push $Nae64cf00
+LD_3DE4_Radial_Fisheye_Equisolid_Degree_8 {
+ direction distort
+ tde4_filmback_width_cm 4
+ tde4_filmback_height_cm 4
+ Degree_4 0.1
+ name LD_3DE4_Radial_Fisheye_Equisolid_Degree_8_1
+ xpos 215
+ ypos -2
+}
+Reformat {
+ format "1024 1024 0 0 1024 1024 1 square_1K"
+ resize none
+ name ReformatEquisolid
+ xpos 308
+ ypos -2
+}
+push $Nae64c100
+LD_3DE4_Radial_Fisheye_Equidistant_Degree_8 {
+ direction distort
+ tde4_filmback_width_cm 4
+ tde4_filmback_height_cm 4
+ Degree_2 0.1
+ name LD_3DE4_Radial_Fisheye_Equidistant_Degree_8_1
+ xpos 216
+ ypos -50
+}
+Reformat {
+ format "1024 1024 0 0 1024 1024 1 square_1K"
+ resize none
+ name ReformatEquidistant
+ xpos 306
+ ypos -50
+}
+Viewer {
+ inputs 4
+ frame_range 1-100
+ name Viewer1
+ xpos 509
+ ypos 158
+}

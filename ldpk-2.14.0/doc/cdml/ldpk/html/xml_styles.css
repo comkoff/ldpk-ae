@@ -1,0 +1,107 @@
+@import url(common_styles.css);
+
+span.xml
+	{
+	font-family: monospace;
+	}
+/***************************************************************
+* begin highlight                                              *
+***************************************************************/
+span.span_xml
+	{
+	font-family: monospace;
+	font-size:90%;
+	}
+xml_plain
+	{
+	color:var(--sdv-plain-color);
+	font-weight:var(--sdv-plain-font-weight);
+	font-style:var(--sdv-plain-font-style);
+	}
+xml_procinst
+	{
+	color:var(--sdv-procinst-color);
+	font-weight:var(--sdv-procinst-font-weight);
+	font-style:var(--sdv-procinst-font-style);
+	}
+xml_keyword
+	{
+	color:var(--sdv-keyword-color);
+	font-weight:var(--sdv-keyword-font-weight);
+	font-style:var(--sdv-keyword-font-style);
+	}
+xml_cdata
+	{
+	color:var(--sdv-plain-color);
+	font-weight:var(--sdv-plain-font-weight);
+	font-style:var(--sdv-plain-font-style);
+	}
+xml_cdata_begin
+	{
+	color:var(--sdv-cdata-color);
+	font-weight:var(--sdv-entity-font-weight);
+	font-style:var(--sdv-cdata-font-style);
+	}
+xml_cdata_end
+	{
+	color:var(--sdv-cdata-color);
+	font-weight:var(--sdv-entity-font-weight);
+	font-style:var(--sdv-cdata-font-style);
+	}
+xml_comment
+	{
+	color:var(--sdv-comment-color);
+	font-weight:var(--sdv-comment-font-weight);
+	font-style:var(--sdv-comment-font-style);
+	}
+xml_bracket_left
+	{
+	color:var(--sdv-plain-color);
+	font-weight:var(--sdv-plain-font-weight);
+	font-style:var(--sdv-plain-font-style);
+	}
+xml_bracket_right
+	{
+	color:var(--sdv-plain-color);
+	font-weight:var(--sdv-plain-font-weight);
+	font-style:var(--sdv-plain-font-style);
+	}
+xml_tag_open
+	{
+	color:var(--sdv-tag-color);
+	font-weight:var(--sdv-tag-font-weight);
+	font-style:var(--sdv-tag-font-style);
+	}
+xml_tag_close
+	{
+	color:var(--sdv-tag-color);
+	font-weight:var(--sdv-tag-font-weight);
+	font-style:var(--sdv-tag-font-style);
+	}
+xml_attrib
+	{
+	color:var(--sdv-plain-color);
+	font-weight:var(--sdv-plain-font-weight);
+	font-style:var(--sdv-plain-font-style);
+	}
+xml_attrib_name
+	{
+	color:var(--sdv-variable-color);
+	font-weight:var(--sdv-variable-font-weight);
+	font-style:var(--sdv-variable-font-style);
+	}
+xml_attrib_value
+	{
+	color:var(--sdv-string-literal-color);
+	font-weight:var(--sdv-string-literal-font-weight);
+	font-style:var(--sdv-string-literal-font-style);
+	}
+xml_entity
+	{
+	color:var(--sdv-entity-color);
+	font-weight:var(--sdv-entity-font-weight);
+	font-style:var(--sdv-entity-font-style);
+	}
+/***************************************************************
+* end highlight                                                *
+***************************************************************/

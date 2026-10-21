@@ -1,0 +1,98 @@
+#! /server/software/linux64/nuke/Nuke10.0v1/libnuke-10.0.1.so -nx
+#write_info Write1 file:"/server/devel/sdv/privat/uwe/source/ldpk/img/grid_with_marks_test_1.png" format:"2048 1024 1" chans:":rgba.red:rgba.green:rgba.blue:" framerange:"1 100" fps:"0" colorspace:"default (sRGB)" datatype:"8 bit" transfer:"unknown" views:"main" colorManagement:"Nuke"
+version 10.0 v1
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="-9" y="-8" w="1938" h="1190" screen="0">
+        <splitter orientation="1">
+            <split size="40"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="1255" stretch="1"/>
+            <splitter orientation="2">
+                <split size="658"/>
+                <dock id="" activePageId="Viewer.1">
+                    <page id="Viewer.1"/>
+                </dock>
+                <split size="462"/>
+                <dock id="" activePageId="DAG.1" focus="true">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                </dock>
+            </splitter>
+            <split size="615"/>
+            <dock id="" activePageId="Properties.1">
+                <page id="Properties.1"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name /server/devel/sdv/privat/uwe/source/ldpk/projects/flame/test_flame_vs_nuke_1.comp.nk
+ format "2048 1556 0 0 2048 1556 1 2K_Super_35(full-ap)"
+ proxy_type scale
+ proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+}
+Read {
+ inputs 0
+ file /server/devel/sdv/privat/uwe/source/ldpk/img/grid_with_marks_test_1_flame_out.000001.tif
+ format "2048 1024 0 0 2048 1024 1 "
+ origset true
+ name Read2
+ xpos -480
+ ypos -156
+}
+Read {
+ inputs 0
+ file /server/devel/sdv/privat/uwe/source/ldpk/img/grid_with_marks.png
+ format "2048 1024 0 0 2048 1024 1 "
+ origset true
+ name Read1
+ xpos -260
+ ypos -197
+}
+LD_3DE4_Radial_Standard_Degree_4 {
+ direction distort
+ field_of_view_xa_unit 0.03125
+ field_of_view_ya_unit 0.03125
+ field_of_view_xb_unit 0.9375
+ field_of_view_yb_unit 0.9375
+ tde4_focal_length_cm 3
+ tde4_custom_focus_distance_cm 91.44
+ tde4_filmback_width_cm 1.856
+ tde4_filmback_height_cm 0.928
+ tde4_lens_center_offset_x_cm 0.096
+ tde4_lens_center_offset_y_cm 0.016
+ Distortion_Degree_2 0.2
+ name LD_3DE4_grid_with_marks
+ xpos -62
+ ypos -123
+}
+set N39381a0 [stack 0]
+Merge2 {
+ inputs 2
+ operation difference
+ name Difference
+ xpos -320
+ ypos 8
+}
+Viewer {
+ frame_range 1-100
+ name Viewer1
+ xpos -320
+ ypos 112
+}
+push $N39381a0
+Write {
+ file /server/devel/sdv/privat/uwe/source/ldpk/img/grid_with_marks_test_1.png
+ file_type png
+ checkHashOnRead false
+ version 3
+ name Write1
+ xpos 121
+ ypos 59
+}

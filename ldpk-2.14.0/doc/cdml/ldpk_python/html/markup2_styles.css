@@ -1,0 +1,83 @@
+objcode
+	{
+	font-family:monospace;
+	}
+
+obj
+	{
+	font-family:monospace;
+	}
+
+pre.mu2code
+	{
+	border: 1px solid #aaa;
+	padding-top:5px;
+	padding-bottom:5px;
+	padding-left:5px;
+	padding-right:5px;
+	background-color:#eee;
+	color:inherit;
+	font-size:smaller;
+	}
+
+/***************************************************************
+* begin highlight                                              *
+***************************************************************/
+span.span_mu2
+	{
+	font-family: monospace;
+	font-size:90%;
+	}
+mu2_plain
+	{
+	color:var(--sdv-plain-color);
+	font-weight:var(--sdv-plain-font-weight);
+	font-style:var(--sdv-plain-font-style);
+	}
+mu2_comment
+	{
+	color:var(--sdv-comment-color);
+	font-weight:var(--sdv-comment-font-weight);
+	font-style:var(--sdv-comment-font-style);
+	}
+mu2_func_call
+	{
+	color:var(--sdv-func_call-color);
+	font-weight:var(--sdv-func_call-font-weight);
+	font-style:var(--sdv-func_call-font-style);
+	}
+mu2_builtin_func_call
+	{
+	color:var(--sdv-builtin_func_call-color);
+	font-weight:var(--sdv-builtin_func_call-font-weight);
+	font-style:var(--sdv-builtin_func_call-font-style);
+	}
+mu2_set_name
+	{
+	color:var(--sdv-variable-color);
+	font-weight:var(--sdv-variable-font-weight);
+	font-style:var(--sdv-variable-font-style);
+	}
+mu2_set_value
+	{
+	color:var(--sdv-string_literal-color);
+	font-weight:var(--sdv-string_literal-font-weight);
+	font-style:var(--sdv-string_literal-font-style);
+	}
+/* In principle, escape sequences have a similar function as entities in XML.
+   We try this and that. */
+mu2_escseq
+	{
+	color:var(--sdv-entity-color);
+	font-weight:var(--sdv-entity-font-weight);
+	font-style:var(--sdv-entity-font-style);
+	}
+mu2_verbatim
+	{
+	color:var(--sdv-verbatim-color);
+	font-weight:var(--sdv-verbatim-font-weight);
+	font-style:var(--sdv-verbatim-font-style);
+	}
+/***************************************************************
+* end highlight                                                *
+***************************************************************/

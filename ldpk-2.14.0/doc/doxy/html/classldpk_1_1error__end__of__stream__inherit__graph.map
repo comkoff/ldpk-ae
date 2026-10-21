@@ -1,0 +1,5 @@
+<map id="ldpk::error_end_of_stream" name="ldpk::error_end_of_stream">
+<area shape="rect" id="node1" title="Unexpected end of stream. This can occur in ldpk::model_parser." alt="" coords="5,155,145,196"/>
+<area shape="rect" id="node2" href="$classldpk_1_1error__base.html" title="Base class for errors." alt="" coords="12,80,139,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="18,5,133,32"/>
+</map>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{B7E1A2C4-3D5F-4E6A-9B8C-1D2E3F4A5B6C}</ProjectGuid>
+    <RootNamespace>LD3DE4_Lens_Distortion</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <!-- Plugin version. Bump together with MAJOR/MINOR/BUG in LD3DE4_Lens_Distortion.h
+       and AE_Effect_Version in LD3DE4_Lens_DistortionPiPL.r. -->
+  <PropertyGroup>
+    <LD_VERSION_MAJOR>1</LD_VERSION_MAJOR>
+    <LD_VERSION_MINOR>0</LD_VERSION_MINOR>
+    <LD_VERSION_BUGFIX>0</LD_VERSION_BUGFIX>
+    <LD_VERSION>$(LD_VERSION_MAJOR).$(LD_VERSION_MINOR).$(LD_VERSION_BUGFIX)</LD_VERSION>
+    <!-- Diagnostic build: MSBuild /p:LD_DEBUG_LOG=1 compiles the always-on
+         log (LD_ENABLE_DEBUG_LOG) into .../releases/AE_LD3DE4/<version>_debug/
+         as LD_3DE4_Lens_Distortion_v<version>_debug.aex. -->
+    <LD_DEBUG_SUFFIX Condition="'$(LD_DEBUG_LOG)'=='1'">_debug</LD_DEBUG_SUFFIX>
+    <LD_DEBUG_LOG_DEFINE Condition="'$(LD_DEBUG_LOG)'=='1'">LD_ENABLE_DEBUG_LOG;</LD_DEBUG_LOG_DEFINE>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.aex</TargetExt>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.aex</TargetExt>
+    <!-- Release builds land in the repository-wide releases folder, one
+         subfolder per version, file name carries the version. -->
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(AE_PLUGIN_BUILD_DIR)\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\..\releases\AE_LD3DE4\$(LD_VERSION)$(LD_DEBUG_SUFFIX)\</OutDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">LD_3DE4_Lens_Distortion_v$(LD_VERSION)$(LD_DEBUG_SUFFIX)</TargetName>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\..\AfterEffectsSDK_26.5_win\Examples\Headers;..\..\..\AfterEffectsSDK_26.5_win\Examples\Headers\SP;..\..\..\AfterEffectsSDK_26.5_win\Examples\Util;..\..\..\ldpk-2.14.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>$(LD_DEBUG_LOG_DEFINE)MSWindows;WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ImportLibrary>$(IntDir)/$(TargetName).lib</ImportLibrary>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <AdditionalIncludeDirectories>..\..\..\AfterEffectsSDK_26.5_win\Examples\Headers;..\..\..\AfterEffectsSDK_26.5_win\Examples\Headers\SP;..\..\..\AfterEffectsSDK_26.5_win\Examples\Util;..\..\..\ldpk-2.14.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>$(LD_DEBUG_LOG_DEFINE)MSWindows;WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <ImportLibrary>$(IntDir)/$(TargetName).lib</ImportLibrary>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\LD3DE4_Lens_DistortionPiPL.r">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Compiling the PiPL</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Compiling the PiPL</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">cl /I "..\..\..\AfterEffectsSDK_26.5_win\Examples\Headers" /EP "%(FullPath)" > "$(IntDir)%(Filename).rr"
+"..\..\..\AfterEffectsSDK_26.5_win\Examples\Resources\PiPLTool" "$(IntDir)%(Filename).rr" "$(IntDir)%(Filename).rrc"
+cl /D "MSWindows" /EP $(IntDir)%(Filename).rrc > "$(ProjectDir)%(Filename).rc"
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64' and '$(LD_DEBUG_LOG)'=='1'">cl /D LD_ENABLE_DEBUG_LOG /I "..\..\..\AfterEffectsSDK_26.5_win\Examples\Headers" /EP "%(FullPath)" > "$(IntDir)%(Filename).rr"
+"..\..\..\AfterEffectsSDK_26.5_win\Examples\Resources\PiPLTool" "$(IntDir)%(Filename).rr" "$(IntDir)%(Filename).rrc"
+cl /D "MSWindows" /EP $(IntDir)%(Filename).rrc > "$(ProjectDir)%(Filename).rc"
+type nul > "$(IntDir)%(Filename).pipl$(LD_DEBUG_SUFFIX).stamp"
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64' and '$(LD_DEBUG_LOG)'!='1'">cl /I "..\..\..\AfterEffectsSDK_26.5_win\Examples\Headers" /EP "%(FullPath)" > "$(IntDir)%(Filename).rr"
+"..\..\..\AfterEffectsSDK_26.5_win\Examples\Resources\PiPLTool" "$(IntDir)%(Filename).rr" "$(IntDir)%(Filename).rrc"
+cl /D "MSWindows" /EP $(IntDir)%(Filename).rrc > "$(ProjectDir)%(Filename).rc"
+type nul > "$(IntDir)%(Filename).pipl$(LD_DEBUG_SUFFIX).stamp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)%(Filename).rc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)%(Filename).rc;$(IntDir)%(Filename).pipl$(LD_DEBUG_SUFFIX).stamp;%(Outputs)</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="LD3DE4_Lens_DistortionPiPL.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\LD3DE4_Lens_Distortion.cpp" />
+    <ClCompile Include="..\..\..\AfterEffectsSDK_26.5_win\Examples\Util\AEGP_SuiteHandler.cpp" />
+    <ClCompile Include="..\..\..\AfterEffectsSDK_26.5_win\Examples\Util\MissingSuiteError.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="LD3DE4_Lens_Distortion.h" />
+    <ClInclude Include="..\ldpk_nk_loader.h" />
+    <ClInclude Include="..\ldpk_nk_block.h" />
+    <ClInclude Include="..\ldpk_model_registry.h" />
+    <ClInclude Include="..\ldpk_param_tables.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

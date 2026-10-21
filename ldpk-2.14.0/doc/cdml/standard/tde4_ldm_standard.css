@@ -1,0 +1,16 @@
+/* styles for cdml project "tde4_ldm_standard" */
+
+bbox
+	{
+	display:inline;
+	}
+bbox:before
+	{
+	content:"[";
+	}
+bbox:after
+	{
+	content:"]";
+	}
+
+	

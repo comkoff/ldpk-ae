@@ -1,0 +1,51 @@
+grid_distorted.png
+-----------------------------
+
+fl_cm:		1.0
+w_fb_cm:	2.0
+h_fb_cm:	1.0
+x_lco_cm:	0.3
+y_lco_cm:	0.0
+r_pa:		2.0
+fd_cm:		100.0
+
+cx02:		0.2
+cy02:		0.1
+cx04:		-0.2
+phi_mnt:	2.0
+sx:		1.02
+
+plus reformat node, width by factor 2 -> 1024x1024, r_pa = 2
+
+grid_distorted_rescaled.png
+--------------------------------------
+
+fl_cm:		1.0
+w_fb_cm:	2.0
+h_fb_cm:	1.0
+x_lco_cm:	0.3
+y_lco_cm:	0.0
+r_pa:		2.0
+fd_cm:		100.0
+
+cx02:		0.2
+cy02:		0.1
+cx04:		-0.2
+phi_mnt:	2.0
+sx:		1.02
+
+plus reformat node, width by factor 1.333333 = 4/3 -> 1536x1024, r_pa = 1.33333
+
+Parameter "Rescale" = r_pa(recorded) / r_pa(production)
+
+verify_distorted_ldopt.png
+--------------------------
+
+sdv_ldopt -in0 grid_distorted.png		-verify0 verify_distorted_ldopt.png		-model ld_3de4_anamorphic_standard_degree_6 -par fl_cm 1.0 -par w_fb_cm 2.0 -par h_fb_cm 1.0 -par x_lco_cm 0.3
+
+verify_distorted_rescaled_ldopt.png
+-----------------------------------
+
+sdv_ldopt -in0 grid_distorted_rescaled.png	-verify0 verify_distorted_rescaled_ldopt.png	-model ld_3de4_anamorphic_rescaled_degree_6 -par fl_cm 1.0 -par w_fb_cm 2.0 -par h_fb_cm 1.0 -par x_lco_cm 0.3 -par Rescale none 1.5
+
+

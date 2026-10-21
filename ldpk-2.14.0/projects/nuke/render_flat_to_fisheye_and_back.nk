@@ -1,0 +1,135 @@
+#! /server/software/linux64/nuke/Nuke13.0v1/libnuke-13.0.1.so -nx
+#write_info Write1 file:"/server/devel/sdv/privat/uwe/source/ldpk/projects/nuke/jetburgh_abby_fisheye_equidistant.png" format:"2362 1772 1" chans:":rgba.red:rgba.green:rgba.blue:" framerange:"1 100" fps:"0" colorspace:"default (sRGB)" datatype:"8 bit" transfer:"unknown" views:"main" colorManagement:"Nuke"
+version 13.0 v1
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="77" y="0" w="1918" h="1147" screen="0">
+        <splitter orientation="1">
+            <split size="40"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="1255" stretch="1"/>
+            <splitter orientation="2">
+                <split size="649"/>
+                <dock id="" activePageId="Viewer.1">
+                    <page id="Viewer.1"/>
+                </dock>
+                <split size="456"/>
+                <dock id="" activePageId="DAG.1">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                </dock>
+            </splitter>
+            <split size="615"/>
+            <dock id="" activePageId="Properties.1">
+                <page id="Properties.1"/>
+                <page id="uk.co.thefoundry.backgroundrenderview.1"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name /server/devel/sdv/privat/uwe/source/ldpk/projects/nuke/render_flat_to_fisheye_and_back.nk
+ format "2048 1556 0 0 2048 1556 1 2K_Super_35(full-ap)"
+ proxy_type scale
+ proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+ colorManagement Nuke
+ workingSpaceLUT linear
+ monitorLut sRGB
+ monitorOutLUT rec709
+ int8Lut sRGB
+ int16Lut sRGB
+ logLut Cineon
+ floatLut linear
+}
+Read {
+ inputs 0
+ file_type jpeg
+ file /server/devel/sdv/privat/uwe/source/ldpk/projects/nuke/jedburgh_abbey_flat.jpg
+ format "2362 1772 0 0 2362 1772 1 "
+ origset true
+ name Read1
+ selected true
+ xpos -438
+ ypos -206
+}
+BlackOutside {
+ name BlackOutside1
+ xpos -438
+ ypos -124
+}
+Reformat {
+ type scale
+ scale 2
+ name Reformat1
+ xpos -438
+ ypos -100
+}
+LD_3DE4_Radial_Fisheye_Equidistant_Degree_8 {
+ direction distort
+ tde4_focal_length_cm 0.38
+ tde4_filmback_width_cm 2.362
+ tde4_filmback_height_cm 1.772
+ name LD_3DE4_Radial_Fisheye_Equidistant_Degree_8_1
+ xpos -137
+ ypos -106
+}
+Reformat {
+ format "2362 1772 0 0 2362 1772 1 "
+ resize none
+ name Reformat2
+ xpos 139
+ ypos -106
+}
+Write {
+ file /server/devel/sdv/privat/uwe/source/ldpk/projects/nuke/jetburgh_abby_fisheye_equidistant.png
+ file_type png
+ checkHashOnRead false
+ version 2
+ name Write1
+ xpos 139
+ ypos -70
+}
+Read {
+ inputs 0
+ file_type png
+ file /server/devel/sdv/privat/uwe/source/ldpk/projects/nuke/jetburgh_abby_fisheye_equidistant.png
+ format "2362 1772 0 0 2362 1772 1 "
+ origset true
+ name Read2
+ xpos -437
+ ypos -68
+}
+Reformat {
+ type scale
+ scale 2
+ resize none
+ name Reformat3
+ xpos -437
+ ypos 14
+}
+LD_3DE4_Radial_Fisheye_Equidistant_Degree_8 {
+ tde4_focal_length_cm 0.38
+ tde4_filmback_width_cm 2.362
+ tde4_filmback_height_cm 1.772
+ name LD_3DE4_Radial_Fisheye_Equidistant_Degree_8_2
+ xpos -139
+ ypos 8
+}
+Reformat {
+ format "2362 1772 0 0 2362 1772 1 "
+ name Reformat4
+ xpos 136
+ ypos 8
+}
+Viewer {
+ frame 1
+ frame_range 1-100
+ name Viewer1
+ xpos 268
+ ypos 86
+}

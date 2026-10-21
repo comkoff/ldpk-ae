@@ -1,0 +1,5 @@
+<map id="tde4_ldp_radial_degree_6_decentered_degree_2_opencv&lt; VEC2, MAT2 &gt;" name="tde4_ldp_radial_degree_6_decentered_degree_2_opencv&lt; VEC2, MAT2 &gt;">
+<area shape="rect" id="node1" title="Plugin class for radial distortion with decentering Not sure if parameters can be calculated by 3DE&#39;s..." alt="" coords="5,169,189,225"/>
+<area shape="rect" id="node2" href="$classldpk_1_1ldp__builtin.html" title="This class handles the built&#45;in parameter and the lookup table. You may find it useful for your own d..." alt="" coords="29,80,166,121"/>
+<area shape="rect" id="node3" href="$classtde4__ld__plugin.html" title="Lens Distortion Plugin Base Class." alt="" coords="39,5,156,32"/>
+</map>

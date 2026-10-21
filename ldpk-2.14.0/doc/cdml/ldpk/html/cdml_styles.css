@@ -1,0 +1,880 @@
+@import url(hl_styles.css);
+@import url(py_styles.css);
+@import url(cpp_styles.css);
+@import url(glsl_styles.css);
+@import url(nft_styles.css);
+@import url(obj_styles.css);
+@import url(xml_styles.css);
+@import url(php_styles.css);
+@import url(js_styles.css);
+@import url(sql_styles.css);
+@import url(latex_styles.css);
+@import url(minil_styles.css);
+@import url(markup2_styles.css);
+
+body
+	{
+	font-family:helvetica,sans-serif;
+/* Vorsicht! Bei manchen Groessen sieht alles uebel aus! */
+	font-size:12pt;
+	margin-left:1cm;
+	margin-right:1cm;
+	line-height:150%;
+	}
+
+a:link
+	{
+	text-decoration:none;
+	color:#336;
+	}
+a:visited
+	{
+	text-decoration:none;
+	color:#336;
+	}
+
+pre
+	{
+	line-height:140%;
+	}
+
+cdml_linenumber
+	{
+	color:#888;
+	}
+
+p.p_beispiel
+	{
+	background-color:#eee;
+	color:inherit;
+	}
+
+td.td_keyword
+	{
+	text-align:left;
+	padding-left:0.5cm;
+	}
+td.td_signature
+	{
+	text-align:right;
+	padding-right:0.5cm;
+	}
+
+span.toc_title
+	{
+	color:#336;
+	font-size: 21pt;
+	font-weight:bold;
+	font-style:italic;
+	display:block;
+	text-align:left;
+	margin-top:1cm;
+	}
+
+span.index_title
+	{
+	color:#336;
+	font-size: 21pt;
+	font-weight:bold;
+	font-style:italic;
+	display:block;
+	text-align:left;
+	margin-top:1cm;
+	}
+
+/* Das hier dient dazu, ein einheitliches Aussehen
+der Numerierung vor den Abschnittsüberschriften zu erreichen */
+cdml_numeratur
+	{
+	color:black;
+	font-style:normal;
+	}
+
+cdml_abstract
+	{
+	display:block;
+	width:50%;
+	margin-left:auto;
+	margin-right:auto;
+	font-size:smaller;
+	margin-top:2em;
+	}
+cdml_abstract > cdml_title
+	{
+	font-weight:bold;
+	}
+
+cdml_article > cdml_title
+	{
+	color:#336;
+	font-size: 20pt;
+	font-weight:bold;
+	font-family:sans-serif;
+	display:block;
+	text-align:center;
+	margin-bottom:0.75em;
+	margin-top:2em;
+	}
+
+cdml_article > cdml_subtitle
+	{
+	color:#336;
+	font-size: 15pt;
+	display:block;
+	text-align:center;
+	margin-top:0.35em;
+	}
+
+/* hir_number wird immer innerhalb von hir_#_text angewandt
+   und modifiziert lediglich einige Attribute.
+*/
+span.hir_number
+	{
+	color:#336;
+	font-style:normal;
+	margin-right:16pt;
+	}
+
+cdml_toc > cdml_title,
+cdml_chapter > cdml_title,
+cdml_preface > cdml_title,
+cdml_index > cdml_title,
+cdml_glossary > cdml_title,
+cdml_todolist > cdml_title,
+cdml_annotations > cdml_title,
+cdml_bibliography > cdml_title
+	{
+	color:#336;
+	font-family:helvetica,sans-serif;
+	font-size: 16pt;
+	font-weight:bold;
+	font-style:italic;
+	display:block;
+	text-align:left;
+	margin-top:1cm;
+	margin-bottom:0.3cm;
+	}
+
+span.index_initial
+	{
+	color:#336;
+	font-size: 15pt;
+	font-family:helvetica,sans-serif;
+	font-weight:bold;
+	font-style:normal;
+	display:block;
+	text-align:left;
+	margin-top:1cm;
+	margin-bottom:0.3cm;
+	}
+
+cdml_section > cdml_title,
+cdml_subsection > cdml_title,
+cdml_subsubsection > cdml_title,
+cdml_paragraph > cdml_title,
+cdml_subparagraph > cdml_title
+	{
+	color:#336;
+	font-family:helvetica,sans-serif;
+	font-weight:bold;
+	text-align:left;
+	}
+cdml_section > cdml_title
+	{
+	font-size: 15pt;
+	font-style:normal;
+	display:block;
+	margin-top:1cm;
+	margin-bottom:0.3cm;
+	}
+cdml_subsection > cdml_title
+	{
+	font-size: 14pt;
+	font-style:italic;
+	display:block;
+	margin-top:0.7cm;
+	margin-bottom:0.2cm;
+	}
+cdml_subsubsection > cdml_title
+	{
+	font-size: 13pt;
+	font-style:normal;
+	display:block;
+	margin-top:0.5cm;
+	}
+cdml_paragraph > cdml_title
+	{
+	font-style:italic;
+	display:block;
+	margin-top:0.3cm;
+	padding-right:1cm;
+	}
+cdml_subparagraph > cdml_title
+	{
+	font-weight:bold;
+	display:inline;
+	margin-top:0.5cm;
+	padding-right:1cm;
+	}
+cdml_subparagraph
+	{
+	display:block;
+	}
+
+span.toc_index_text
+	{
+	margin-left:0pt;
+	font-weight:bold;
+	font-style:italic;
+	font-size:12pt;
+	}
+span.toc_1
+	{
+	color:#336;
+	margin-left:0cm;
+	font-weight:bold;
+	font-style:normal;
+	font-family:helvetica,sans-serif;
+	font-size:12pt;
+	}
+span.toc_1_text
+	{
+	font-family:helvetica,sans-serif;
+	margin-left:10pt;
+	font-weight:bold;
+	font-style:italic;
+	font-size:12pt;
+	}
+span.toc_2
+	{
+	color:#336;
+	margin-left:0.5cm;
+	font-weight:bold;
+	font-style:normal;
+	font-family:helvetica,sans-serif;
+	font-size:12pt;
+	}
+span.toc_2_text
+	{
+	font-family:helvetica,sans-serif;
+	margin-left:10pt;
+	font-weight:bold;
+	font-size:12pt;
+	}
+span.toc_3
+	{
+	color:#336;
+	margin-left:1.0cm;
+	font-style:normal;
+	font-family:helvetica,sans-serif;
+	font-size:12pt;
+	}
+span.toc_3_text
+	{
+	font-family:helvetica,sans-serif;
+	margin-left:10pt;
+	font-style:italic;
+	font-size:12pt;
+	}
+span.toc_4
+	{
+	color:#336;
+	margin-left:1.5cm;
+	font-style:normal;
+	font-family:helvetica,sans-serif;
+	font-size:12pt;
+	}
+span.toc_4_text
+	{
+	font-family:helvetica,sans-serif;
+	margin-left:10pt;
+	font-size:12pt;
+	}
+span.toc_5
+	{
+	color:#336;
+	margin-left:2.0cm;
+	font-style:normal;
+	font-family:helvetica,sans-serif;
+	font-size:12pt;
+	}
+span.toc_5_text
+	{
+	font-family:helvetica,sans-serif;
+	margin-left:10pt;
+	font-style:italic;
+	font-size:12pt;
+	}
+span.toc_6
+	{
+	color:#336;
+	margin-left:2.5cm;
+	font-style:normal;
+	font-family:helvetica,sans-serif;
+	font-size:12pt;
+	}
+span.toc_6_text
+	{
+	font-family:helvetica,sans-serif;
+	margin-left:10pt;
+	font-size:12pt;
+	}
+
+cdml_caption
+	{
+	display:block;
+	text-align:center;
+	font-size:small;
+	font-style:italic;
+	margin-top:0.0em;
+	margin-bottom:0.5em;
+	}
+cdml_caption[type=table]
+	{
+	display:block;
+	text-align:center;
+	font-size:small;
+	font-style:italic;
+/* Wir ueberlassen das der Tabelle. */
+	margin-bottom:0.0em;
+	margin-top:0.5em;
+	}
+span.span_caption_number
+	{
+	font-style:normal;
+	font-weight:bold;
+	}
+cdml_memo
+	{
+	display:none;
+	}
+cdml_todo
+	{
+	display:block;
+	background-color:#efe;
+	color:#040;
+	border:1px #7c7 solid;
+	margin-bottom:.5em;
+	padding-left:15px;
+	padding-right:15px;
+	padding-bottom:5px;
+	padding-top:5px;
+/* Breite wie Tabellen */
+	margin-left:5%;
+	margin-right:5%;
+	margin-top:.5em;
+	}
+cdml_warning
+	{
+	display:block;
+	background-color:#fec;
+	color:#432;
+	border:1px #db8 solid;
+	margin-bottom:.5em;
+	padding-left:15px;
+	padding-right:15px;
+	padding-bottom:5px;
+	padding-top:5px;
+/* Breite wie Tabellen */
+	margin-left:5%;
+	margin-right:5%;
+	margin-top:.5em;
+	margin-bottom:1em;
+	}
+cdml_info
+	{
+	display:block;
+	background-color:#f0ecff;
+	color:#332f44;
+	border:1px #dce solid;
+	margin-bottom:.5em;
+	padding-left:15px;
+	padding-right:15px;
+	padding-bottom:5px;
+	padding-top:5px;
+/* Breite wie Tabellen */
+	margin-left:5%;
+	margin-right:5%;
+	margin-top:.5em;
+	margin-bottom:1em;
+	}
+/* Warning und Todo */
+img.icon
+	{
+	height:1.8em;
+	margin-bottom:-0.5em;
+	}
+img.icon_mouse
+	{
+	height:1.6em;
+	margin-bottom:-0.5em;
+	}
+img.screenshot
+	{
+/* centering */
+	margin-left:auto;
+	margin-right:auto;
+	display:block;
+	margin-top:1em;
+	margin-bottom:0.8em;
+/*	width:90%;*/
+	}
+img.browser
+	{
+/* centering */
+	margin-left:auto;
+	margin-right:auto;
+	display:block;
+	margin-top:1em;
+	margin-bottom:0.8em;
+	width:90%;
+	}
+img.diagram
+	{
+/* centering */
+	margin-left:auto;
+	margin-right:auto;
+	display:block;
+	margin-top:1em;
+	margin-bottom:0.8em;
+	width:80%;
+	}
+img.centered
+	{
+/* centering */
+	margin-left:auto;
+	margin-right:auto;
+	display:block;
+	margin-top:1em;
+	margin-bottom:0.8em;
+	}
+/* Filelist */
+cdml_filelist
+	{
+	display:block;
+	font-family:monospace;
+	font-size:80%;
+	line-height:120%;
+	margin-top:.5em;
+	margin-left:5%;
+	margin-right:5%;
+	margin-bottom:1em;
+	}
+/* same but mor general name */
+cdml_tree
+	{
+	display:block;
+	font-family:monospace;
+	font-size:80%;
+	margin-top:.5em;
+	margin-left:5%;
+	margin-right:5%;
+	margin-bottom:1em;
+	}
+cdml_tree > pre
+	{
+	line-height:120%;
+	}
+
+cdml_filelist a:link
+        {
+        text-decoration:none;
+        }
+cdml_filelist span.file
+        {
+        color:#00a;
+        }
+cdml_filelist span.link
+        {
+        color:#a00;
+        }
+cdml_filelist span.dir
+        {
+        color:#060;
+        }
+
+cdml_ltx
+	{
+	vertical-align:middle;
+	position:relative;
+	bottom: -0.375em;
+	}
+
+/***************************************************************
+* begin index                                                  *
+***************************************************************/
+table.table_index
+	{
+	width: 100%;
+	}
+table.table_index body
+	{
+	}
+table.table_index tr
+	{
+	}
+table.table_index td
+	{
+	text-align:left;
+	background-color:white;
+	}
+/***************************************************************
+* end index                                                    *
+***************************************************************/
+
+/***************************************************************
+* begin annotations                                            *
+***************************************************************/
+cdml_note
+	{
+/* Place note references higher without affecting line height.
+   Some consider this a hack, but I like it.*/
+	vertical-align:top;
+	position: relative;
+	top: -0.5em;
+	font-size:x-small;
+	}
+/***************************************************************
+* end annotations                                              *
+***************************************************************/
+
+/***************************************************************
+* begin glossary                                               *
+***************************************************************/
+.table_glossary
+	{
+	display:block;
+	background:white;
+	margin-top:1em;
+	}
+.tr_glositem
+	{
+	}
+.td_gloskeyword
+	{
+	display:inline;
+	font-weight:bold;
+	font-size:smaller;
+	vertical-align:top;
+	padding-right:20px;
+	}
+.td_glosdescription
+	{
+	display:block;
+	font-size:smaller;
+	padding-left:2em;
+	margin-bottom:1em;
+	}
+cdml_glositem > cdml_keyword, cdml_glositem > cdml_description
+	{
+	display:none;
+	}
+/***************************************************************
+* end glossary                                                 *
+***************************************************************/
+
+/***************************************************************
+* begin tty                                                    *
+***************************************************************/
+pre.ttycode
+	{
+	font-family:monospace;
+	font-size:smaller;
+	line-height:1.2em;
+	border-top: 1px solid #aaa;
+	border-left: 1px solid #aaa;
+	border-bottom: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	padding-top:5px;
+	padding-bottom:5px;
+	padding-left:5px;
+	padding-right:5px;
+	margin-top:0.5em;
+	margin-bottom:0.5em;
+	background-color:#f7f7f7;
+	color:#000;
+	white-space: pre-wrap;
+	}
+/***************************************************************
+* end tty                                                      *
+***************************************************************/
+/***************************************************************
+* begin ansi                                                   *
+***************************************************************/
+pre.ansicode
+	{
+	font-family:monospace;
+	font-size:smaller;
+	line-height:1.2em;
+	border-top: 1px solid #aac;
+	border-left: 1px solid #aac;
+	border-bottom: 1px solid #dde;
+	border-right: 1px solid #dde;
+	padding-top:5px;
+	padding-bottom:5px;
+	padding-left:5px;
+	padding-right:5px;
+	margin-top:0.5em;
+	margin-bottom:0.5em;
+/* Impossible task: find a colour so that text in any of the terminal
+   colours is still readable... */
+	background-color:#eee;
+	color:#000;
+	white-space: pre-wrap;
+	}
+/***************************************************************
+* end ansi                                                     *
+***************************************************************/
+
+/***************************************************************
+* begin xml                                                   *
+***************************************************************/
+pre.xmlcode
+	{
+	border: 1px solid #aaa;
+	padding-top:5px;
+	padding-bottom:5px;
+	padding-left:5px;
+	padding-right:5px;
+	margin-top:0.5em;
+	margin-bottom:0.5em;
+	background-color:#eee;
+	color:inherit;
+	font-size:smaller;
+	font-family: monospace;
+	}
+/***************************************************************
+* end xml                                                      *
+***************************************************************/
+
+/***************************************************************
+* begin html                                                   *
+***************************************************************/
+div.htmlcode
+	{
+	font-family:inherit;
+	font-size:smaller;
+	border-top: 1px solid #bbb;
+	border-left: 1px solid #bbb;
+	border-bottom: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	padding-top:5px;
+	padding-bottom:5px;
+	padding-left:5px;
+	padding-right:5px;
+	margin-top:0.5em;
+	margin-bottom:0.5em;
+/* Impossible task: find a colour so that text in any of the terminal
+   colours is still readable... */
+	background-color:#fff;
+	color:#000;
+	}
+/***************************************************************
+* end html                                                     *
+***************************************************************/
+
+/***************************************************************
+* begin py                                                     *
+***************************************************************/
+pre.pycode
+	{
+	border: 1px solid #aaa;
+	padding-top:5px;
+	padding-bottom:5px;
+	padding-left:5px;
+	padding-right:5px;
+	margin-left:0px;
+	margin-right:0px;
+	margin-top:0.5em;
+	margin-bottom:0.5em;
+	background-color:#eeeeee;
+	font-size:80%;
+	}
+/***************************************************************
+* end py                                                       *
+***************************************************************/
+
+/***************************************************************
+* begin js                                                     *
+***************************************************************/
+pre.jscode
+	{
+	border: 1px solid #aaa;
+	padding-top:5px;
+	padding-bottom:5px;
+	padding-left:5px;
+	padding-right:5px;
+	margin-left:0px;
+	margin-right:0px;
+	margin-top:0.5em;
+	margin-bottom:0.5em;
+	background-color:#eeeeee;
+	font-size:80%;
+	}
+/***************************************************************
+* end js                                                       *
+***************************************************************/
+
+/***************************************************************
+* begin auto-testing                                           *
+***************************************************************/
+cdml_difftest
+	{
+	border-radius:2px;
+	padding-left:5px;
+	padding-right:5px;
+	display:inline-block;
+	margin-top:0px;
+	margin-bottom:.5em;
+	}
+cdml_difftest.initial
+	{
+	background:rgb(90%,80%,100%);
+	border:1px solid rgb(35%,10%,50%);
+	}
+cdml_difftest.initial::after
+	{
+	content:"Difference test: initial";
+	}
+cdml_difftest.ok
+	{
+	background:rgb(90%,100%,80%);
+	border:1px solid rgb(35%,50%,10%);
+	}
+cdml_difftest.ok::after
+	{
+	content:"Difference test: done";
+	}
+cdml_difftest.failed
+	{
+	background:rgb(100%,90%,80%);
+	border:1px solid rgb(50%,35%,10%);
+	}
+cdml_difftest.failed::after
+	{
+	content:"Difference test: failed";
+	}
+/***************************************************************
+* end auto-testing                                             *
+***************************************************************/
+
+/***************************************************************
+* begin referencing                                            *
+***************************************************************/
+/* Default is English. Override in mydoc.css for other languages. */
+cdml_eq::before
+	{ content:"eq.("; }
+cdml_eq::after
+	{ content:")"; }
+cdml_Eq::before
+	{ content:"Eq.("; }
+cdml_Eq::after
+	{ content:")"; }
+cdml_seg::before
+	{ content:"seg. "; }
+cdml_seg::after
+	{ content:""; }
+cdml_Seg::before
+	{ content:"Seg. "; }
+cdml_Seg::after
+	{ content:""; }
+cdml_fig::before
+	{ content:"fig. "; }
+cdml_fig::after
+	{ content:""; }
+cdml_Fig::before
+	{ content:"Fig. "; }
+cdml_Fig::after
+	{ content:""; }
+cdml_tab::before
+	{ content:"tab. "; }
+cdml_tab::after
+	{ content:""; }
+cdml_Tab::before
+	{ content:"Tab. "; }
+cdml_Tab::after
+	{ content:""; }
+cdml_bib::before
+	{ content:"["; }
+cdml_bib::after
+	{ content:"]"; }
+cdml_xeq::before
+	{ content:"eq.("; }
+cdml_xeq::after
+	{ content:")"; }
+cdml_Xeq::before
+	{ content:"Eq.("; }
+cdml_Xeq::after
+	{ content:")"; }
+
+cdml_figure::before
+	{
+	font-style:normal;
+	font-weight:bold;
+	content:"Figure "
+	}
+cdml_table::before
+	{
+	font-style:normal;
+	font-weight:bold;
+	content:"Table "
+	}
+cdml_segment::before
+	{
+	font-style:normal;
+	font-weight:bold;
+	content:"Segment "
+	}
+cdml_bibitem
+	{
+	display:block;
+	}
+/* A.E. Conrady */
+cdml_bibauthor
+	{
+	}
+cdml_bibauthor::after
+	{
+	content: ", "
+	}
+/* Decentered Lens Systems */
+cdml_bibtitle
+	{
+	}
+cdml_bibtitle::after
+	{
+	content: ", "
+	}
+/* Appeared where? E.g. Monthly Notices of the Royal Astronomical Society */
+cdml_bibmedium
+	{
+	font-style: italic;
+	}
+cdml_bibmedium::after
+	{
+	font-style: normal;
+	content: ", "
+	}
+/* E.g. Vol. 79, p. 384-390 */
+cdml_bibposition
+	{
+	}
+cdml_bibposition::after
+	{
+	content: ", "
+	}
+/* E.g. 1919 */
+cdml_bibdate
+	{
+	}
+/* Representation of unresolved references */
+cdml_ref_error
+	{
+	font-weight:bold;
+	color:#f50;
+	}
+
+/***************************************************************
+* end referencing                                              *
+***************************************************************/
+

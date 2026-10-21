@@ -1,0 +1,45 @@
+/* styles for cdml project "tde4_ldm_standard" */
+
+bbox
+	{
+	display:inline;
+	}
+bbox:before
+	{
+	content:"[";
+	}
+bbox:after
+	{
+	content:"]";
+	}
+/* Das haetten wir gerne so wie in TeX... */
+p
+	{
+	margin-top:inherit;
+	margin-bottom:inherit;
+	text-indent:1.8em;
+	}
+ldpk
+	{
+	font-family:"Time New Roman",serif;
+	}
+subsup
+	{
+	position:relative;
+	}
+ldpk > subsup > sup
+	{
+	position:absolute;
+	vertical-align:0;
+	bottom:0.4em;
+	left:0;
+	font-size:70%;
+	}
+ldpk > subsup > sub
+	{
+	position:absolute;
+	vertical-align:0;
+	top:0.4em;
+	left:0;
+	font-size:70%;
+	}
