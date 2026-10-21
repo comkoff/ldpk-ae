@@ -43,7 +43,7 @@ Ready-to-use plugin binaries are published as assets of **GitHub Releases**: <ht
 3. **Direction**: Undistort / Distort.
 4. **Fit Comp To Distortion...** — fits the composition to the full image.
 
-Full user manual: [English](releases/AE_LD3DE4/readme_user_en.md) | [Русский](releases/AE_LD3DE4/readme_user.md).
+Full user manual: [English](releases/AE_LD3DE4/readme_user.md) | [Русский](releases/AE_LD3DE4/readme_user_ru.md).
 
 ## License
 

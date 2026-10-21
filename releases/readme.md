@@ -1,69 +1,71 @@
 # Releases
 
-**Язык:** [English](readme_en.md) | Русский
-
-Готовые сборки публикуются на странице **GitHub Releases**:
+Ready-to-use builds are published on the **GitHub Releases** page:
 <https://github.com/comkoff/ldpk-ae/releases>
 
-В дереве репозитория — только исходники и документация, без бинарников.
+The repository tree contains sources and documentation only, no binaries.
 
-## Состав архива релиза (AE_LD3DE4)
+**Language:** English | [Русский](readme.ru.md)
 
-`LD_3DE4_Lens_Distortion_v<версия>.zip`:
+## Release archive contents (AE_LD3DE4)
 
-| Файл | Что это |
+`LD_3DE4_Lens_Distortion_v<version>.zip`:
+
+| File | Description |
 |---|---|
-| `LD_3DE4_Lens_Distortion_v<версия>.aex` | обычная сборка (журнал не пишется) |
-| `LD_3DE4_Lens_Distortion_v<версия>_debug.aex` | диагностическая сборка (журнал всегда включён) |
-| `readme_user.md` | руководство пользователя (русский) |
-| `readme_user_en.md` | user manual (English) |
+| `LD_3DE4_Lens_Distortion_v<version>.aex` | release build (no log) |
+| `LD_3DE4_Lens_Distortion_v<version>_debug.aex` | diagnostic build (log always enabled) |
+| `readme_user.md` | user manual (English) |
+| `readme_user_ru.md` | user manual (Russian) |
 
 ## AE_LD3DE4
 
-Плагин **3DE4 Lens Distortion** для After Effects (категория
-«Lens Distortion», Match Name `SDV LD_3DE4 Lens Distortion`).
+The **3DE4 Lens Distortion** plugin for After Effects (category
+"Lens Distortion", Match Name `SDV LD_3DE4 Lens Distortion`).
 
-- Читает `.nk`-файл с нодой линзовой дисторсии, экспортированной из 3DE4,
-  и применяет дисторсию через header-only модели LDPK.
-- **Model popup — источник истины**: эффект работает сразу после применения,
-  без .nk файла (параметры модели — дефолты LDPK, FOV = [0..1]², встроенные
-  параметры — дефолты Nuke-ноды). Выбор .nk файла переключает popup,
-  заполняет параметры и автоматически расставляет ключи из кривых
-  (LINEAR, весь диапазон кривой).
-- **UI показывает 10 моделей** (набор старого и нового 3DE): experimental-,
-  toymodels- и OpenCV-модели LDPK скрыты из popup Model и из Effect Controls,
-  но остаются в реестре и загружаются из .nk-файлов.
+- Reads a `.nk` file with a lens distortion node exported from 3DE4
+  and applies the distortion through the header-only LDPK models.
+- **Model popup is the source of truth**: the effect works right after
+  being applied, without a .nk file (model parameters are the LDPK
+  defaults, FOV = [0..1]², built-in parameters — Nuke node defaults).
+  Choosing a .nk file switches the popup, fills the parameters and
+  automatically places keys from the curves (LINEAR, full curve range).
+- **The UI shows 10 models** (the set of old and new 3DE): experimental,
+  toymodel and OpenCV LDPK models are hidden from the Model popup and
+  Effect Controls, but stay in the registry and load from .nk files.
 - **Direction**: Undistort / Distort.
-- **Fit Comp To Distortion...** подгоняет холст композиции точно под
-  искажённое изображение: увеличивает, когда дисторсия выходит за кадр, и
-  уменьшает, когда оно занимает меньше пикселей, чем кадр. Слои не двигаются
-  дважды (parenting учитывается). При анимированной дисторсии холст
-  подгоняется под самый широкий образ по всем ключевым кадрам.
-- Импортированная нода сохраняется **снимком** внутри проекта: рендер не
-  обращается к .nk-файлу, проект самодостаточен и переносим на ферму.
-- **Multi-Frame Rendering**: рендер потокобезопасен, кадры рендерятся
-  параллельно.
-- 8 / 16 / 32 bpc поддерживаются нативно (smart render).
-- **Устойчивость рендера**: при сильной отрицательной дисторсии полином
-  модели складывается — точки вне образа модели отбраковываются
-  (round-trip-проверка невязки + проверка ориентации якобиана) и остаются
-  прозрачными; Newton-итерация стартует детерминированно, без lookup-таблиц.
-- **Диагностика**: выпускается в двух сборках — обычной и диагностической
-  (`*_debug.aex`, в меню — «3DE4 Lens Distortion Debug», отдельный Match
-  Name `SDV LD_3DE4 Lens Distortion Debug`). Диагностическая всегда пишет
-  подробный технический журнал `%TEMP%\ld3de4_ae.log` (ротация при 10 МБ,
-  бэкап — `ld3de4_ae.log.1`); обычная журнал не пишет вовсе. Обе сборки
-  можно держать в Plug-ins одновременно. Для поиска багов: попросить
-  пользователя применить диагностический эффект, воспроизвести проблему
-  и прислать журнал.
+- **Fit Comp To Distortion...** fits the composition canvas exactly to
+  the distorted image: enlarges when the distortion exceeds the frame,
+  shrinks when the image occupies fewer pixels than the frame. Layers
+  are never moved twice (parenting is taken into account). With animated
+  distortion the canvas is fitted to the widest image across all keyframes.
+- The imported node is stored as a **snapshot** inside the project: the
+  render never touches the .nk file, the project is self-sufficient and
+  farm-friendly.
+- **Multi-Frame Rendering**: the render is thread-safe, frames render
+  in parallel.
+- 8 / 16 / 32 bpc are supported natively (smart render).
+- **Render robustness**: with strong negative distortion the model
+  polynomial folds — points outside the image of the model are rejected
+  (round-trip residual check + Jacobian orientation check) and stay
+  transparent; the Newton iteration starts deterministically, without
+  lookup tables.
+- **Diagnostics**: ships in two builds — regular and diagnostic
+  (`*_debug.aex`, menu entry "3DE4 Lens Distortion Debug", separate Match
+  Name `SDV LD_3DE4 Lens Distortion Debug`). The diagnostic build always
+  writes a detailed technical log to `%TEMP%\ld3de4_ae.log` (rotated at
+  10 MB, backup `ld3de4_ae.log.1`); the regular build writes no log at
+  all. Both builds can be kept in Plug-ins simultaneously. For bug
+  hunting: ask the user to apply the diagnostic effect, reproduce the
+  problem and send the log.
 
-## Установка
+## Installation
 
-Скопировать нужные `.aex` (можно обе сборки сразу) в
-`C:\Program Files\Adobe\Adobe After Effects <версия>\Support Files\Plug-ins\`
-и перезапустить AE.
+Copy the desired `.aex` (both builds can be installed at once) to
+`C:\Program Files\Adobe\Adobe After Effects <version>\Support Files\Plug-ins\`
+and restart AE.
 
-Руководство пользователя: [`AE_LD3DE4/readme_user.md`](AE_LD3DE4/readme_user.md)
-(русский) / [`AE_LD3DE4/readme_user_en.md`](AE_LD3DE4/readme_user_en.md)
-(English). Сборка из исходников описана в
+User manual: [`AE_LD3DE4/readme_user.md`](AE_LD3DE4/readme_user.md)
+(English) / [`AE_LD3DE4/readme_user_ru.md`](AE_LD3DE4/readme_user_ru.md)
+(Russian). Building from sources is described in
 [`ae_ldpk/readme.md`](../ae_ldpk/readme.md).

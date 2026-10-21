@@ -43,7 +43,7 @@
 3. **Direction**: Undistort / Distort.
 4. **Fit Comp To Distortion...** — подгонка композиции под полный образ.
 
-Полное руководство: [Русский](releases/AE_LD3DE4/readme_user.md) | [English](releases/AE_LD3DE4/readme_user_en.md).
+Полное руководство: [Русский](releases/AE_LD3DE4/readme_user_ru.md) | [English](releases/AE_LD3DE4/readme_user.md).
 
 ## Лицензия
 
