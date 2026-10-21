@@ -62,11 +62,13 @@ VERSION="${MAJOR:-1}.${MINOR:-0}.${BUG:-0}"
 if [ "$CONFIG" = "debug" ]; then
     NAME="LD_3DE4_Lens_Distortion_v${VERSION}_debug"
     OUT="$REPO/releases/AE_LD3DE4/${VERSION}_debug"
-    DEFINES="-DLD_ENABLE_DEBUG_LOG=1"
+    CXX_DEFINES="-DLD_ENABLE_DEBUG_LOG=1"
+    REZ_DEFINES="-d LD_ENABLE_DEBUG_LOG=1"   # Rez wants -d, not -D
 else
     NAME="LD_3DE4_Lens_Distortion_v${VERSION}"
     OUT="$REPO/releases/AE_LD3DE4/${VERSION}"
-    DEFINES=""
+    CXX_DEFINES=""
+    REZ_DEFINES=""
 fi
 
 BUNDLE="$OUT/$NAME.bundle"
@@ -84,7 +86,7 @@ CXX_FLAGS=(
     -std=c++17 -O2 -fexceptions -frtti -fPIC
     -arch x86_64 -arch arm64
     -mmacosx-version-min=11.0
-    $DEFINES
+    $CXX_DEFINES
     -I"$SDK_HEADERS" -I"$SDK_HEADERS/SP" -I"$SDK_UTIL"
     -I"$LDPK_INC" -I"$AE_LDPK"
 )
@@ -102,7 +104,7 @@ clang++ "${CXX_FLAGS[@]}" -bundle \
 echo "[2/3] Compiling the PiPL (Rez)..."
 Rez -o "$BUNDLE/Contents/Resources/$NAME.rsrc" \
     -I "$SDK_HEADERS" -I "$SDK_RESOURCES" -I "$AE_DIR" \
-    -D AE_OS_MAC=1 $DEFINES \
+    -d AE_OS_MAC=1 $REZ_DEFINES \
     "$AE_DIR/LD3DE4_Lens_DistortionPiPL.r"
 
 # --- 3. Info.plist ------------------------------------------------------------
