@@ -32,6 +32,11 @@
 #include <string>
 #include <vector>
 
+#ifdef AE_OS_MAC
+    #include <sys/stat.h>
+    #include <unistd.h> // confstr(_CS_DARWIN_USER_TEMP_DIR): macOS per-user temp folder
+#endif
+
 /* ---------------- helpers ---------------- */
 
 static void LD_CopyPath(A_char* dst, size_t dst_size, const A_char* src)
@@ -111,6 +116,46 @@ static void LD_LogV(const char* fmt, va_list args)
         time_t now = time(NULL);
         struct tm tmv;
         localtime_s(&tmv, &now);
+        char ts[32];
+        strftime(ts, sizeof(ts), "%Y-%m-%d %H:%M:%S", &tmv);
+        fprintf(f, "[%s] ", ts);
+    }
+    vfprintf(f, fmt, args);
+    fputc('\n', f);
+    fclose(f);
+#elif defined(AE_OS_MAC)
+    // Multi-Frame Rendering renders on several threads at once.
+    static std::mutex log_mutex;
+    std::lock_guard<std::mutex> lock(log_mutex);
+
+    char path[1024];
+    if (confstr(_CS_DARWIN_USER_TEMP_DIR, path, sizeof(path)) == 0)
+    {
+        return;
+    }
+    strlcat(path, "ld3de4_ae.log", sizeof(path));
+
+    // Rotate when the current log grew past the limit.
+    struct stat st;
+    if (stat(path, &st) == 0 && st.st_size > LD_LOG_MAX_BYTES)
+    {
+        char backup[1024];
+        strlcpy(backup, path, sizeof(backup));
+        strlcat(backup, ".1", sizeof(backup));
+        // A previous backup is silently overwritten (rename).
+        rename(path, backup);
+    }
+
+    FILE* f = fopen(path, "a");
+    if (!f)
+    {
+        return;
+    }
+    // Timestamp every entry — the log must be self-describing for support.
+    {
+        time_t now = time(NULL);
+        struct tm tmv;
+        localtime_r(&now, &tmv);
         char ts[32];
         strftime(ts, sizeof(ts), "%Y-%m-%d %H:%M:%S", &tmv);
         fprintf(f, "[%s] ", ts);
@@ -395,18 +440,25 @@ static PF_Err LD_BakeKeys(PF_InData* in_data, PF_OutData* out_data, PF_ParamDef*
 static PF_Err LD_FitCompToDistortion(PF_InData* in_data, PF_OutData* out_data, PF_ParamDef* params[]);
 static PF_Err UpdateParamsUI(PF_InData* in_data, PF_OutData* out_data, PF_ParamDef* params[], PF_LayerDef* output);
 
-/* Win32 file dialog. AE has no built-in file-picker param type, so the
-   path is chosen either from the supervised "Choose .nk File..." button
-   (PF_Cmd_USER_CHANGED_PARAM) or from the Options button
-   (PF_Cmd_DO_DIALOG). Both funnel into this helper with the same, single
-   import path: parse and validate the file FIRST, then apply
-   everything in one operation — path, snapshot, popup, keyframe baking.
-   A failed import leaves the effect state unchanged. */
+/* Platform file dialog: Win32 GetOpenFileNameA / macOS NSOpenPanel
+   (the macOS implementation lives in Mac/LD_FileDialog_mac.mm). AE has
+   no built-in file-picker param type, so the path is chosen either from
+   the supervised "Choose .nk File..." button (PF_Cmd_USER_CHANGED_PARAM)
+   or from the Options button (PF_Cmd_DO_DIALOG). Both funnel into this
+   helper with the same, single import path: parse and validate the file
+   FIRST, then apply everything in one operation — path, snapshot,
+   popup, keyframe baking. A failed import leaves the effect state
+   unchanged. */
+
+#ifdef AE_OS_MAC
+/* Implemented in Mac/LD_FileDialog_mac.mm (Objective-C++, NSOpenPanel). */
+extern bool LD_MacPickNkFile(char* path, size_t path_size);
+#endif
 
 static PF_Err LD_PickNkFile(PF_InData* in_data, PF_OutData* out_data, PF_ParamDef* params[], A_Boolean bake_now)
 {
     PF_Err err = PF_Err_NONE;
-#ifdef AE_OS_WIN
+
     LD_UnflatSeqData* seq = NULL;
     if (in_data->sequence_data)
     {
@@ -417,7 +469,6 @@ static PF_Err LD_PickNkFile(PF_InData* in_data, PF_OutData* out_data, PF_ParamDe
         return PF_Err_BAD_CALLBACK_PARAM;
     }
 
-    OPENFILENAMEA ofn;
     char file_name[LD_NK_PATH_MAX];
     file_name[0] = 0;
     if (seq->nk_path[0])
@@ -425,6 +476,9 @@ static PF_Err LD_PickNkFile(PF_InData* in_data, PF_OutData* out_data, PF_ParamDe
         LD_CopyPath(file_name, sizeof(file_name), seq->nk_path);
     }
 
+    bool picked = false;
+#ifdef AE_OS_WIN
+    OPENFILENAMEA ofn;
     AEFX_CLR_STRUCT(ofn);
     ofn.lStructSize = sizeof(ofn);
     ofn.hwndOwner = NULL;
@@ -434,7 +488,23 @@ static PF_Err LD_PickNkFile(PF_InData* in_data, PF_OutData* out_data, PF_ParamDe
     ofn.Flags = OFN_FILEMUSTEXIST | OFN_HIDEREADONLY;
     ofn.lpstrDefExt = "nk";
 
-    if (GetOpenFileNameA(&ofn))
+    picked = GetOpenFileNameA(&ofn) ? true : false;
+    if (!picked)
+    {
+        LD_Log("FILE PICK canceled (CommDlgExtendedError=%lu)", (unsigned long)CommDlgExtendedError());
+    }
+#elif defined(AE_OS_MAC)
+    picked = LD_MacPickNkFile(file_name, sizeof(file_name));
+    if (!picked)
+    {
+        LD_Log("FILE PICK canceled");
+    }
+#else
+    (void)params;
+    (void)bake_now;
+#endif
+
+    if (picked)
     {
         LD_Log("FILE PICKED: '%s'", file_name);
 
@@ -553,14 +623,7 @@ static PF_Err LD_PickNkFile(PF_InData* in_data, PF_OutData* out_data, PF_ParamDe
         // requests a forced re-render (see AE_Effect.h on FORCE_RERENDER).
         out_data->out_flags |= PF_OutFlag_FORCE_RERENDER | PF_OutFlag_REFRESH_UI;
     }
-    else
-    {
-        LD_Log("FILE PICK canceled (CommDlgExtendedError=%lu)", (unsigned long)CommDlgExtendedError());
-    }
-#else
-    (void)in_data;
-    (void)out_data;
-#endif
+
     return err;
 }
 

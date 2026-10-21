@@ -1,0 +1,63 @@
+# Build the macOS (.bundle) version of "3DE4 Lens Distortion" on a GitHub
+# Actions Mac runner.
+#
+# The AE SDK is not kept in the repository tree (the SDK license forbids open
+# redistribution). Instead, a build-only subset is attached as a release asset
+# in THIS repository (safe while the repository is private):
+#   1. Zip three folders of the macOS SDK — Examples/Headers, Examples/Resources,
+#      Examples/Util — into AfterEffectsSDK_26.5_mac.zip.
+#   2. Create a release with the tag AE-SDK-26.5-mac and attach the zip.
+#   IMPORTANT: before making this repository public, DELETE that release
+#   (the SDK license forbids open redistribution).
+# The workflow downloads the asset with the default GITHUB_TOKEN.
+
+name: build-mac
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - "ae_ldpk/**"
+      - ".github/workflows/build-mac.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  SDK_RELEASE: AE-SDK-26.5-mac
+  SDK_ASSET: AfterEffectsSDK_26.5_mac.zip
+
+jobs:
+  build:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download the AE SDK (macOS) from this repository's release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release download "$SDK_RELEASE" \
+            --repo "$GITHUB_REPOSITORY" --pattern "$SDK_ASSET" \
+            --output "$RUNNER_TEMP/aesdk.zip"
+          mkdir -p "$RUNNER_TEMP/aesdk"
+          unzip -q "$RUNNER_TEMP/aesdk.zip" -d "$RUNNER_TEMP/aesdk"
+          AECONFIG="$(find "$RUNNER_TEMP/aesdk" -name AEConfig.h | head -1)"
+          if [ -z "$AECONFIG" ]; then
+            echo "::error::AEConfig.h not found in the SDK zip"
+            exit 1
+          fi
+          echo "AE_SDK_HEADERS=$(cd "$(dirname "$AECONFIG")" && pwd)" >> "$GITHUB_ENV"
+
+      - name: Build release
+        run: bash ae_ldpk/ae/Mac/build_mac.sh release
+
+      - name: Build debug (diagnostic log)
+        run: bash ae_ldpk/ae/Mac/build_mac.sh debug
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: LD_3DE4_Lens_Distortion_mac
+          path: releases/AE_LD3DE4/**/*.bundle
+          if-no-files-found: error

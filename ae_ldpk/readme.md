@@ -19,6 +19,7 @@ the distortion to the layer using the header-only LDPK models.
 | [`ae/LD3DE4_Lens_Distortion.h`](ae/LD3DE4_Lens_Distortion.h) / [`.cpp`](ae/LD3DE4_Lens_Distortion.cpp) | The After Effects (AEX) effect |
 | [`ae/LD3DE4_Lens_DistortionPiPL.r`](ae/LD3DE4_Lens_DistortionPiPL.r) | Plugin PiPL resource |
 | [`ae/Win/LD3DE4_Lens_Distortion.sln`](ae/Win/LD3DE4_Lens_Distortion.sln) / [`.vcxproj`](ae/Win/LD3DE4_Lens_Distortion.vcxproj) | Visual Studio 2022 project (v143, x64) |
+| [`ae/Mac/LD_FileDialog_mac.mm`](ae/Mac/LD_FileDialog_mac.mm) / [`build_mac.sh`](ae/Mac/build_mac.sh) | macOS: NSOpenPanel file dialog and the universal `.bundle` build script |
 
 ## Building
 
@@ -48,6 +49,28 @@ can be kept in Plug-ins simultaneously.
 The ready plugin: `releases/AE_LD3DE4/<version>/LD_3DE4_Lens_Distortion_v<version>.aex`
 (the project OutDir) — copy it to
 `C:\Program Files\Adobe\Adobe After Effects <version>\Support Files\Plug-ins\`.
+
+## Building (macOS)
+
+Requires Xcode command line tools and the After Effects SDK for macOS; only
+three SDK folders are needed for compilation: `Examples/Headers`,
+`Examples/Resources`, `Examples/Util`.
+
+```bash
+./ae_ldpk/ae/Mac/build_mac.sh release   # releases/AE_LD3DE4/<version>/LD_3DE4_Lens_Distortion_v<version>.bundle
+./ae_ldpk/ae/Mac/build_mac.sh debug     # ..._debug.bundle, the always-on log
+```
+
+The SDK is auto-detected in `AfterEffectsSDK_26.5_mac` next to `ae_ldpk/`, or
+set explicitly: `AE_SDK=<sdk root>` / `AE_SDK_HEADERS=<Headers dir>`. The
+result is a universal binary (x86_64 + arm64); install by copying the
+`.bundle` to `/Library/Application Support/Adobe/Common/Plug-ins/<version>/MediaCore/`.
+
+GitHub Actions builds both configurations on every push touching `ae_ldpk/`
+([`.github/workflows/build-mac.yml`](../.github/workflows/build-mac.yml)). The
+workflow downloads the SDK from a private repository (the SDK license forbids
+open redistribution) — the one-time setup steps are listed in the workflow
+header.
 
 ## Usage in AE
 
