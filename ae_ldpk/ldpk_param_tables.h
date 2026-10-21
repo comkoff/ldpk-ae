@@ -75,7 +75,7 @@ namespace ae_ldpk
 	LD_RADIAL("Cx24 - Degree 4"),LD_RADIAL("Cy24 - Degree 4"), \
 	LD_RADIAL("Cx44 - Degree 4"),LD_RADIAL("Cy44 - Degree 4")
 
-	static const ld_model_info LD_MODELS[] =
+	static constexpr ld_model_info LD_MODELS[] =
 		{
 		{
 		"LD_3DE4_Radial_Standard_Degree_4","Radial Standard Degr. 4",8,true,

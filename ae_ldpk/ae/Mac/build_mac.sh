@@ -78,11 +78,13 @@ rm -rf "$BUNDLE"
 mkdir -p "$BUNDLE/Contents/MacOS" "$BUNDLE/Contents/Resources"
 
 # --- 1. compile (universal binary) ------------------------------------------
+# Note: AE_OS_MAC is defined by the SDK's AEConfig.h itself; defining it here
+# as well only produces a macro-redefined warning.
 CXX_FLAGS=(
     -std=c++17 -O2 -fexceptions -frtti -fPIC
     -arch x86_64 -arch arm64
     -mmacosx-version-min=11.0
-    -DAE_OS_MAC=1 $DEFINES
+    $DEFINES
     -I"$SDK_HEADERS" -I"$SDK_HEADERS/SP" -I"$SDK_UTIL"
     -I"$LDPK_INC" -I"$AE_LDPK"
 )

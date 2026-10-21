@@ -385,7 +385,7 @@ static std::string LD_PrepareModel(
         const A_long n = flat->blob_size < 16 ? flat->blob_size : 16;
         for (A_long i = 0; i < n; ++i)
         {
-            sprintf_s(hex + 3 * i, sizeof(hex) - 3 * i, "%02X ", LD_FlatBlobConst(flat)[i]);
+            snprintf(hex + 3 * i, sizeof(hex) - 3 * i, "%02X ", LD_FlatBlobConst(flat)[i]);
         }
         unsigned long sum = 0;
         for (A_long i = 0; i < flat->blob_size; ++i)
@@ -912,7 +912,7 @@ static PF_Err GlobalSetup(PF_InData* in_data, PF_OutData* out_data, PF_ParamDef*
 static PF_Err LD_AddModelParam(PF_InData* in_data, PF_ParamDef& def, const ae_ldpk::ld_param_info& pi, A_long disk_id)
 {
     char name[PF_MAX_EFFECT_PARAM_NAME_LEN + 1];
-    strncpy_s(name, sizeof(name), pi.name, _TRUNCATE);
+    LD_CopyPath(name, sizeof(name), pi.name);
 
     // Precision 5 keeps small radial coefficients readable.
     PF_ADD_FLOAT_SLIDERX(name, pi.min_value, pi.max_value, pi.min_value, pi.max_value, pi.default_value, 5, 0, 0, disk_id);
@@ -975,7 +975,7 @@ static PF_Err ParamsSetup(PF_InData* in_data, PF_OutData* out_data, PF_ParamDef*
         }
         const ae_ldpk::ld_model_info& mi = ae_ldpk::LD_MODELS[m];
         char group_name[PF_MAX_EFFECT_PARAM_NAME_LEN + 1];
-        strncpy_s(group_name, sizeof(group_name), mi.ui_label, _TRUNCATE);
+        LD_CopyPath(group_name, sizeof(group_name), mi.ui_label);
 
         AEFX_CLR_STRUCT(def);
         A_long group_id = 1000 + m * 100;
