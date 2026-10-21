@@ -27,7 +27,7 @@ For troubleshooting use the debug build: apply it to a copy of the composition, 
 
 ## Downloads
 
-Ready-to-use plugin binaries are published as assets of **GitHub Releases**: <https://github.com/comkoff/ldpk-ae/releases>. The repository tree contains sources and documentation only. Each release archive contains **both builds** (release and debug) and the user manual in **English and Russian**.
+Ready-to-use plugin binaries are published as assets of **GitHub Releases**: <https://github.com/comkoff/ldpk-ae/releases>. The repository tree contains sources and documentation only. Release assets contain **both builds** (release and debug) for **Windows and macOS** and the user manual in **English and Russian**. On macOS, remove the Gatekeeper quarantine right after unpacking: `xattr -dr com.apple.quarantine LD_3DE4_Lens_Distortion_v*.bundle`.
 
 ## Building the AE plugin (Windows)
 

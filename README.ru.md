@@ -27,7 +27,7 @@
 
 ## Загрузка
 
-Готовые плагины публикуются как ассеты **GitHub Releases**: <https://github.com/comkoff/ldpk-ae/releases>. В дереве репозитория — только исходники и документация. Каждый архив релиза содержит **обе сборки** (release и debug) и руководство пользователя на **русском и английском**.
+Готовые плагины публикуются как ассеты **GitHub Releases**: <https://github.com/comkoff/ldpk-ae/releases>. В дереве репозитория — только исходники и документация. Ассеты релиза содержат **обе сборки** (release и debug) для **Windows и macOS** и руководство пользователя на **русском и английском**. На macOS сразу после распаковки снимите карантин Gatekeeper: `xattr -dr com.apple.quarantine LD_3DE4_Lens_Distortion_v*.bundle`.
 
 ## Сборка AE-плагина (Windows)
 

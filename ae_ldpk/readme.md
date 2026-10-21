@@ -64,7 +64,9 @@ three SDK folders are needed for compilation: `Examples/Headers`,
 The SDK is auto-detected in `AfterEffectsSDK_26.5_mac` next to `ae_ldpk/`, or
 set explicitly: `AE_SDK=<sdk root>` / `AE_SDK_HEADERS=<Headers dir>`. The
 result is a universal binary (x86_64 + arm64); install by copying the
-`.bundle` to `/Library/Application Support/Adobe/Common/Plug-ins/<version>/MediaCore/`.
+`.bundle` to `/Applications/Adobe After Effects <year>/Plug-ins/`. A
+downloaded (not locally built) `.bundle` carries the Gatekeeper quarantine —
+remove it right after unpacking: `xattr -dr com.apple.quarantine <name>.bundle`.
 
 GitHub Actions builds both configurations on every push touching `ae_ldpk/`
 ([`.github/workflows/build-mac.yml`](../.github/workflows/build-mac.yml)). The

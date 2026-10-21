@@ -64,7 +64,9 @@ Debug») и Match Name (`SDV LD_3DE4 Lens Distortion Debug`) — обе верс
 SDK ищется автоматически в `AfterEffectsSDK_26.5_mac` рядом с `ae_ldpk/`, либо
 задаётся явно: `AE_SDK=<корень SDK>` / `AE_SDK_HEADERS=<каталог Headers>`.
 Результат — universal-бинарник (x86_64 + arm64); установка — скопировать
-`.bundle` в `/Library/Application Support/Adobe/Common/Plug-ins/<версия>/MediaCore/`.
+`.bundle` в `/Applications/Adobe After Effects <год>/Plug-ins/`. Скачанный
+(а не собранный локально) `.bundle` несёт карантин Gatekeeper — снимайте его
+сразу после распаковки: `xattr -dr com.apple.quarantine <имя>.bundle`.
 
 GitHub Actions собирает обе конфигурации при каждом push, затрагивающем
 `ae_ldpk/` ([`.github/workflows/build-mac.yml`](../.github/workflows/build-mac.yml)).

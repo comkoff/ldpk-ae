@@ -1,0 +1,69 @@
+# Build the macOS .bundle files and attach them as a release asset.
+#
+# Run manually: Actions -> release-mac -> Run workflow -> specify the tag
+# (the release must already exist, e.g. v1.0.0). The zip is packed on the
+# macOS runner, so Unix permissions (the executable bit of the Mach-O
+# binary) are preserved — users only need to remove the Gatekeeper
+# quarantine after unpacking (see the user manual).
+
+name: release-mac
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Release tag to attach the macOS zip to (e.g. v1.0.0)"
+        required: true
+        default: v1.0.0
+
+permissions:
+  contents: write
+
+env:
+  SDK_RELEASE: AE-SDK-26.5-mac
+  SDK_ASSET: AfterEffectsSDK_26.5_mac.zip
+
+jobs:
+  build-and-upload:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download the AE SDK (macOS) from this repository's release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release download "$SDK_RELEASE" \
+            --repo "$GITHUB_REPOSITORY" --pattern "$SDK_ASSET" \
+            --output "$RUNNER_TEMP/aesdk.zip"
+          mkdir -p "$RUNNER_TEMP/aesdk"
+          unzip -q "$RUNNER_TEMP/aesdk.zip" -d "$RUNNER_TEMP/aesdk"
+          AECONFIG="$(find "$RUNNER_TEMP/aesdk" -name AEConfig.h | head -1)"
+          if [ -z "$AECONFIG" ]; then
+            echo "::error::AEConfig.h not found in the SDK zip"
+            exit 1
+          fi
+          echo "AE_SDK_HEADERS=$(cd "$(dirname "$AECONFIG")" && pwd)" >> "$GITHUB_ENV"
+
+      - name: Build release and debug
+        run: |
+          bash ae_ldpk/ae/Mac/build_mac.sh release
+          bash ae_ldpk/ae/Mac/build_mac.sh debug
+
+      - name: Pack the macOS zip (bundles + user manuals)
+        run: |
+          VERSION="$(ls releases/AE_LD3DE4 | grep -v _debug | head -1)"
+          STAGE="$RUNNER_TEMP/stage"
+          mkdir -p "$STAGE"
+          cp -R releases/AE_LD3DE4/"$VERSION"/*.bundle "$STAGE"/
+          cp releases/AE_LD3DE4/readme_user.md releases/AE_LD3DE4/readme_user_ru.md "$STAGE"/
+          cd "$STAGE"
+          zip -r "$RUNNER_TEMP/LD_3DE4_Lens_Distortion_v${VERSION}_macOS.zip" .
+          echo "ZIP=$RUNNER_TEMP/LD_3DE4_Lens_Distortion_v${VERSION}_macOS.zip" >> "$GITHUB_ENV"
+
+      - name: Upload the asset to the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release upload "${{ inputs.tag }}" "$ZIP" \
+            --repo "$GITHUB_REPOSITORY" --clobber

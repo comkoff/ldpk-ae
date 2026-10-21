@@ -2,7 +2,31 @@
 
 The **Lens Distortion → 3DE4 Lens Distortion** effect applies lens distortion computed in 3DE4 (Science-D-Visions) to a layer. The distortion is taken either from a `.nk` file exported from 3DE4 or from the effect parameters set manually.
 
-Requirements: After Effects 2021 or newer, Windows x64. Project color depth: 8 / 16 / 32 bpc (float).
+Requirements: After Effects 2021 or newer, Windows x64 or macOS (Intel / Apple Silicon). Project color depth: 8 / 16 / 32 bpc (float).
+
+---
+
+## Install
+
+**Windows:** copy the `.aex` file(s) to
+`C:\Program Files\Adobe\Adobe After Effects <version>\Support Files\Plug-ins\`
+and restart After Effects.
+
+**macOS:**
+
+1. Unzip the release archive.
+2. **Immediately after unzipping, remove the Gatekeeper quarantine** — the
+   plugin is not notarized, and macOS silently blocks quarantined bundles.
+   In Terminal, inside the unzipped folder:
+
+   ```bash
+   xattr -dr com.apple.quarantine LD_3DE4_Lens_Distortion_v1.0.0*.bundle
+   ```
+
+3. Copy the `.bundle` file(s) to `/Applications/Adobe After Effects <year>/Plug-ins/`
+   (Finder: Go → Go to Folder, `Cmd+Shift+G`) and restart After Effects.
+
+Both builds (regular and diagnostic) can be installed side by side.
 
 ---
 
@@ -128,4 +152,4 @@ Sliders of the coefficients of the selected model (Distortion, Squeeze, Stabiliz
 
 **Keys were not placed over the whole composition length.** Keys are placed over the whole range of the curve from the `.nk` (as in 3DE4). If the curve in 3DE4 is shorter than the composition — beyond the last key the value holds at the last key.
 
-**Diagnostics.** The plugin ships in two builds: regular and diagnostic (`LD_3DE4_Lens_Distortion_v*_debug.aex`). The diagnostic build always writes a detailed technical log to `%TEMP%\ld3de4_ae.log` (previous copy — `ld3de4_ae.log.1`); the regular build writes no log. Both builds can be kept in Plug-ins simultaneously — the diagnostic effect appears in the menu as **Lens Distortion → 3DE4 Lens Distortion Debug**. When contacting support: apply the diagnostic effect (on a copy of the composition), reproduce the problem and attach the log.
+**Diagnostics.** The plugin ships in two builds: regular and diagnostic (`LD_3DE4_Lens_Distortion_v*_debug.aex` / `.bundle`). The diagnostic build always writes a detailed technical log; the regular build writes no log. Windows: `%TEMP%\ld3de4_ae.log`. macOS: `ld3de4_ae.log` in the per-user temp folder — `ls -l "$TMPDIR"ld3de4_ae.log*` in Terminal (the folder looks like `/var/folders/…/T/`). The previous copy is kept as `ld3de4_ae.log.1`. Both builds can be kept in Plug-ins simultaneously — the diagnostic effect appears in the menu as **Lens Distortion → 3DE4 Lens Distortion Debug**. When contacting support: apply the diagnostic effect (on a copy of the composition), reproduce the problem and attach the log.
