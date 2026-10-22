@@ -1,0 +1,50 @@
+name: Отчёт об ошибке (русский)
+description: Что-то работает не так, как ожидалось
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Пожалуйста, воспроизведите проблему на **диагностической** сборке
+        («3DE4 Lens Distortion Debug») на копии композиции и приложите журнал —
+        так отчёт можно будет разобрать по существу.
+  - type: dropdown
+    id: os
+    attributes:
+      label: ОС
+      options:
+        - Windows x64
+        - macOS (Intel)
+        - macOS (Apple Silicon)
+    validations:
+      required: true
+  - type: dropdown
+    id: ae_version
+    attributes:
+      label: Версия After Effects
+      options:
+        - "2026 (26.x)"
+        - "2025 (25.x)"
+        - "2024 (24.x)"
+        - 2023 или старше
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Шаги воспроизведения
+      description: Что делали, что ожидали, что получилось.
+    validations:
+      required: true
+  - type: textarea
+    id: log
+    attributes:
+      label: Журнал debug-сборки
+      description: |
+        Вставьте относящуюся к проблеме часть журнала (или приложите файл).
+        Windows: `%TEMP%\ld3de4_ae.log` · macOS: `ls -l "$TMPDIR"ld3de4_ae.log*`
+  - type: input
+    id: model
+    attributes:
+      label: Модель линзы
+      description: Название модели из .nk-файла, если применимо

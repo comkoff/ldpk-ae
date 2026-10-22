@@ -1,0 +1,52 @@
+name: Bug report
+description: Something does not work as expected
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please reproduce the problem with the **diagnostic** build
+        ("3DE4 Lens Distortion Debug") on a copy of the composition and attach
+        the log — it makes the report actionable.
+        Пожалуйста, воспроизведите проблему на **диагностической** сборке
+        («3DE4 Lens Distortion Debug») на копии композиции и приложите журнал.
+  - type: dropdown
+    id: os
+    attributes:
+      label: OS / ОС
+      options:
+        - Windows x64
+        - macOS (Intel)
+        - macOS (Apple Silicon)
+    validations:
+      required: true
+  - type: dropdown
+    id: ae_version
+    attributes:
+      label: After Effects version / версия AE
+      options:
+        - "2026 (26.x)"
+        - "2025 (25.x)"
+        - "2024 (24.x)"
+        - 2023 or older / или старше
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce / Шаги воспроизведения
+      description: What you did, what you expected, what happened. / Что делали, что ожидали, что получилось.
+    validations:
+      required: true
+  - type: textarea
+    id: log
+    attributes:
+      label: Debug log / Журнал debug-сборки
+      description: |
+        Paste the relevant part of the log (or attach the file).
+        Windows: `%TEMP%\ld3de4_ae.log` · macOS: `ls -l "$TMPDIR"ld3de4_ae.log*`
+  - type: input
+    id: model
+    attributes:
+      label: Lens model / модель линзы
+      description: Model name from the .nk file, if applicable / модель из .nk, если применимо
