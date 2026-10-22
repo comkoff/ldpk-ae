@@ -1,4 +1,0 @@
-<map id="ldpk::mapping_function_stereographic&lt; VEC2, MAT2 &gt;" name="ldpk::mapping_function_stereographic&lt; VEC2, MAT2 &gt;">
-<area shape="rect" id="node1" title="The mapping function for stereographic fisheye lenses. Essentially theta &#45;&gt; 2 f tan(theta/2)." alt="" coords="5,95,180,151"/>
-<area shape="rect" id="node2" href="$classldpk_1_1mapping__function__base.html" title="Base class for all fisheye mapping functions." alt="" coords="5,5,180,47"/>
-</map>

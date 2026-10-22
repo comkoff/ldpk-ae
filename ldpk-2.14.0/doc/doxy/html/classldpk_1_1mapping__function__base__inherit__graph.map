@@ -1,7 +1,0 @@
-<map id="ldpk::mapping_function_base&lt; VEC2, MAT2 &gt;" name="ldpk::mapping_function_base&lt; VEC2, MAT2 &gt;">
-<area shape="rect" id="node1" title="Base class for all fisheye mapping functions." alt="" coords="5,104,180,145"/>
-<area shape="rect" id="node2" href="$classldpk_1_1mapping__function__equidistant.html" title="The mapping function for equidistant fisheye lenses. Essentially theta &#45;&gt; f theta." alt="" coords="232,5,443,47"/>
-<area shape="rect" id="node3" href="$classldpk_1_1mapping__function__equisolid.html" title="The mapping function for equisolid angle fisheye lenses. Essentially theta &#45;&gt; 2 f sin(theta/2)." alt="" coords="239,71,435,112"/>
-<area shape="rect" id="node4" href="$classldpk_1_1mapping__function__orthographic.html" title="The mapping function for orthographic fisheye lenses. Essentially theta &#45;&gt; f sin(theta)." alt="" coords="228,136,447,177"/>
-<area shape="rect" id="node5" href="$classldpk_1_1mapping__function__stereographic.html" title="The mapping function for stereographic fisheye lenses. Essentially theta &#45;&gt; 2 f tan(theta/2)." alt="" coords="250,202,425,258"/>
-</map>

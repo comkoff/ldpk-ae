@@ -1,5 +1,0 @@
-Project grid_all_models.3de contains a rendered grid
-as 8 reference frames with 8 lenses with different lens
-distortion models. Image Warp is loaded with 16 entries
-with direction "apply" and "remove" for each of the 8
-cameras. We do our tests on Flame and Nuke with this project.

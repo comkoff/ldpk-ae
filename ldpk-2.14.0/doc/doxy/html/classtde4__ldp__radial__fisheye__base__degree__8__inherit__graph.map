@@ -1,5 +1,0 @@
-<map id="tde4_ldp_radial_fisheye_base_degree_8&lt; VEC2, MAT2, MAPPING_FUNCTION &gt;" name="tde4_ldp_radial_fisheye_base_degree_8&lt; VEC2, MAT2, MAPPING_FUNCTION &gt;">
-<area shape="rect" id="node1" title="Base class for radial fisheye distortion." alt="" coords="5,169,228,225"/>
-<area shape="rect" id="node2" href="$classldpk_1_1ldp__builtin.html" title="This class handles the built&#45;in parameter and the lookup table. You may find it useful for your own d..." alt="" coords="48,80,185,121"/>
-<area shape="rect" id="node3" href="$classtde4__ld__plugin.html" title="Lens Distortion Plugin Base Class." alt="" coords="58,5,175,32"/>
-</map>

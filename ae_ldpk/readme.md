@@ -13,8 +13,8 @@ the distortion to the layer using the header-only LDPK models.
 |---|---|
 | [`ldpk_nk_block.h`](ldpk_nk_block.h) | Parser of the `LD_3DE4_* { ... }` block from a `.nk` file: static parameters and `{{curve x<frame> <value>}}` curves with linear interpolation |
 | [`ldpk_model_registry.h`](ldpk_model_registry.h) | Mapping "Nuke node name → LDPK class" (all current 3DE4 models) |
-| [`ldpk_nk_loader.h`](ldpk_nk_loader.h) | Model loading from a file: 7 built-in parameters + model parameters + FOV mapping (as in `nuke_ld_3de4_base.C`) |
-| [`nk_ld_dump.cpp`](nk_ld_dump.cpp) | Console utility: prints parameters and a coordinate grid — for cross-checking against Nuke |
+| [`ldpk_nk_loader.h`](ldpk_nk_loader.h) | Model loading from a file: 7 built-in parameters + model parameters + FOV mapping (as in the LDPK reference implementation) |
+| [`nk_ld_dump.cpp`](nk_ld_dump.cpp) | Console utility: prints parameters and a coordinate grid — for cross-checking the model math |
 | [`test_snapshot_roundtrip.cpp`](test_snapshot_roundtrip.cpp) | Test: .nk snapshot serialization (round-trip), block scanner within a full script, `apply`/`apply_checked` consistency |
 | [`ae/LD3DE4_Lens_Distortion.h`](ae/LD3DE4_Lens_Distortion.h) / [`.cpp`](ae/LD3DE4_Lens_Distortion.cpp) | The After Effects (AEX) effect |
 | [`ae/LD3DE4_Lens_DistortionPiPL.r`](ae/LD3DE4_Lens_DistortionPiPL.r) | Plugin PiPL resource |
@@ -80,14 +80,14 @@ header.
 2. Pick a model in the **Model** drop-down — the effect works immediately,
    without a .nk file (model parameters and FOV = [0..1]² — the LDPK defaults).
 3. Press **Choose .nk File...** and pick a file exported from 3DE4
-   (or a full Nuke .nk script containing an `LD_3DE4_*` node — the block is found
+   (or a full `.nk` script containing an `LD_3DE4_*` node — the block is found
    inside it): the Model popup switches to the model from the file, the static
    parameters are filled in, and the .nk curves are automatically placed as keys
    (LINEAR, the whole curve range, no offset).
    The file is parsed **before** being applied: on error the effect state does
    not change. A successful import stores a **snapshot** of the parsed node inside
    the project — the file is no longer needed (see "The .nk snapshot" below).
-4. **Direction**: `Undistort` (remove the distortion, as in the Nuke node by default)
+4. **Direction**: `Undistort` (remove the distortion — the exporter's default)
    or `Distort` (apply it back).
 5. **Fit Comp To Distortion...**: fits the composition canvas exactly to the image
    after the effect is applied — enlarges when the distortion exceeds the frame and
@@ -124,7 +124,7 @@ header.
 
 ## Coordinates
 
-- LDPK/Nuke: unit coordinates, (0,0) — bottom-left corner, y up.
+- LDPK/`.nk`: unit coordinates, (0,0) — bottom-left corner, y up.
 - AE: pixels, (0,0) — top-left corner, y down.
 - The conversion happens in the pixel callbacks
   [`LD_RenderPixel8/16/Float`](ae/LD3DE4_Lens_Distortion.cpp):
@@ -182,7 +182,7 @@ Not supported (obsolete/incompatible with MSVC): `LD_3DE4_Noop_Debugging`
 ## Limitations
 
 - Parameter curves are interpolated linearly (the 3DE4 exporter writes keys
-  without spline handles; Nuke also uses linear by default for such curves).
+  without spline handles; linear is the default interpolation for such curves).
 - FOV animation is not supported (FOV is static in the export; without a .nk
   FOV = [0..1]²). Animated built-in camera parameters (e.g. the fisheye focus)
   are supported — the snapshot stores their curves.
@@ -193,8 +193,8 @@ Not supported (obsolete/incompatible with MSVC): `LD_3DE4_Noop_Debugging`
   `SUPPORTS_SMART_RENDER` + `FLOAT_COLOR_AWARE` flag pair (otherwise 25::248).
 - Fit Comp takes the layer Scale at the current frame into account; layer
   rotation and off-center layer position are not taken into account.
-- For an exact cross-check against Nuke use `nk_ld_dump.exe` and the test
-  projects from `ldpk-2.14.0/projects/nuke/`.
+- For an exact cross-check of the model math use `nk_ld_dump.exe`
+  (prints the parsed parameters and a mapping grid).
 
 ## License
 

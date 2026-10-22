@@ -1,4 +1,0 @@
-<map id="ldpk::generic_distortion_base&lt; VEC2, MAT2, N &gt;" name="ldpk::generic_distortion_base&lt; VEC2, MAT2, N &gt;">
-<area shape="rect" id="node1" title="Base class for a distortion model with N parameters. You may find it useful to derive your own distor..." alt="" coords="13,80,200,121"/>
-<area shape="rect" id="node2" href="$classldpk_1_1generic__distortion__api.html" title="For organizing the documentation. This class is not really required and there are not many common fun..." alt="" coords="5,5,208,32"/>
-</map>

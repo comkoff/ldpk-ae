@@ -1,5 +1,0 @@
-<map id="ldpk::generic_anamorphic_distortion&lt; VEC2, MAT2, 6 &gt;" name="ldpk::generic_anamorphic_distortion&lt; VEC2, MAT2, 6 &gt;">
-<area shape="rect" id="node1" title="Specialization for degree&#45;6 for better performance. Also, this allows us to implement the Jacobian qu..." alt="" coords="5,184,220,225"/>
-<area shape="rect" id="node2" href="$classldpk_1_1generic__distortion__base.html" title=" " alt="" coords="15,80,210,136"/>
-<area shape="rect" id="node3" href="$classldpk_1_1generic__distortion__api.html" title="For organizing the documentation. This class is not really required and there are not many common fun..." alt="" coords="11,5,214,32"/>
-</map>

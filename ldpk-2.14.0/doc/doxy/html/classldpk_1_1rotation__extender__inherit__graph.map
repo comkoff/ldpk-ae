@@ -1,4 +1,0 @@
-<map id="ldpk::rotation_extender&lt; VEC2, MAT2 &gt;" name="ldpk::rotation_extender&lt; VEC2, MAT2 &gt;">
-<area shape="rect" id="node1" title="The rotation extender simply rotates the incident ray around the optical axis. We need this e...." alt="" coords="5,95,180,136"/>
-<area shape="rect" id="node2" href="$classldpk_1_1extender__base.html" title="Base class of all extenders The concept of extenders as turned out to be useful in the new&#45;style dist..." alt="" coords="15,5,170,47"/>
-</map>

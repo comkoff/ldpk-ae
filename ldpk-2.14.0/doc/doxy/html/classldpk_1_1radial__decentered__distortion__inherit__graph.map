@@ -1,5 +1,0 @@
-<map id="ldpk::radial_decentered_distortion&lt; VEC2, MAT2 &gt;" name="ldpk::radial_decentered_distortion&lt; VEC2, MAT2 &gt;">
-<area shape="rect" id="node1" title="A polynomial radially symmetric model of degree 4 with decentering. This is the distortion model func..." alt="" coords="7,169,206,211"/>
-<area shape="rect" id="node2" href="$classldpk_1_1generic__distortion__base.html" title=" " alt="" coords="15,80,199,121"/>
-<area shape="rect" id="node3" href="$classldpk_1_1generic__distortion__api.html" title="For organizing the documentation. This class is not really required and there are not many common fun..." alt="" coords="5,5,208,32"/>
-</map>

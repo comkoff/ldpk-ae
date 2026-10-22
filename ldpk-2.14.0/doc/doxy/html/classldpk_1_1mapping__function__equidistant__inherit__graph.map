@@ -1,4 +1,0 @@
-<map id="ldpk::mapping_function_equidistant&lt; VEC2, MAT2 &gt;" name="ldpk::mapping_function_equidistant&lt; VEC2, MAT2 &gt;">
-<area shape="rect" id="node1" title="The mapping function for equidistant fisheye lenses. Essentially theta &#45;&gt; f theta." alt="" coords="5,95,216,136"/>
-<area shape="rect" id="node2" href="$classldpk_1_1mapping__function__base.html" title="Base class for all fisheye mapping functions." alt="" coords="23,5,198,47"/>
-</map>

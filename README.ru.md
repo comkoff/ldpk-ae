@@ -1,4 +1,4 @@
-# ldpk-ae — линзовая дисторсия LDPK → After Effects / Nuke
+# ldpk-ae — линзовая дисторсия LDPK → After Effects
 
 Инструменты линзовой дисторсии на базе LDPK 2.14.0 (Lens Distortion Plugin Kit, Science-D-Visions).
 
@@ -21,8 +21,8 @@
 
 | Каталог | Содержимое |
 |---|---|
-| [`ae_ldpk/`](ae_ldpk) | Мост LDPK → After Effects: парсер `.nk` ([`ldpk_nk_block.h`](ae_ldpk/ldpk_nk_block.h)), реестр моделей ([`ldpk_model_registry.h`](ae_ldpk/ldpk_model_registry.h)), загрузчик ([`ldpk_nk_loader.h`](ae_ldpk/ldpk_nk_loader.h)), таблицы параметров ([`ldpk_param_tables.h`](ae_ldpk/ldpk_param_tables.h)), утилита сверки с Nuke ([`nk_ld_dump.cpp`](ae_ldpk/nk_ld_dump.cpp)), тест ([`test_snapshot_roundtrip.cpp`](ae_ldpk/test_snapshot_roundtrip.cpp)), исходник эффекта ([`ae/`](ae_ldpk/ae)) и проект VS 2022 ([`ae/Win/`](ae_ldpk/ae/Win)) |
-| [`ldpk-2.14.0/`](ldpk-2.14.0) | Оригинальное дерево LDPK 2.14.0 (Science-D-Visions), без изменений: header-only модели ([`include/ldpk/`](ldpk-2.14.0/include/ldpk) — нужны для сборки моста), плагины Nuke/3DE ([`source/ldpk/`](ldpk-2.14.0/source/ldpk)), экспортёры 3DE4 ([`3de4/python/`](ldpk-2.14.0/3de4/python)), сборочные скрипты ([`script/`](ldpk-2.14.0/script)), тесты ([`test/`](ldpk-2.14.0/test)), VS-проекты Nuke ([`windows/`](ldpk-2.14.0/windows)), документация ([`doc/`](ldpk-2.14.0/doc)), лицензия ([`license`](ldpk-2.14.0/license)) |
+| [`ae_ldpk/`](ae_ldpk) | Мост LDPK → After Effects: парсер `.nk` ([`ldpk_nk_block.h`](ae_ldpk/ldpk_nk_block.h)), реестр моделей ([`ldpk_model_registry.h`](ae_ldpk/ldpk_model_registry.h)), загрузчик ([`ldpk_nk_loader.h`](ae_ldpk/ldpk_nk_loader.h)), таблицы параметров ([`ldpk_param_tables.h`](ae_ldpk/ldpk_param_tables.h)), утилита сверки расчёта ([`nk_ld_dump.cpp`](ae_ldpk/nk_ld_dump.cpp)), тест ([`test_snapshot_roundtrip.cpp`](ae_ldpk/test_snapshot_roundtrip.cpp)), исходник эффекта ([`ae/`](ae_ldpk/ae)) и проект VS 2022 ([`ae/Win/`](ae_ldpk/ae/Win)) |
+| [`ldpk-2.14.0/`](ldpk-2.14.0) | Оригинальный LDPK 2.14.0 (Science-D-Visions), сокращён до необходимого мосту: header-only модели ([`include/ldpk/`](ldpk-2.14.0/include/ldpk) — нужны для сборки моста), экспортёр `.nk` из 3DE4 ([`3de4/python/`](ldpk-2.14.0/3de4/python)), документация по математике моделей ([`doc/tex/`](ldpk-2.14.0/doc/tex)), лицензия ([`license`](ldpk-2.14.0/license)) |
 | [`releases/`](releases) | Документация релизов; бинарники публикуются на странице Releases |
 
 ## Загрузка

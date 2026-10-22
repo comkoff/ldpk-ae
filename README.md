@@ -1,4 +1,4 @@
-# ldpk-ae — Lens Distortion: LDPK → After Effects / Nuke
+# ldpk-ae — Lens Distortion: LDPK → After Effects
 
 Lens distortion tooling based on LDPK 2.14.0 (Lens Distortion Plugin Kit, Science-D-Visions).
 
@@ -21,8 +21,8 @@ For troubleshooting use the debug build: apply it to a copy of the composition, 
 
 | Directory | Contents |
 |---|---|
-| [`ae_ldpk/`](ae_ldpk) | LDPK → After Effects bridge: `.nk` parser ([`ldpk_nk_block.h`](ae_ldpk/ldpk_nk_block.h)), model registry ([`ldpk_model_registry.h`](ae_ldpk/ldpk_model_registry.h)), loader ([`ldpk_nk_loader.h`](ae_ldpk/ldpk_nk_loader.h)), parameter tables ([`ldpk_param_tables.h`](ae_ldpk/ldpk_param_tables.h)), Nuke cross-check utility ([`nk_ld_dump.cpp`](ae_ldpk/nk_ld_dump.cpp)), test ([`test_snapshot_roundtrip.cpp`](ae_ldpk/test_snapshot_roundtrip.cpp)), effect source ([`ae/`](ae_ldpk/ae)) and VS 2022 project ([`ae/Win/`](ae_ldpk/ae/Win)) |
-| [`ldpk-2.14.0/`](ldpk-2.14.0) | Original LDPK 2.14.0 tree (Science-D-Visions), kept unmodified: header-only models ([`include/ldpk/`](ldpk-2.14.0/include/ldpk) — required for building the bridge), Nuke/3DE plugins ([`source/ldpk/`](ldpk-2.14.0/source/ldpk)), 3DE4 exporters ([`3de4/python/`](ldpk-2.14.0/3de4/python)), build scripts ([`script/`](ldpk-2.14.0/script)), tests ([`test/`](ldpk-2.14.0/test)), VS projects for Nuke ([`windows/`](ldpk-2.14.0/windows)), docs ([`doc/`](ldpk-2.14.0/doc)), license ([`license`](ldpk-2.14.0/license)) |
+| [`ae_ldpk/`](ae_ldpk) | LDPK → After Effects bridge: `.nk` parser ([`ldpk_nk_block.h`](ae_ldpk/ldpk_nk_block.h)), model registry ([`ldpk_model_registry.h`](ae_ldpk/ldpk_model_registry.h)), loader ([`ldpk_nk_loader.h`](ae_ldpk/ldpk_nk_loader.h)), parameter tables ([`ldpk_param_tables.h`](ae_ldpk/ldpk_param_tables.h)), reference cross-check utility ([`nk_ld_dump.cpp`](ae_ldpk/nk_ld_dump.cpp)), test ([`test_snapshot_roundtrip.cpp`](ae_ldpk/test_snapshot_roundtrip.cpp)), effect source ([`ae/`](ae_ldpk/ae)) and VS 2022 project ([`ae/Win/`](ae_ldpk/ae/Win)) |
+| [`ldpk-2.14.0/`](ldpk-2.14.0) | Original LDPK 2.14.0 (Science-D-Visions), pruned to what the bridge needs: header-only models ([`include/ldpk/`](ldpk-2.14.0/include/ldpk) — required for building the bridge), the 3DE4 `.nk` exporter ([`3de4/python/`](ldpk-2.14.0/3de4/python)), model math docs ([`doc/tex/`](ldpk-2.14.0/doc/tex)), license ([`license`](ldpk-2.14.0/license)) |
 | [`releases/`](releases) | Release documentation; binaries are published on the Releases page |
 
 ## Downloads
