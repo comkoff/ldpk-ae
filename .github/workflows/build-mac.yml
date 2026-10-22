@@ -18,7 +18,9 @@ on:
     branches: [main, master]
     paths:
       - "ae_ldpk/**"
+      - "ldpk-2.14.0/include/**"
       - ".github/workflows/build-mac.yml"
+      - "!**/*.md" # docs do not affect the build; macOS minutes are 10x quota
   workflow_dispatch:
 
 permissions:
