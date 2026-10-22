@@ -2,14 +2,11 @@
 # Actions Mac runner.
 #
 # The AE SDK is not kept in the repository tree (the SDK license forbids open
-# redistribution). Instead, a build-only subset is attached as a release asset
-# in THIS repository (safe while the repository is private):
-#   1. Zip three folders of the macOS SDK — Examples/Headers, Examples/Resources,
-#      Examples/Util — into AfterEffectsSDK_26.5_mac.zip.
-#   2. Create a release with the tag AE-SDK-26.5-mac and attach the zip.
-#   IMPORTANT: before making this repository public, DELETE that release
-#   (the SDK license forbids open redistribution).
-# The workflow downloads the asset with the default GITHUB_TOKEN.
+# redistribution). The build-only subset (Examples/Headers, Examples/Resources,
+# Examples/Util zipped as AfterEffectsSDK_26.5_mac.zip) lives in the PRIVATE
+# repository comkoff/ae-sdk, release AE-SDK-26.5-mac. This workflow downloads
+# it with the SDK_TOKEN secret — a fine-grained personal access token with
+# read-only "Contents" access to comkoff/ae-sdk.
 
 name: build-mac
 
@@ -27,6 +24,7 @@ permissions:
   contents: read
 
 env:
+  SDK_REPO: comkoff/ae-sdk
   SDK_RELEASE: AE-SDK-26.5-mac
   SDK_ASSET: AfterEffectsSDK_26.5_mac.zip
 
@@ -36,12 +34,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Download the AE SDK (macOS) from this repository's release
+      - name: Download the AE SDK (macOS) from the private SDK repository
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.SDK_TOKEN }}
         run: |
           gh release download "$SDK_RELEASE" \
-            --repo "$GITHUB_REPOSITORY" --pattern "$SDK_ASSET" \
+            --repo "$SDK_REPO" --pattern "$SDK_ASSET" \
             --output "$RUNNER_TEMP/aesdk.zip"
           mkdir -p "$RUNNER_TEMP/aesdk"
           unzip -q "$RUNNER_TEMP/aesdk.zip" -d "$RUNNER_TEMP/aesdk"

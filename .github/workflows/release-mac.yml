@@ -5,6 +5,11 @@
 # macOS runner, so Unix permissions (the executable bit of the Mach-O
 # binary) are preserved — users only need to remove the Gatekeeper
 # quarantine after unpacking (see the user manual).
+#
+# The AE SDK lives in the PRIVATE repository comkoff/ae-sdk (release
+# AE-SDK-26.5-mac) and is downloaded with the SDK_TOKEN secret — a
+# fine-grained personal access token with read-only "Contents" access
+# to comkoff/ae-sdk.
 
 name: release-mac
 
@@ -20,6 +25,7 @@ permissions:
   contents: write
 
 env:
+  SDK_REPO: comkoff/ae-sdk
   SDK_RELEASE: AE-SDK-26.5-mac
   SDK_ASSET: AfterEffectsSDK_26.5_mac.zip
 
@@ -29,12 +35,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Download the AE SDK (macOS) from this repository's release
+      - name: Download the AE SDK (macOS) from the private SDK repository
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.SDK_TOKEN }}
         run: |
           gh release download "$SDK_RELEASE" \
-            --repo "$GITHUB_REPOSITORY" --pattern "$SDK_ASSET" \
+            --repo "$SDK_REPO" --pattern "$SDK_ASSET" \
             --output "$RUNNER_TEMP/aesdk.zip"
           mkdir -p "$RUNNER_TEMP/aesdk"
           unzip -q "$RUNNER_TEMP/aesdk.zip" -d "$RUNNER_TEMP/aesdk"
