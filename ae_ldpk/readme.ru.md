@@ -197,7 +197,8 @@ Workflow скачивает SDK из приватного репозитория
 
 ## Лицензия
 
-Код моста — «as is», без гарантий. Модели LDPK — free software
+Код моста — под лицензией MIT (см. `LICENSE` в корне репозитория)
+© Yaroslav Zvykov (comkoff). Модели LDPK — free software
 (см. `license` в корне LDPK); заголовок `tde4_ld_plugin.h` принадлежит
 Science-D-Visions. Примеры Adobe SDK используются как структурный референс
 (Resizer, Shifter, PathMaster, Gamma_Table).

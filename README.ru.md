@@ -55,4 +55,4 @@
 
 ## Лицензия
 
-Код моста — «as is», без гарантий. Модели LDPK — free software © Uwe Sassenberg, Science-D-Visions (см. [`ldpk-2.14.0/license`](ldpk-2.14.0/license)); заголовок `tde4_ld_plugin.h` принадлежит Science-D-Visions. Примеры Adobe SDK использованы как структурный референс.
+Код моста — под лицензией [MIT](LICENSE) © Yaroslav Zvykov (comkoff). Модели LDPK — free software © Uwe Sassenberg, Science-D-Visions (см. [`ldpk-2.14.0/license`](ldpk-2.14.0/license)); заголовок `tde4_ld_plugin.h` принадлежит Science-D-Visions. Примеры Adobe SDK использованы как структурный референс.

@@ -198,7 +198,8 @@ Not supported (obsolete/incompatible with MSVC): `LD_3DE4_Noop_Debugging`
 
 ## License
 
-The bridge code is "as is", without warranties. The LDPK models are free software
+The bridge code is licensed under the MIT License (see `LICENSE` in the
+repository root) © Yaroslav Zvykov (comkoff). The LDPK models are free software
 (see `license` in the LDPK root); the `tde4_ld_plugin.h` header belongs to
 Science-D-Visions. The Adobe SDK examples are used as a structural reference
 (Resizer, Shifter, PathMaster, Gamma_Table).

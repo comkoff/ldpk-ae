@@ -55,4 +55,4 @@ Full user manual: [English](releases/AE_LD3DE4/readme_user.md) | [Русский
 
 ## License
 
-The bridge code is provided "as is", without warranties. The LDPK models are free software © Uwe Sassenberg, Science-D-Visions (see [`ldpk-2.14.0/license`](ldpk-2.14.0/license)); the `tde4_ld_plugin.h` header belongs to Science-D-Visions. Adobe SDK examples are used as a structural reference.
+The bridge code is licensed under the [MIT License](LICENSE) © Yaroslav Zvykov (comkoff). The LDPK models are free software © Uwe Sassenberg, Science-D-Visions (see [`ldpk-2.14.0/license`](ldpk-2.14.0/license)); the `tde4_ld_plugin.h` header belongs to Science-D-Visions. Adobe SDK examples are used as a structural reference.
