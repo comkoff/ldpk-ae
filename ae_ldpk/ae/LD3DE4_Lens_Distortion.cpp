@@ -1585,9 +1585,23 @@ static PF_Err LD_RenderPixelFloat(void* refcon, A_long x, A_long y, PF_PixelFloa
 
         PF_Fixed fx = FLOAT2FIX(px);
         PF_Fixed fy = FLOAT2FIX(py);
-        AEGP_SuiteHandler suites(ri->in_data->pica_basicP);
-        err = suites.SamplingFloatSuite1()->subpixel_sample_float(
-            ri->in_data->effect_ref, fx, fy, &ri->samp_pb, out);
+        // The suite is acquired once per render (LD_SmartRender) and
+        // stashed in LD_RenderInfo; constructing an AEGP_SuiteHandler here
+        // per pixel cost an Acquire/ReleaseSuite pair through PiCA per
+        // pixel and made 32 bpc renders several times slower than 8/16
+        // bpc. NULL suite: fall back to the per-pixel acquisition.
+        PF_SamplingFloatSuite1* float_suite = ri->float_suite;
+        if (float_suite)
+        {
+            err = float_suite->subpixel_sample_float(
+                ri->in_data->effect_ref, fx, fy, &ri->samp_pb, out);
+        }
+        else
+        {
+            AEGP_SuiteHandler suites(ri->in_data->pica_basicP);
+            err = suites.SamplingFloatSuite1()->subpixel_sample_float(
+                ri->in_data->effect_ref, fx, fy, &ri->samp_pb, out);
+        }
         if (err)
         {
             out->alpha = out->red = out->green = out->blue = 0;
@@ -1934,6 +1948,16 @@ static PF_Err LD_SmartRender(PF_InData* in_data, PF_OutData* out_data, PF_SmartR
     // world (both origins are reported in layer coordinates).
     ri.border_x = in_world->origin_x - out_world->origin_x;
     ri.border_y = in_world->origin_y - out_world->origin_y;
+
+    // The float sampling suite (32 bpc) is acquired once per render
+    // through the handler constructed at the top of this function; the
+    // handler keeps it alive until it goes out of scope — after the
+    // iteration. Per-pixel acquisition in LD_RenderPixelFloat cost an
+    // Acquire/ReleaseSuite pair through PiCA per pixel and made 32 bpc
+    // renders several times slower than 8/16 bpc.
+    ri.float_suite = (format == PF_PixelFormat_ARGB128)
+        ? suites.SamplingFloatSuite1()
+        : NULL;
 
     LD_Log(
         "SMART_RENDER: time=%ld model='%s' coeffs=%s in=%ldx%ld@(%ld,%ld) out=%ldx%ld@(%ld,%ld) dir=%s",

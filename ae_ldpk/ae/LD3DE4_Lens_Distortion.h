@@ -62,11 +62,11 @@
 
     #define MAJOR_VERSION 1
     #define MINOR_VERSION 0
-    #define BUG_VERSION 0
+    #define BUG_VERSION 1
     #define STAGE_VERSION PF_Stage_RELEASE
     #define BUILD_VERSION 1
 
-    #define LD_VERSION_STRING "1.0.0"
+    #define LD_VERSION_STRING "1.0.1"
 #ifdef LD_ENABLE_DEBUG_LOG
     #define LD_NAME "3DE4 Lens Distortion Debug"
 #else
@@ -184,6 +184,14 @@ struct LD_RenderInfo
     A_long in_w, in_h;
     A_long border_x, border_y;
     std::atomic<int>* rejected; // pixels outside the model image (diagnostics)
+    // Float sampling suite (32 bpc), acquired once per render in
+    // LD_SmartRender through its AEGP_SuiteHandler — the handler keeps the
+    // suite alive until the function returns, i.e. until the iteration is
+    // over. Acquiring it per pixel (the former approach) cost an
+    // Acquire/ReleaseSuite pair through PiCA per pixel and made 32 bpc
+    // renders several times slower than 8/16 bpc. NULL: the callback
+    // falls back to per-pixel acquisition.
+    PF_SamplingFloatSuite1* float_suite;
 };
 
 extern "C"

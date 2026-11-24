@@ -41,7 +41,7 @@
   <PropertyGroup>
     <LD_VERSION_MAJOR>1</LD_VERSION_MAJOR>
     <LD_VERSION_MINOR>0</LD_VERSION_MINOR>
-    <LD_VERSION_BUGFIX>0</LD_VERSION_BUGFIX>
+    <LD_VERSION_BUGFIX>1</LD_VERSION_BUGFIX>
     <LD_VERSION>$(LD_VERSION_MAJOR).$(LD_VERSION_MINOR).$(LD_VERSION_BUGFIX)</LD_VERSION>
     <!-- Diagnostic build: MSBuild /p:LD_DEBUG_LOG=1 compiles the always-on
          log (LD_ENABLE_DEBUG_LOG) into .../releases/AE_LD3DE4/<version>_debug/
