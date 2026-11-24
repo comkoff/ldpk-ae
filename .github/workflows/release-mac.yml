@@ -1,10 +1,12 @@
 # Build the macOS .bundle files and attach them as a release asset.
 #
-# Run manually: Actions -> release-mac -> Run workflow -> specify the tag
-# (the release must already exist, e.g. v1.0.0). The zip is packed on the
-# macOS runner, so Unix permissions (the executable bit of the Mach-O
-# binary) are preserved — users only need to remove the Gatekeeper
-# quarantine after unpacking (see the user manual).
+# Triggers:
+# - pushing a v* tag: the zip is attached to the release of that tag
+#   (the release must already exist, e.g. v1.0.0);
+# - manually: Actions -> release-mac -> Run workflow -> specify the tag.
+# The zip is packed on the macOS runner, so Unix permissions (the
+# executable bit of the Mach-O binary) are preserved — users only need to
+# remove the Gatekeeper quarantine after unpacking (see the user manual).
 #
 # The AE SDK lives in the PRIVATE repository comkoff/ae-sdk (release
 # AE-SDK-26.5-mac) and is downloaded with the SDK_TOKEN secret — a
@@ -20,6 +22,8 @@ on:
         description: "Release tag to attach the macOS zip to (e.g. v1.0.0)"
         required: true
         default: v1.0.0
+  push:
+    tags: ["v*"]
 
 permissions:
   contents: write
@@ -71,5 +75,5 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release upload "${{ inputs.tag }}" "$ZIP" \
+          gh release upload "${{ inputs.tag || github.ref_name }}" "$ZIP" \
             --repo "$GITHUB_REPOSITORY" --clobber
